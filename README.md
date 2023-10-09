@@ -12,6 +12,31 @@
 6. Complete documentation of the system
 7. Test user input validation
 
+# Getting Started
+Installing Composer packages
+```composer install```
+Installing Node.js package
+```npm install```
+
+### Migrating Database
+Make sure the settings in `.env` are configured, see Database section below
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=heightclearance
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### Running the server
+The application will require to run both artisan and vite packages
+```
+php artisan serve
+npm run dev
+```
+
+
 ## Libraries
 # Database
 ## MySQL 

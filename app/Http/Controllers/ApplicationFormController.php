@@ -49,4 +49,15 @@ class ApplicationFormController extends Controller
 
         return redirect()->back()->with('success', 'Application submitted successfully.');
     }
+
+    public function getFormData($id)
+    {
+        $formData = Application::find($id);
+
+        if (!$formData) {
+            return response()->json(['error' => 'Form data not found'], 404);
+        }
+
+        return response()->json(['data' => $formData], 200);
+    }
 }

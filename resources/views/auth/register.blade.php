@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md">
-            <div class="row" style="margin-top: 10vh;">
+            <div class="row" style="margin-top: 20vh;">
                 <div class="col">
                     <img class="caap-logo" src="{{ asset('asset/img/caap-logo.png') }}" alt="CAAP Logo">
                     <header class="col-hdr">
@@ -73,6 +73,16 @@
                                 </button>
                             </div>
                         </div>
+
+                        <div class="row ">
+                                <div style="margin-top: 20px;"></div>
+                                <div class="col-md-8 offset-md-4">
+                                    <p style="font-style: italic;">Already have an account?</p>
+                                    @if (Route::has('register'))
+                                        <a class="register-link" href="{{ route('register') }}">{{ __('Back to Sign In') }}</a>
+                                    @endif
+                                </div>
+                            </div>
 
 
 

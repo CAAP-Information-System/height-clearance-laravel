@@ -40,6 +40,7 @@
                     @auth
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
+                            <i class="fa-solid fa-house"></i>
                             <a class="nav-item nav-link active" href="{{ url('home') }}">Home</a>
 
                         </div>
