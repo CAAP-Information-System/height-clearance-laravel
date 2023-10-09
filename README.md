@@ -36,13 +36,13 @@ Postman will serve as an API testing software to indicate the effectivity of the
 Enables access to every features
 ```
 Username: admin@gmail.com
-Password: admin
+Password: adminuser
 ```
 ### Non-Admin
 Enables limited access to features
 ```
 Username: testuser@gmail.com
-Password: notadmin
+Password: manrique
 ```
 >[!NOTE]
 >The given test cases are documented during the development phase of the system. The developers will need to perform necessary test cases such as integration tests, unit tests, etc. before starting the deployment process with CI/CD pipelines.

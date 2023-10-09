@@ -20,7 +20,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
 
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/upload', [App\Http\Controllers\HomeController::class, 'uploadFile'])->name('upload');
+Route::get('/upload', [App\Http\Controllers\UploadFormController::class, 'index'])->name('upload');
 Route::get('/', function () {
     return view('auth.login');
 });

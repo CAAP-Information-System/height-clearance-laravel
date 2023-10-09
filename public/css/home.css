@@ -1,0 +1,22 @@
+.status-card{
+    width: 30%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+}
+.status-card-hdr{
+    text-align: center;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-size: 2rem;
+    background-color: #07275A;
+    color: #ffff;
+    padding: 10px;
+}
+.content-color{
+    color: #E4A11B;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 10px;
+    text-align: center;
+
+}
