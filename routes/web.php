@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApplicationFormController;
+use App\Models\ApplicationForm;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,11 +22,12 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
 
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/upload', [App\Http\Controllers\UploadFormController::class, 'index'])->name('upload');
+Route::get('/application', [App\Http\Controllers\ApplicationFormController::class, 'index'])->name('upload');
 Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::post('/submit-application', [ApplicationFormController::class, 'submitForm'])->name('submitApplication');
 Auth::routes();
 
 

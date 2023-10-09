@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <img style="height: auto; width: 120px; padding-right: 20px;" src="{{ asset('asset/img/caap-logo.png') }}" alt="CAAP Logo">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand">
                     Height Clearance Permit
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -39,14 +39,16 @@
                     @auth
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-item nav-link active" href="#">Home</a>
+                            <a class="nav-item nav-link active" href="{{ url('home') }}">Home</a>
 
                         </div>
 
                     </div>
                     @endauth
                     <!-- Right Side Of Navbar -->
-                    <a class="btn btn-primary" href="{{ url('upload') }}">Apply for a Permit</a>
+                    @auth
+                    <a class="btn btn-primary" href="{{ url('application') }}">Apply for a Permit</a>
+                    @endauth
                     <div style="margin-right: 20px;"></div>
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
