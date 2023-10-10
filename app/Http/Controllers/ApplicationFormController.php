@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Application;
+use App\Models\Structure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -36,15 +37,27 @@ class ApplicationFormController extends Controller
             'lname' => 'required|string|max:100',
             'email' => 'required|string|max:50',
             'landline' => 'required|numeric',
+            'owner_address' => 'required|string|max:255',
             'mobile' => 'required|numeric',
             'type_of_structure' => 'required|string|max:100',
             'site_address' => 'required|string|max:100',
             'proposed_height' => 'required|numeric',
             'height_of_existing_structure' => 'required|numeric',
-            // Add other fields with appropriate validation rules
+            'permit_type' => 'required|in:height_clearance_permit,height_limitation',
+            'rep_fname' => 'required|string|max:255',
+            'rep_lname' => 'required|string|max:255',
+            'rep_company' => 'required|string|max:255',
+            'rep_office_address' => 'required|string|max:255',
+            'rep_submission_date' => 'required|date',
+            'rep_receipt_num' => 'required|string|max:255',
+            'rep_mobile' => 'required|integer',
+            'rep_landline' => 'required|integer',
+            'rep_email' => 'required|email|max:255',
+            'rep_date_of_or' => 'required|date',
         ]);
 
         // Create a new application record
+        Structure::create($request->all());
         Application::create($request->all());
 
         return redirect()->back()->with('success', 'Application submitted successfully.');

@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" type="text/css" href="{{ url('css/register.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('css/auth/register.css') }}">
 <div class="container">
+    <header class="auth-hdr">Welcome</header>
     <div class="row justify-content-center">
         <div class="col-md">
-            <div class="row" style="margin-top: 20vh;">
+            <div class="row" style="margin-top: 15vh;">
                 <div class="col">
                     <img class="caap-logo" src="{{ asset('asset/img/caap-logo.png') }}" alt="CAAP Logo">
                     <header class="col-hdr">

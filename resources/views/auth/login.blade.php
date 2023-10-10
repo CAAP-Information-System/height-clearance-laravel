@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" type="text/css" href="{{ url('css/login.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('css/auth/login.css') }}">
 <div class="container">
+    <header class="auth-hdr">Welcome</header>
     <div class="row justify-content-center">
         <div class="col-md">
-            <div class="row" style="margin-top: 20vh;">
+            <div class="row" style="margin-top: 15vh;">
                 <div class="col">
                     <img class="caap-logo" src="{{ asset('asset/img/caap-logo.png') }}" alt="CAAP Logo">
                     <header class="col-hdr">
@@ -37,7 +38,10 @@
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                                    <!-- <div class="form-check">
+                                        <input type="checkbox" id="show-password" class="form-check-input">
+                                        <label class="form-check-label" for="show-password">Show Password</label>
+                                    </div> -->
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -46,26 +50,26 @@
                                 </div>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" style="text-decoration: none; color: #ffff;" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                    @endif
+                                <a class="btn btn-link" style="text-decoration: none; color: #ffff;" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
+                                @endif
                             </div>
 
 
                             <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="login-btn">
-                                        {{ __('Sign In') }}
-                                    </button>
+                                <button type="submit" class="login-btn">
+                                    {{ __('Sign In') }}
+                                </button>
 
-                                </div>
+                            </div>
 
                             <div class="row ">
                                 <div style="margin-top: 20px;"></div>
                                 <div class="col-md-8 offset-md-4">
                                     <p style="font-style: italic;">Not registered yet?</p>
                                     @if (Route::has('register'))
-                                        <a class="register-link" href="{{ route('register') }}">{{ __('Sign Up Now') }}</a>
+                                    <a class="register-link" href="{{ route('register') }}">{{ __('Sign Up Now') }}</a>
                                     @endif
                                 </div>
                             </div>
@@ -76,4 +80,13 @@
         </div>
     </div>
 </div>
+<script>
+    const passwordField = document.getElementById('password');
+    const showPasswordCheckbox = document.getElementById('show-password');
+
+    showPasswordCheckbox.addEventListener('change', () => {
+        const passwordFieldType = showPasswordCheckbox.checked ? 'text' : 'password';
+        passwordField.setAttribute('type', passwordFieldType);
+    });
+</script>
 @endsection

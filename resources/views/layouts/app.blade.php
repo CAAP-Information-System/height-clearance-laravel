@@ -28,9 +28,9 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <img style="height: auto; width: 120px; padding-right: 20px;" src="{{ asset('asset/img/caap-logo.png') }}" alt="CAAP Logo">
-                <a class="navbar-brand">
+                <!-- <a class="navbar-brand">
                     Height Clearance Permit
-                </a>
+                </a> -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

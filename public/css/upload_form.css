@@ -1,4 +1,43 @@
-@media (min-width: 1025px) {
+.upload-hdr{
+    font-size: 2rem;
+    text-align: center;
+}
+.header-container{
+    display: flex;
+    gap: 4vh;
+    align-items: center;
+}
+.circle {
+    width: 50px; /* Adjust the width and height to create a circle */
+    height: 50px; /* Adjust the width and height to create a circle */
+    border-radius: 50%; /* Create a circle using border-radius */
+    border: 2px solid #BABABA; /* Border style (you can adjust color and width) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #BABABA; /* Color of the number */
+    font-weight: bold;
+    font-size: 15px; /* Adjust the font size of the number */
+}
+.header-container .section-hdr{
+    font-size: 35px;
+    color: #07275A;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @media (min-width: 1025px) {
     .h-custom {
     height: 100vh !important;
     }
@@ -27,4 +66,4 @@
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     }
-    }
+    } */
