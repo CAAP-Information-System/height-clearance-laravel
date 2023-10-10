@@ -37,10 +37,10 @@ npm run dev
 ```
 
 
-## Libraries
 # Database
 ## MySQL 
 ![MySQL](https://www.liveagent.com/app/uploads/2020/11/MySQL-Logo.png)
+The MySQL software delivers a very fast, multithreaded, multi-user, and robust SQL (Structured Query Language) database server. MySQL Server is intended for mission-critical, heavy-load production systems as well as for embedding into mass-deployed software. 
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -53,7 +53,7 @@ DB_PASSWORD=
 # API Testing
 ## Postman
 ![Postman](https://mms.businesswire.com/media/20220414005114/en/761650/22/postman-logo-vert-2018.jpg)
-Postman will serve as an API testing software to indicate the effectivity of the response-request streamline. 
+Postman is an API platform for developers. The company is headquartered in San Francisco and maintains an office in Bangalore, where it was founded. Postman will serve as an API testing software to indicate the effectivity of the response-request streamline. 
 <br>
 
 ## Test Accounts 

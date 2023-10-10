@@ -64,8 +64,8 @@
                                 <div style="margin-top: 20px;"></div>
                                 <div class="col-md-8 offset-md-4">
                                     <p style="font-style: italic;">Not registered yet?</p>
-                                    @if (Route::has('login'))
-                                        <a class="register-link" href="{{ route('login') }}">{{ __('Sign Up Now') }}</a>
+                                    @if (Route::has('register'))
+                                        <a class="register-link" href="{{ route('register') }}">{{ __('Sign Up Now') }}</a>
                                     @endif
                                 </div>
                             </div>

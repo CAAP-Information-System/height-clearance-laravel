@@ -78,8 +78,8 @@
                                 <div style="margin-top: 20px;"></div>
                                 <div class="col-md-8 offset-md-4">
                                     <p style="font-style: italic;">Already have an account?</p>
-                                    @if (Route::has('register'))
-                                        <a class="register-link" href="{{ route('register') }}">{{ __('Back to Sign In') }}</a>
+                                    @if (Route::has('login'))
+                                        <a class="register-link" href="{{ route('login') }}">{{ __('Back to Sign In') }}</a>
                                     @endif
                                 </div>
                             </div>
