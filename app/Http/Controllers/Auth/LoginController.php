@@ -28,6 +28,7 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+
     /**
      * Create a new controller instance.
      *
@@ -41,7 +42,7 @@ class LoginController extends Controller
     public function showLoginForm()
 {
     if (auth()->check()) {
-        return redirect('/home');  // Redirect to the home page if authenticated
+        return redirect('/dashboard');  // Redirect to the home page if authenticated
     }
 
     return view('auth.login');

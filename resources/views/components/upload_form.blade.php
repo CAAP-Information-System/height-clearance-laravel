@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url('css/upload_form.css') }}">
 <div class="container">
     <header class="upload-hdr">You’re now applying for a <span style="color: #2F96D0;">Height Clearance Permit / Height Limit</span></header>
+
     <form action="{{ route('submitApplication') }}" method="post">
         @csrf
         <div class="container py-5 h-100">
@@ -222,7 +223,8 @@
                 </div>
             </section>
 
-            <button type="submit" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Register</button>
+            <button type="submit" class="button-24">Submit Application</button>
+
         </div>
     </form>
 </div>

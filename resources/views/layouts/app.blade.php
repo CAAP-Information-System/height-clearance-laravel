@@ -22,9 +22,10 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <style></style>
+
 <body>
     <div id="app">
-        @auth
+    @auth
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <img style="height: auto; width: 120px; padding-right: 20px;" src="{{ asset('asset/img/caap-logo.png') }}" alt="CAAP Logo">
@@ -50,7 +51,11 @@
                     @endauth
                     <!-- Right Side Of Navbar -->
                     @auth
+                    @if(Auth::user()->role == '0') <!-- Assuming isAdmin() is a method in your User model -->
                     <a class="btn btn-primary" href="{{ url('application') }}">Apply for a Permit</a>
+                    @elseif(Auth::user()->role == '1') <!-- Assuming isAdmin() is a method in your User model -->
+                    <a class="btn btn-primary" href="{{ url('admin/dashboard') }}">Go to Dashboard</a>
+                    @endif
                     @endauth
                     <div style="margin-right: 20px;"></div>
                     <ul class="navbar-nav ms-auto">
