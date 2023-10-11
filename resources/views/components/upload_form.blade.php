@@ -150,7 +150,7 @@
 
                             <div class="form-outline">
                                 <label class="form-label" for="form3Examplev2">First name</label>
-                                <input type="text" id="rep_fname" class="form-control form-control-lg" required />
+                                <input type="text" name="rep_fname" class="form-control form-control-lg"  required>
 
                             </div>
 
@@ -159,7 +159,7 @@
 
                             <div class="form-outline">
                                 <label class="form-label" for="form3Examplev3">Last name</label>
-                                <input type="text" id="rep_lname" class="form-control form-control-lg" required />
+                                <input type="text" name="rep_lname" class="form-control form-control-lg"  required>
 
                             </div>
 
@@ -167,7 +167,7 @@
                         <div class="mb-4 pb-2">
                             <div class="form-outline">
                                 <label class="form-label" for="form3Examplev4">Company Represented</label>
-                                <input type="text" name="rep_company"  class="form-control form-control-lg" required />
+                                <input type="text" name="rep_company" class="form-control form-control-lg"  required>
 
                             </div>
                         </div>
@@ -175,7 +175,7 @@
 
                             <div class="form-outline">
                                 <label class="form-label" for="form3Examplev2">Landline Number</label>
-                                <input type="text" name="rep_landline" class="form-control form-control-lg" required />
+                                <input type="number" name="rep_landline" class="form-control form-control-lg"  required>
 
                             </div>
 
@@ -183,39 +183,39 @@
                         <div class="col-md-6 mb-4 pb-2">
                             <div class="form-outline">
                                 <label class="form-label" for="form3Examplev3">Mobile Number</label>
-                                <input type="text" name="rep_mobile" class="form-control form-control-lg" required />
+                                <input type="number" name="rep_mobile" class="form-control form-control-lg"  required>
                             </div>
 
                         </div>
                         <div class="mb-4 pb-2">
                             <div class="form-outline">
                                 <label class="form-label" for="form3Examplev4">Office or Residence Address</label>
-                                <input type="text" name="rep_office_address"  class="form-control form-control-lg" required />
+                                <input type="text" name="rep_office_address" class="form-control form-control-lg"  required>
 
                             </div>
                         </div>
                         <div class="mb-4 pb-2">
                             <div class="form-outline">
                                 <label class="form-label" for="form3Examplev4">Representative Email Address</label>
-                                <input type="email" name="rep_email" placeholder="youremail@email.com" class="form-control form-control-lg" required />
+                                <input type="email" name="rep_email" class="form-control form-control-lg"  required>
                             </div>
                         </div>
                         <div class="mb-4 pb-2">
                             <div class="form-outline">
                                 <label class="form-label" for="form3Examplev4">Date of Submission</label>
-                                <input type="date" name="rep_submission_date" class="form-control form-control-lg" required />
+                                <input type="date" name="rep_submission_date" class="form-control form-control-lg"  required>
                             </div>
                         </div>
                         <div class="mb-4 pb-2">
                             <div class="form-outline">
                                 <label class="form-label" for="form3Examplev4">Date of OR</label>
-                                <input type="date" name="rep_date_of_or" class="form-control form-control-lg" required />
+                                <input type="date" name="rep_date_of_or" class="form-control form-control-lg"  required>
                             </div>
                         </div>
                         <div class="mb-4 pb-2">
                             <div class="form-outline">
                                 <label class="form-label" for="form3Examplev4">Official Receipt Number</label>
-                                <input type="text" name="rep_receipt_num" class="form-control form-control-lg" required />
+                                <input type="text" name="rep_receipt_num" class="form-control form-control-lg"  required>
                             </div>
                         </div>
                     </div>
