@@ -1,7 +1,19 @@
   .navbar-brand{
     font-size: 2rem;
   }
-
+.item-link{
+    color: #3B3B3B;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 10px;
+    transition: .2s;
+    margin: 5px;
+}
+.item-link:hover{
+    background-color: #2D4E83;
+    color: #ffff;
+    border-radius: 10px;
+}
   /* Sidebar */
   .sidebar {
     position: fixed;

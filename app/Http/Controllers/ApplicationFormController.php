@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ApplicationRequest;
+use App\Http\Requests\RepresentativeRequest;
 use App\Models\Application;
-use App\Models\Structure;
+use App\Models\Representative;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -57,7 +59,7 @@ class ApplicationFormController extends Controller
         ]);
 
         // Create a new application record
-        Structure::create($request->all());
+        Representative::create($request->all());
         Application::create($request->all());
 
         return redirect()->back()->with('success', 'Application submitted successfully.');
