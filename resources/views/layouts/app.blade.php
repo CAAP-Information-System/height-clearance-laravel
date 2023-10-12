@@ -49,12 +49,12 @@
 
                     </div>
                     @endauth
-                    <!-- Right Side Of Navbar -->
+                    <!-- Righ0t Side Of Navbar -->
                     @auth
                     @if(Auth::user()->role == '0') <!-- Assuming isAdmin() is a method in your User model -->
-                    <a class="btn btn-primary" href="{{ url('application') }}">Apply for a Permit</a>
+                    <a class="button-28" href="{{ url('application') }}">Apply for a Permit</a>
                     @elseif(Auth::user()->role == '1') <!-- Assuming isAdmin() is a method in your User model -->
-                    <a class="btn btn-primary" href="{{ url('admin/dashboard') }}">Go to Dashboard</a>
+                    <a class="button-28" href="{{ url('admin/application-view') }}">Pending Applications</a>
                     @endif
                     @endauth
                     <div style="margin-right: 20px;"></div>

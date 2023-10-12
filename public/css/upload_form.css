@@ -30,9 +30,22 @@
     font-size: 20px;
     margin-bottom: 10px;
     font-weight: bold;
-
 }
 
+.selection-alt-label{
+    color: #E83E3E;
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.section-sub-hdr{
+    margin-left: 9.3vh;
+    font-style: italic;
+    color: #575757;
+
+}
 
 /* CSS */
 .button-24 {

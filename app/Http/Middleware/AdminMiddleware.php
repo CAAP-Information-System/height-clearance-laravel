@@ -21,10 +21,11 @@ class AdminMiddleware
             // admin == 1
             // user == 0
 
-            if(Auth::user()->role == '1') {
+            if(Auth::user()->access_role == 'admin') {
                 return $next($request);
             }
             else{
+                abort(403);
                 return redirect('/home')->with('message', 'Access Denied');
             }
         }

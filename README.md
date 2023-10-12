@@ -1,6 +1,10 @@
-# Height Clearance Permit Documentation
+# Height Clearance Permit (HCP) Documentation
 > Version Beta
+### What is HCP all about?
+The CAAP has an online platform for Height Clearance Permit (HCP) issuance, which is part of their efforts to streamline the issuance of permits, licenses, and certificates for construction. They also have a virtual map of critical areas to guide stakeholders in their applications for HCP.
 
+**_Reference:_**
+[Understanding Building Height Limit in the Philippines & Exceptions](https://www.ianfulgar.com/reference/understanding-building-height-limit-in-the-philippines-exceptions/#:~:text=The%20CAAP%20has%20an%20online,in%20their%20applications%20for%20HCP.)
 ## TODO:
 >[!IMPORTANT]
 > Maintain flow of task for smooth development and testing
@@ -14,10 +18,17 @@
 
 # Getting Started
 Installing Composer packages
-```composer install```
+```
+composer install
+```
 Installing Node.js package
-```npm install```
-
+```
+npm install
+```
+Generating Key
+```
+php artisan key:generate
+```
 ### Migrating Database
 Make sure the settings in `.env` are configured, see Database section below
 ```
