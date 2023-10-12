@@ -26,22 +26,26 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function user_accountView()
     {
         $users = User::all();
-        return view('admin.index', ['users' => $users]);
+        return view('admin.user_account', ['users' => $users]);
+    }
+
+    public function dashboardView()
+    {
+        return view('admin.dashboard');
     }
 
     public function showApplicationView()
-{
-    if (Auth::check() && Auth::user()->access_role === 'admin') {
-        $applicationData = Application::all();
+    {
+        if (Auth::check() && Auth::user()->access_role === 'admin') {
+            $applicationData = Application::all();
 
-        $representativeData = Representative::all();
-        return view('admin.application_tables_view')->with('applicationData', $applicationData)->with('representativeData', $representativeData);;
-    } else {
-        return redirect('/login')->with('message', 'Login as an admin to access this page.');
+            $representativeData = Representative::all();
+            return view('admin.application_tables_view')->with('applicationData', $applicationData)->with('representativeData', $representativeData);;
+        } else {
+            return redirect('/login')->with('message', 'Login as an admin to access this page.');
+        }
     }
-}
-
 }

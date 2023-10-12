@@ -51,9 +51,9 @@
                     @endauth
                     <!-- Righ0t Side Of Navbar -->
                     @auth
-                    @if(Auth::user()->role == '0') <!-- Assuming isAdmin() is a method in your User model -->
+                    @if(Auth::user()->access_role == 'user') <!-- Assuming isAdmin() is a method in your User model -->
                     <a class="button-28" href="{{ url('application') }}">Apply for a Permit</a>
-                    @elseif(Auth::user()->role == '1') <!-- Assuming isAdmin() is a method in your User model -->
+                    @elseif(Auth::user()->access_role == 'admin') <!-- Assuming isAdmin() is a method in your User model -->
                     <a class="button-28" href="{{ url('admin/application-view') }}">Pending Applications</a>
                     @endif
                     @endauth
