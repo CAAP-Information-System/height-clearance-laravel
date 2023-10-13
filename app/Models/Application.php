@@ -12,8 +12,14 @@ class Application extends Model
         'site_address', 'proposed_height', 'height_of_existing_structure', 'permit_type', 'building_type',
     ];
 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function representative()
     {
-        return $this->belongsTo(Representative::class);
+        return $this->hasOne(Representative::class, 'representative_id');
     }
 }

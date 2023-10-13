@@ -14,6 +14,6 @@ class Representative extends Model
 
     public function application()
     {
-        return $this->hasOne(Application::class);
+        return $this->belongsTo(Application::class, 'representative_id');
     }
 }

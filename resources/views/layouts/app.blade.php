@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Online Height Clearance</title>
     <link rel="stylesheet" type="text/css" href="{{ url('css/app.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -22,7 +22,10 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-    <!-- iCheck -->
+    <!-- Bootstrap JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -69,7 +72,7 @@
                     </a>
                     @elseif(Auth::user()->access_role == 'admin') <!-- Assuming isAdmin() is a method in your User model -->
                     <a class="button-28" href="{{ url('admin/application-view') }}">
-                        <i class='bx bxs-time-five bx-xs' ></i>
+                        <i class='bx bxs-time-five bx-xs'></i>
                         Pending Applications</a>
                     @endif
                     @endauth

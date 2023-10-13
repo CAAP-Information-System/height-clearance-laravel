@@ -9,6 +9,7 @@ use App\Models\Application;
 use App\Models\Representative;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ApplicationFormController extends Controller
 {
@@ -33,8 +34,12 @@ class ApplicationFormController extends Controller
 
     public function submitForm(Request $request): RedirectResponse
     {
+        $user = auth()->user();
+        if ($user->application) {
+            return redirect()->back()->with('error', 'You can only submit one application per account.');
+        }
         // Validate the form data (you can customize validation rules)
-        $request->validate([
+        $validatedData = $request->validate([
             'fname' => 'required|string|max:100',
             'lname' => 'required|string|max:100',
             'email' => 'required|string|max:50',
@@ -59,8 +64,22 @@ class ApplicationFormController extends Controller
         ]);
 
         // Create a new application record
-        Representative::create($request->all());
-        Application::create($request->all());
+        // Create a new application record
+        $application = new Application($validatedData);
+        $application->user()->associate(auth()->user());
+        $application->save();
+
+        $representativeData = $request->only([
+            'rep_fname', 'rep_lname', 'rep_company', 'rep_office_address',
+            'rep_submission_date', 'rep_receipt_num', 'rep_landline', 'rep_mobile',
+            'rep_email', 'rep_date_of_or'
+        ]);
+
+        // Associate the representative with the application
+        $representative = new Representative($representativeData);
+        $representative->application_id = $application->id;
+        $representative->save();
+
 
         return redirect()->back()->with('success', 'Application submitted successfully.');
     }
@@ -85,6 +104,17 @@ class ApplicationFormController extends Controller
         } else {
             return view('admin/application-view');
         }
+    }
 
+    public function rules()
+    {
+        return [
+            // Validation rules...
+
+            // Add a rule to check if the user has already submitted an application
+            Rule::unique('applications')->where(function ($query) {
+                return $query->where('user_id', auth()->user()->id);
+            }),
+        ];
     }
 }
