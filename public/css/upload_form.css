@@ -1,8 +1,8 @@
-.upload-hdr{
+.upload-hdr {
     font-size: 2rem;
     text-align: center;
 }
-.header-container{
+.header-container {
     display: flex;
     gap: 4vh;
     align-items: center;
@@ -11,117 +11,74 @@
     width: 50px; /* Adjust the width and height to create a circle */
     height: 50px; /* Adjust the width and height to create a circle */
     border-radius: 50%; /* Create a circle using border-radius */
-    border: 2px solid #BABABA; /* Border style (you can adjust color and width) */
+    border: 2px solid #bababa; /* Border style (you can adjust color and width) */
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #BABABA; /* Color of the number */
+    color: #bababa; /* Color of the number */
     font-weight: bold;
     font-size: 15px; /* Adjust the font size of the number */
 }
-.header-container .section-hdr{
+.header-container .section-hdr {
     font-size: 35px;
-    color: #07275A;
+    color: #07275a;
 }
 
-
-.selection-label{
+.selection-label {
     color: #3b3b3b;
     font-size: 20px;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
-.selection-alt-label{
-    color: #E83E3E;
+.selection-alt-label {
+    color: #e83e3e;
     font-size: 18px;
     font-style: italic;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
-.section-sub-hdr{
+.section-sub-hdr {
     margin-left: 9.3vh;
     font-style: italic;
     color: #575757;
-
 }
 
 /* CSS */
 .button-24 {
     width: 100%;
-  background: #FF4742;
-  border: 1px solid #FF4742;
-  border-radius: 6px;
-  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 16px;
-  min-height: 40px;
-  outline: 0;
-  padding: 12px 14px;
-  text-align: center;
-  text-rendering: geometricprecision;
-  text-transform: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
+    background: #ff4742;
+    border: 1px solid #ff4742;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
 }
 
 .button-24:hover,
 .button-24:active {
-  background-color: initial;
-  background-position: 0 0;
-  color: #FF4742;
+    background-color: initial;
+    background-position: 0 0;
+    color: #ff4742;
 }
 
 .button-24:active {
-  opacity: .5;
+    opacity: 0.5;
 }
-
-
-
-
-
-
-
-
-
-
-
-/* @media (min-width: 1025px) {
-    .h-custom {
-    height: 100vh !important;
-    }
-    }
-    .card-registration .select-input.form-control[readonly]:not([disabled]) {
-    font-size: 1rem;
-    line-height: 2.15;
-    padding-left: .75em;
-    padding-right: .75em;
-    }
-    .card-registration .select-arrow {
-    top: 13px;
-    }
-
-    .bg-indigo {
-    background-color: #4835d4;
-    }
-    @media (min-width: 992px) {
-    .card-registration-2 .bg-indigo {
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    }
-    }
-    @media (max-width: 991px) {
-    .card-registration-2 .bg-indigo {
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    }
-    } */

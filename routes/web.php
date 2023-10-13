@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationFormController;
 use App\Http\Controllers\HomeController;
 use App\Models\ApplicationForm;
@@ -12,6 +13,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboardView'])->name('dashboard');
     Route::get('/registered-accounts', [App\Http\Controllers\AdminController::class, 'user_accountView'])->name('registered-accounts');
     Route::get('/application-view', [App\Http\Controllers\AdminController::class, 'showApplicationView'])->name('application-view');
+    Route::get('/show-application/{id}', [ApplicationFormController::class, 'showApplicationData'])->name('show-application');
+
 });
 
 

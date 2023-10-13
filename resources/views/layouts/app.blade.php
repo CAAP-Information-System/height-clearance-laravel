@@ -10,8 +10,19 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" type="text/css" href="{{ url('css/app.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -25,7 +36,7 @@
 
 <body>
     <div id="app">
-    @auth
+        @auth
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <img style="height: auto; width: 120px; padding-right: 20px;" src="{{ asset('asset/img/caap-logo.png') }}" alt="CAAP Logo">
@@ -52,9 +63,14 @@
                     <!-- Righ0t Side Of Navbar -->
                     @auth
                     @if(Auth::user()->access_role == 'user') <!-- Assuming isAdmin() is a method in your User model -->
-                    <a class="button-28" href="{{ url('application') }}">Apply for a Permit</a>
+                    <a class="button-28" href="{{ url('application') }}">
+                        <i class='bx bxs-log-in-circle'></i>
+                        Apply for a Permit
+                    </a>
                     @elseif(Auth::user()->access_role == 'admin') <!-- Assuming isAdmin() is a method in your User model -->
-                    <a class="button-28" href="{{ url('admin/application-view') }}">Pending Applications</a>
+                    <a class="button-28" href="{{ url('admin/application-view') }}">
+                        <i class='bx bxs-time-five bx-xs' ></i>
+                        Pending Applications</a>
                     @endif
                     @endauth
                     <div style="margin-right: 20px;"></div>

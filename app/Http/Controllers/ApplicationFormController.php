@@ -75,4 +75,16 @@ class ApplicationFormController extends Controller
 
         return response()->json(['data' => $formData], 200);
     }
+
+    public function showApplicationData($id)
+    {
+        $userApplication = Application::find($id);
+
+        if ($userApplication) {
+            return view('admin/view_application', compact('userApplication'));
+        } else {
+            return view('admin/application-view');
+        }
+
+    }
 }

@@ -1,0 +1,35 @@
+.btn-container{
+    margin: 4vh;
+    padding-top: 2vh;
+}
+#registered-accounts{
+    background-color: #BA6BD8;
+}
+.access-btn{
+    border-radius: 15px;
+    border: none;
+    appearance: none;
+    padding: 40px;
+    width: 100%;
+    user-select: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    will-change: transform;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    line-height: normal;
+    margin: 0;
+    min-height: 60px;
+    min-width: 0;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-size: 30px;
+}
+
+.access-btn:disabled {
+    pointer-events: none;
+  }
+
+.access-btn-link{
+    text-decoration: none;
+}

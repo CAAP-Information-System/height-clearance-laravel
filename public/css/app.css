@@ -1,21 +1,21 @@
-  .navbar-brand{
+.navbar-brand {
     font-size: 2rem;
-  }
-.item-link{
-    color: #3B3B3B;
+}
+.item-link {
+    color: #3b3b3b;
     font-size: 15px;
     text-decoration: none;
     padding: 10px;
     margin: 5px;
 }
-.item-link:hover{
-    background-color: #2D4E83;
+.item-link:hover {
+    background-color: #2d4e83;
     color: #ffff;
     border-radius: 10px;
-    transition: .2s;
+    transition: 0.2s;
 }
-  /* Sidebar */
-  .sidebar {
+/* Sidebar */
+.sidebar {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -24,68 +24,72 @@
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
     width: 270px;
     z-index: 600;
-  }
+}
 
 /* CSS */
 .button-28 {
-  appearance: none;
-  background-color: transparent;
-  border: 2px solid #4AB3E0;
-  border-radius: 15px;
-  box-sizing: border-box;
-  color: #3B3B3B;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 16px;
-  font-weight: 600;
-  line-height: normal;
-  margin: 0;
-  min-height: 60px;
-  min-width: 0;
-  outline: none;
-  padding: 16px 24px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 20%;
-  will-change: transform;
+    display: flex;
+    align-items: center;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #4ab3e0;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #3b3b3b;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+    font-size: 20px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 60px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 30%;
+    will-change: transform;
 }
 
 .button-28:disabled {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 .button-28:hover {
-  color: #fff;
-  background-color: #4AB3E0;
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
+    color: #fff;
+    background-color: #4ab3e0;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
 }
 
 .button-28:active {
-  box-shadow: none;
-  transform: translateY(0);
+    box-shadow: none;
+    transform: translateY(0);
 }
 
-  @media (max-width: 991.98px) {
+@media (max-width: 991.98px) {
     .sidebar {
-      width: 100%;
+        width: 100%;
     }
-  }
-  .sidebar .active {
+}
+.sidebar .active {
     border-radius: 5px;
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
-  }
+}
 
-  .sidebar-sticky {
+.sidebar-sticky {
     position: relative;
     top: 0;
     height: calc(100vh - 48px);
     padding-top: 0.5rem;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  }
+}

@@ -34,7 +34,10 @@ class AdminController extends Controller
 
     public function dashboardView()
     {
-        return view('admin.dashboard');
+        // Gets the total count of the database tables
+        $userCount = User::count();
+        $applicationCount = Application::count();
+        return view('admin.dashboard', compact('userCount','applicationCount'));
     }
 
     public function showApplicationView()
