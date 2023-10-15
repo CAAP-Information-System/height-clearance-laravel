@@ -22,7 +22,7 @@
                 <td>{{ $application->lname }}</td>
                 <td>{{ $application->owner_address }}</td>
                 <td>{{ $application->email }}</td>
-                <td>Status detail</td>
+                <td>{{ $application->status }}</td>
                 <td>
                     <a href="{{ route('show-application', ['id' => $application->id]) }}" class="btn btn-primary">View Application</a>
                 </td>

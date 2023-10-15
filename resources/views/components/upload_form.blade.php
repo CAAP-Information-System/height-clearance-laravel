@@ -9,11 +9,11 @@
 </div>
 @if(session('success'))
     <div class="alert alert-success">
-        Your application has already been sent
+        Your application has already been sent successfully.
     </div>
 @elseif (session('error'))
     <div class="alert alert-danger">
-        Sorry, your application can only be sent one at a time
+        Sorry, your application can only be sent one at a time.
     </div>
 @endif
 <form action="{{ route('submitApplication') }}" method="post">
@@ -76,7 +76,7 @@
                     <div class="mb-4 pb-2">
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev4" required>Email Address</label>
-                            <input type="email" name="email" id="email" class="form-control form-control-lg" required />
+                            <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="youremail@example.com" required />
 
                         </div>
                     </div>
@@ -211,7 +211,7 @@
                     <div class="mb-4 pb-2">
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev4">Representative Email Address</label>
-                            <input type="email" name="rep_email" class="form-control form-control-lg" required>
+                            <input type="email" name="rep_email" class="form-control form-control-lg" placeholder="youremail@example.com" required>
                         </div>
                     </div>
                     <div class="mb-4 pb-2">

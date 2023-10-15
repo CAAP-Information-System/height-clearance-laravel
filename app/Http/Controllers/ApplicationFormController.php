@@ -80,6 +80,13 @@ class ApplicationFormController extends Controller
         $representative->application_id = $application->id;
         $representative->save();
 
+        // Save the application with a pending status
+        $application = new Application();
+        $application->fill($request->all());
+        $application->status = 'pending';
+        $application->user()->associate($user);
+        $application->save();
+
 
         return redirect()->back()->with('success', 'Application submitted successfully.');
     }
