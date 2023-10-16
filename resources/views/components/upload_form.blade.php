@@ -31,13 +31,13 @@
                     <header class="selection-label">Type of Application:</header>
                     <div class="col-md-6 mb-4 pb-2">
                         <label>
-                            <input class="form-check-input" type="radio" name="permit_type" value="height_clearance_permit">
+                            <input class="form-check-input" type="radio" name="permit_type" value="height_clearance_permit" required>
                             Height Clearance Permit (HCP)
                         </label>
                     </div>
                     <div class="col-md-6 mb-4 pb-2">
                         <label>
-                            <input class="form-check-input" type="radio" name="permit_type" value="height_clearance_permit">
+                            <input class="form-check-input" type="radio" name="permit_type" value="height_clearance_permit" >
                             Height Limitation (HL)
                         </label>
                     </div>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="mb-4 pb-2">
                         <div class="form-outline">
-                            <label class="form-label" for="form3Examplev4" required>Owner's Address</label>
+                            <label class="form-label" for="form3Examplev4" required>Current Residence</label>
                             <input type="text" name="owner_address" id="owner_address" class="form-control form-control-lg" required />
 
                         </div>

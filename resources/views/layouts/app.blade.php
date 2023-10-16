@@ -56,9 +56,12 @@
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <i class="fa-solid fa-house"></i>
+                            @if(Auth::user()->access_role == "user")
                             <a class="item-link" href="{{ url('home') }}">Home</a>
-                            <a class="item-link" href="{{ url('home') }}">Transaction Status</a>
-
+                            @elseif(Auth::user()->access_role == "admin")
+                            <a class="item-link" href="{{ url('admin/dashboard') }}">Dashboard</a>
+                            @endif
+                            <a class="item-link" href="#">Transaction Status</a>
                         </div>
 
                     </div>
