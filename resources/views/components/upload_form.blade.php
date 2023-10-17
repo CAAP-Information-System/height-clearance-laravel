@@ -8,27 +8,36 @@
     </header>
 </div>
 @if(session('success'))
-    <div class="alert alert-success">
-        Your application has already been sent successfully.
-    </div>
+<div class="alert alert-success">
+    Your application has already been sent successfully.
+</div>
 @elseif (session('error'))
-    <div class="alert alert-danger">
-        Sorry, your application can only be sent one at a time.
-    </div>
+<div class="alert alert-danger">
+    Sorry, your application can only be sent one at a time.
+</div>
 @endif
 <form action="{{ route('submitApplication') }}" method="post">
     @csrf
     <div class="container py-5 h-100">
-        <section class="applicant-data">
+
+
+
+        <!-- <input type="file" name="images" accept=".png" class="form-control-file">
+        <div style="margin-bottom: 10vh;"></div> -->
+
+        <input type="file" name="images" accept=".pdf" class="form-control-file">
+        <section class="structure-data">
             <div class="header-container">
                 <div class="circle">
                     <h2 class="hdr-num">1</h2>
                 </div>
-                <header class="section-hdr">Application/Owner Data</header>
+                <header class="section-hdr">Proposed Structure/Site Data</header>
             </div>
             <div class="fields">
+
                 <div class="row m-4 p-3">
-                    <header class="selection-label">Type of Application:</header>
+
+
                     <div class="col-md-6 mb-4 pb-2">
                         <label>
                             <input class="form-check-input" type="radio" name="permit_type" value="height_clearance_permit" required>
@@ -37,13 +46,13 @@
                     </div>
                     <div class="col-md-6 mb-4 pb-2">
                         <label>
-                            <input class="form-check-input" type="radio" name="permit_type" value="height_clearance_permit" >
+                            <input class="form-check-input" type="radio" name="permit_type" value="height_clearance_permit">
                             Height Limitation (HL)
                         </label>
                     </div>
 
                     <div class="col-md-6 mb-4 pb-2" id="buildingTypeContainer" style="display: none;">
-                        <!-- <header class="selection-alt-label">If HCP is selected:</header> -->
+
                         <label>
                             <input class="form-check-input" type="radio" name="building_type" value="permanent">
                             Permanent Structure
@@ -55,67 +64,7 @@
                             Temporary Structure <span style="font-style: italic;">(e.g. Crane, Temporary Elevator Housing, etc.)</span>
                         </label>
                     </div>
-                    <div class="col-md-6 mb-4 pb-2">
 
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev2">First name</label>
-                            <input type="text" id="fname" name="fname" class="form-control form-control-lg" required />
-
-                        </div>
-
-                    </div>
-                    <div class="col-md-6 mb-4 pb-2">
-
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Last name</label>
-                            <input type="text" id="lname" name="lname" class="form-control form-control-lg" required />
-
-                        </div>
-
-                    </div>
-                    <div class="mb-4 pb-2">
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev4" required>Email Address</label>
-                            <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="youremail@example.com" required />
-
-                        </div>
-                    </div>
-                    <div class="mb-4 pb-2">
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev4" required>Current Residence</label>
-                            <input type="text" name="owner_address" id="owner_address" class="form-control form-control-lg" required />
-
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4 pb-2">
-
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev2">Landline Number</label>
-                            <input type="number" id="landline" name="landline" class="form-control form-control-lg" required />
-
-                        </div>
-
-                    </div>
-                    <div class="col-md-6 mb-4 pb-2">
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Mobile Number</label>
-                            <input type="number" id="mobile" name="mobile" class="form-control form-control-lg" required />
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <section class="structure-data">
-            <div class="header-container">
-                <div class="circle">
-                    <h2 class="hdr-num">2</h2>
-                </div>
-                <header class="section-hdr">Proposed Structure/Site Data</header>
-            </div>
-            <div class="fields">
-                <div class="row m-4 p-3">
                     <div class="mb-4 pb-2">
                         <div class="form-outline">
                             <input type="text" name="type_of_structure" id="type_of_structure" class="form-control form-control-lg" required />
@@ -146,94 +95,28 @@
                         </div>
 
                     </div>
-                </div>
-            </div>
 
-        </section>
-        <section class="representative-data">
-            <div class="header-container">
-                <div class="circle">
-                    <h2 class="hdr-num">3</h2>
-                </div>
-                <header class="section-hdr">Representative/Liaison Officer Data</header>
-            </div>
-            <p class="section-sub-hdr">Note: To be filled-up by the person who accomplished this form, <span style="font-weight: bold; color: #E83E3E;">NOT</span> to be used as Certification of Geodetic Engineer</p>
-            <div class="fields">
-                <div class="row m-4 p-3">
-                    <div class="col-md-6 mb-4 pb-2">
-
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev2">First name</label>
-                            <input type="text" name="rep_fname" class="form-control form-control-lg" required>
-
-                        </div>
-
-                    </div>
-                    <div class="col-md-6 mb-4 pb-2">
-
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Last name</label>
-                            <input type="text" name="rep_lname" class="form-control form-control-lg" required>
-
-                        </div>
-
-                    </div>
-                    <div class="mb-4 pb-2">
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev4">Company Represented</label>
-                            <input type="text" name="rep_company" class="form-control form-control-lg" required>
-
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4 pb-2">
-
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev2">Landline Number</label>
-                            <input type="number" name="rep_landline" class="form-control form-control-lg" required>
-
-                        </div>
-
-                    </div>
-                    <div class="col-md-6 mb-4 pb-2">
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev3">Mobile Number</label>
-                            <input type="number" name="rep_mobile" class="form-control form-control-lg" required>
-                        </div>
-
-                    </div>
-                    <div class="mb-4 pb-2">
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev4">Office or Residence Address</label>
-                            <input type="text" name="rep_office_address" class="form-control form-control-lg" required>
-
-                        </div>
-                    </div>
-                    <div class="mb-4 pb-2">
-                        <div class="form-outline">
-                            <label class="form-label" for="form3Examplev4">Representative Email Address</label>
-                            <input type="email" name="rep_email" class="form-control form-control-lg" placeholder="youremail@example.com" required>
-                        </div>
-                    </div>
                     <div class="mb-4 pb-2">
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev4">Date of Submission</label>
-                            <input id="rep_submission_date" type="date" name="rep_submission_date" class="form-control form-control-lg" required>
+                            <input id="submission_date" type="date" name="submission_date" class="form-control form-control-lg" required>
                         </div>
                     </div>
                     <div class="mb-4 pb-2">
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev4">Date of OR</label>
-                            <input type="date" name="rep_date_of_or" class="form-control form-control-lg" required>
+                            <input type="date" name="date_of_or" class="form-control form-control-lg" required>
                         </div>
                     </div>
                     <div class="mb-4 pb-2">
                         <div class="form-outline">
                             <label class="form-label" for="form3Examplev4">Official Receipt Number</label>
-                            <input type="text" name="rep_receipt_num" class="form-control form-control-lg" required>
+                            <input type="text" name="receipt_num" class="form-control form-control-lg" required>
                         </div>
                     </div>
                 </div>
             </div>
+
         </section>
 
         <button type="submit" class="button-24" onclick="showSuccessModal()">Submit Application</button>
@@ -265,6 +148,6 @@
     const currentDate = new Date().toISOString().split('T')[0];
 
     // Set the value of the date input field to the current date
-    document.getElementById('rep_submission_date').value = currentDate;
+    document.getElementById('submission_date').value = currentDate;
 </script>
 @endsection

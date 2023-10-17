@@ -17,7 +17,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
 
 });
 
-
+Route::get('/fileUpload', [ApplicationFormController::class, 'testFileUpload'])->name('fileUpload');
 
 Route::get('/home', [HomeController::class, 'showHome'])->name('home');
 Route::get('/application', [App\Http\Controllers\ApplicationFormController::class, 'index'])->name('upload');

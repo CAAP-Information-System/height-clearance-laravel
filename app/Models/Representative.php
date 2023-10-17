@@ -16,4 +16,9 @@ class Representative extends Model
     {
         return $this->belongsTo(Application::class, 'representative_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

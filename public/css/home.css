@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@1,9..40,100&family=Noto+Sans:ital,wght@0,100;0,200;0,400;0,600;0,700;0,900;1,400;1,600;1,700&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,100;1,200;1,300;1,400&display=swap');
+
 :root {
     --hoverblue: #2d4e83;
     --scroll: #07275A;
@@ -27,6 +29,7 @@
     margin-bottom: 1em;
 }
 
+
 .requirements {
     font-size: 30px;
     font-style: italic;
@@ -38,16 +41,20 @@
     font-size: 15px;
 }
 .number-hdr{
+    font-size: 2.5rem;
     color: #ef233c;
+    font-weight: bold;
 }
 
 .cards {
     display: flex;
     padding: 25px 0px;
     list-style: none;
-    overflow-x: scroll;
+    overflow-x: auto;
+
     -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
+
 }
 
 .card {
@@ -61,7 +68,7 @@
     scroll-snap-align: start;
     transition: all 0.2s;
     width: auto;
-    height: 450px;
+    height: 200px;
 }
 
 .card:not(:last-child) {
@@ -74,7 +81,8 @@
 }
 
 .card .card-title {
-    font-size: 20px;
+    color: #3b3b3b;
+    font-size: 25px;
     font-weight: bold;
 }
 .subtitle {
@@ -151,4 +159,77 @@
     .card:not(:last-child) {
         margin-right: 40px;
     }
+}
+
+
+.guide-section{
+    font-family: 'DM Sans';
+    background-color: #83B6C1;
+}
+.guide-header{
+    color: #ffff;
+    text-align: center;
+    font-size: 3.2rem;
+    font-style: italic;
+    padding-top: 4vh;
+}
+
+.guide-section-main{
+    padding: 6vh;
+}
+.img-grp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+
+}
+
+.requirements-section{
+    padding: 5vh;
+    margin-top: 3vh;
+    color: #3b3b3b;
+}
+.req-main-hdr{
+    font-size: 2.6rem;
+    font-weight: bold;
+    color: #07275A;
+}
+.req-grp{
+    margin-top: 2rem;
+    display: flex;
+    gap: 10vh;
+    align-items: center;
+    margin-top: 5vh;
+}
+.req-header{
+    font-size: 2.3rem;
+    font-style: italic;
+    font-weight: bold;
+}
+.req-desc{
+    width: 50%;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    text-align: justify;
+}
+.req-desc-lower{
+    font-size: 18px;
+    font-style: italic;
+    color: #E84949;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .img-grp {
+        display: flex;
+        flex-direction: column;
+    }
+    .req-grp {
+        display: flex;
+        flex-direction: column;
+    }
+
 }

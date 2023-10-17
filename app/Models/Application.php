@@ -8,8 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Application extends Model
 {
     protected $fillable = [
-        'fname', 'lname', 'email', 'landline', 'owner_address', 'mobile', 'type_of_structure',
-        'site_address', 'proposed_height', 'height_of_existing_structure', 'permit_type', 'building_type',
+        'type_of_structure',
+        'site_address',
+        'proposed_height',
+        'height_of_existing_structure',
+        'permit_type',
+        'building_type',
+        'submission_date',
+        'receipt_num',
+        'date_of_or',
+        'images',
     ];
 
 

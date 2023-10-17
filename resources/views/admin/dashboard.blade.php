@@ -8,7 +8,7 @@
     <div class="btn-container">
         <div class="row">
             <div class="col-lg-4 col-6">
-                <!-- small box -->
+
                 <div class="small-box bg-warning">
                     <div class="inner">
                         <p style="font-size: 20px;">User Registrations</p>
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-6">
-                <!-- small box -->
+
                 <div class="small-box bg-info">
                     <div class="inner">
                         <p style="font-size: 20px;">Current Applications</p>
@@ -37,8 +37,22 @@
                     <a href="{{ url('admin/application-view') }}"" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <!-- ./col -->
 
+            <div class="col-lg-4 col-6">
+
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <p style="font-size: 20px;">Under Verification</p>
+                        <h3>0</h3>
+
+
+                    </div>
+                    <div class="icon">
+                        <i class='bx bx-time'></i>
+                    </div>
+                    <a href="{{ url('admin/application-view') }}"" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
 
 
         </div>
