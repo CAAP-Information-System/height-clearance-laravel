@@ -7,7 +7,7 @@
         <header class="getting-started-hdr">Getting Started</header>
         <div class="requirements">Requirements for application:</div>
         <p class="req-submessage">Preferred to be initially read by the Geodetic Engineer. Data should be complete, legible, correct and with no erasures. Any discrepancy in complying these requirements may delay processing.</p>
-        <hr>
+        <hr class="border border-secondary border-2 opacity-50">
         <ul class="cards">
             <li class="card">
                 <div>
@@ -41,7 +41,7 @@
             <li class="card">
                 <div>
                     <header class="number-hdr">6</header>
-                    <div class="card-title">Additional Requirements for Temporary Structures</div>
+                    <div class="card-title" style="font-size: 23px;">Additional Requirements for Temporary Structures</div>
                 </div>
             </li>
             <li class="card">
@@ -127,9 +127,9 @@
                 <header class="req-header">5. Computations and Processing Reports</header>
                 <div class="req-desc">
                     <span class="req-desc-upper">
-                    For Total Station, traverse computations that is signed and sealed by a Geodetic Engineer.
-                    <br>
-                    For GNSS equipment, processing report including raw data is signed and sealed by a Geodetic Engineer.
+                        For Total Station, traverse computations that is signed and sealed by a Geodetic Engineer.
+                        <br>
+                        For GNSS equipment, processing report including raw data is signed and sealed by a Geodetic Engineer.
                     </span>
                     <hr class="border border-info border-2 opacity-50">
                     <span class="req-desc-lower">
@@ -143,8 +143,8 @@
                     <span class="req-desc-upper">
                         <ol type="1">
                             <li>Copy of Approved Height Clearance Permit of proposed building where crane will be used (in A4 size bond paper.</li>
-                            <li>Site development plan with radial coverage of cranes duly signed by Mechanical/Civil Engineer (in A3 or A4  size bond paper)</li>
-                            <li>Elevation Plan showing the maximum height and elevation of cranes duly signed by Mechanical/Civil Engineer (in A3 or A4  size bond paper)</li>
+                            <li>Site development plan with radial coverage of cranes duly signed by Mechanical/Civil Engineer (in A3 or A4 size bond paper)</li>
+                            <li>Elevation Plan showing the maximum height and elevation of cranes duly signed by Mechanical/Civil Engineer (in A3 or A4 size bond paper)</li>
                             <li>Duration date and hours of crane operation signed by Owner/Manager (in A4 bond paper)</li>
                             <li>Safety/Responsible officers and their contact numbers signed by Owner/Manager (in A4 size bond paper)</li>
                             <li>Appropriate lighting and markings in accordance with the Manual of Standards for Aerodromes (to be incorporated in 6.c)</li>
@@ -155,6 +155,13 @@
 
             </div>
         </div>
+
+
     </section>
+
+    <a href="#" class="back-to-top">
+        Back to Top
+        <i class='bx bx-up-arrow-alt'></i>
+    </a>
 </div>
 @endsection
