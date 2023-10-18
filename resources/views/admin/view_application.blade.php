@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url('css/admin/view_application.css') }}">
 <div class="container">
     <div class="owner-card">
-        <h1>Application View</h1>
+        <h1>Applica View</h1>
         <div>Applicant ID: {{ $applicationData->id }}</div>
         <div>
             Type of Application:
@@ -24,7 +24,10 @@
 
         </div>
         <div>Applicant Full Name: {{ $applicationData->user->first_name }} {{ $applicationData->user->last_name }}</div>
-        <div>Site Address: {{ $applicationData->site_address}}</div>
+        <div>Email Address: {{ $applicationData->user->email}}</div>
+        <div>Home Address: {{ $applicationData->user->home_address}}</div>
+        <div>Landline Number: {{ $applicationData->user->landline}}</div>
+        <div>Mobile Number: {{ $applicationData->user->mobile}}</div>
     </div>
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ApplicationRequest;
 use App\Http\Requests\RepresentativeRequest;
@@ -35,6 +36,9 @@ class ApplicationFormController extends Controller
 
     public function submitForm(Request $request): RedirectResponse
     {
+
+        // $applicationNumber = Application::generateApplicationNumber();
+
         $user = auth()->user();
         if ($user->application) {
             return redirect()->back()->with('error', 'You can only submit one application per account.');
@@ -71,9 +75,12 @@ class ApplicationFormController extends Controller
             $fileNameToStore = 'NO';
         }
 
+        $application_number = Helper::IDGenerator(new Application(), 'application_number', 2, 'STD'); /** Generate id */
+
         // Create a new application record
         $application = new Application($validatedData);
         $application->images = $fileNameToStore;
+        $application->application_number = $application_number;
         $application->user()->associate(auth()->user());
         $application->save();
 
@@ -86,8 +93,11 @@ class ApplicationFormController extends Controller
         $application->save();
 
 
+
         return redirect()->back()->with('success', 'Application submitted successfully.');
     }
+
+
 
     public function getFormData($id)
     {
@@ -126,7 +136,8 @@ class ApplicationFormController extends Controller
         ];
     }
 
-    public function testFileUpload(Request $request){
+    public function testFileUpload(Request $request)
+    {
         // Validate the form data (you can customize validation rules)
 
 
