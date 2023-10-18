@@ -3,173 +3,266 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('css/auth/register.css') }}">
 <div class="container">
-    <header class="auth-hdr">Welcome</header>
-    <div class="row justify-content-center">
-        <div class="col-md">
-            <div class="row" style="margin-top: 15vh;">
-                <div class="col">
-                    <img class="caap-logo" src="{{ asset('asset/img/caap-logo.png') }}" alt="CAAP Logo">
-                    <header class="col-hdr">
-                        Online Height Clearance Permit
-                    </header>
+    <div class="hdr-group">
+        <img class="caap-logo" src="{{ asset('asset/img/caap-logo.png') }}" alt="CAAP Logo">
+        <header class="auth-hdr">Let's register your account</header>
+    </div>
+    <div class="registration-main-wrapper">
+        <div class="registration-form-wrapper">
+            <form action="{{ route('register') }}" method="POST">
+                @csrf
+                <div class="registration-steps">
+                    <ul>
+                        <li class="registration-step-menu1 active">
+                            <span>1</span>
+                            Sign Up
+                        </li>
+                        <li class="registration-step-menu2">
+                            <span>2</span>
+                            Representative
+                        </li>
+                        <li class="registration-step-menu3">
+                            <span>3</span>
+                            Confirm
+                        </li>
+                    </ul>
                 </div>
-                <div class="col">
-                    <div class="login-card">
-                        <header class="login-hdr">Register Account</header>
-                        <form class="form-card" method="POST" action="{{ route('register') }}">
-                            @csrf
 
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">First Name</label>
+                <div class="registration-form-step-1 active">
+                    <div class="registration-input-flex">
+                        <div>
+                            <label for="firstname" class="registration-form-label"> First Name </label>
+                            <input type="text" name="first_name" placeholder="Enter First Name" id="firstname" class="registration-form-input" />
+                        </div>
+                        <div>
+                            <label for="lastname" class="registration-form-label"> Last Name </label>
+                            <input type="text" name="last_name" placeholder="Enter Last Name" id="lastname" class="registration-form-input" />
+                        </div>
+                    </div>
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="first_name" placeholder="Enter First Name" autofocus>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Last Name</label>
+                    <div class="registration-input-flex">
+                        <div>
+                            <label for="email" class="registration-form-label"> Email Address </label>
+                            <input type="email" name="email" placeholder="example@mail.com" id="email" class="registration-form-input" />
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="last_name" placeholder="Enter Last Name"autofocus>
-                                </div>
-                            </div>
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
 
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Address</label>
+                    </div>
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="home_address" autofocus>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Email Address</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Email Address" required autocomplete="email">
-
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Landline</label>
-
-                                <div class="col-md-6">
-                                    <input id="name" type="number" class="form-control" name="landline" autofocus>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Mobile</label>
-
-                                <div class="col-md-6">
-                                    <input id="name" type="number" class="form-control" name="mobile" autofocus>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter Password" required autocomplete="new-password">
-
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Enter Confirm Password" required autocomplete="new-password">
-                                </div>
-                            </div>
-
-
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Representative First Name</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="rep_fname">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Representative Last Name</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="rep_lname">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Representative Email</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="rep_email">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Company Represent</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="rep_company">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Representative Office Address</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="rep_office_address">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Landline</label>
-
-                                <div class="col-md-6">
-                                    <input id="number" type="number" class="form-control @error('email') is-invalid @enderror" name="rep_landline">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Mobile</label>
-
-                                <div class="col-md-6">
-                                    <input id="number" type="number" class="form-control @error('email') is-invalid @enderror" name="rep_mobile">
-                                </div>
-                            </div>
-
-
-
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="button-30">
-                                        Create Account
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="row ">
-                                <div style="margin-top: 20px;"></div>
-                                <div class="col-md-8 offset-md-4">
-                                    <p style="font-style: italic;">Already have an account?</p>
-                                    @if (Route::has('login'))
-                                    <a class="alt-link" href="{{ route('login') }}">{{ __('Back to Sign In') }}</a>
-                                    @endif
-                                </div>
-                            </div>
-
-
-
-                        </form>
+                    <div>
+                        <label for="address" class="registration-form-label"> Address </label>
+                        <input type="text" name="home_address" id="address" placeholder="Street Name, Town/City, Province" class="registration-form-input" />
+                    </div>
+                    <br>
+                    <div class="registration-input-flex">
+                        <div>
+                            <label for="landline" class="registration-form-label"> Landline Number </label>
+                            <input type="number" name="landline" id="landline" class="registration-form-input" />
+                        </div>
+                        <div>
+                            <label for="mobile" class="registration-form-label"> Mobile Number </label>
+                            <input type="number" name="mobile" id="mobile" class="registration-form-input" />
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <div class="registration-form-step-2">
+                    <div class="registration-form-confirm">
+                        <p>Please register your Representative/Liason Officer.</p>
+                    </div>
+                    <div class="registration-input-flex">
+                        <div>
+                            <label for="firstname" class="registration-form-label"> First Name </label>
+                            <input type="text" name="rep_fname" placeholder="Enter First Name" id="firstname" class="registration-form-input" />
+                        </div>
+                        <div>
+                            <label for="lastname" class="registration-form-label"> Last Name </label>
+                            <input type="text" name="rep_lname" placeholder="Enter Last Name" id="lastname" class="registration-form-input" />
+                        </div>
+                    </div>
+                    <div class="registration-input-flex">
+                        <div>
+                            <label for="email" class="registration-form-label"> Email Address </label>
+                            <input type="email" name="rep_email" placeholder="example@mail.com" id="email" class="registration-form-input" />
+
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+
+                    </div>
+                    <div>
+                        <label for="email" class="registration-form-label">Company Represented</label>
+                        <input type="text" name="rep_company" placeholder="Enter Company Name" id="rep_company" class="registration-form-input" />
+                    </div>
+                    <div>
+                        <label for="email" class="registration-form-label">Company Office Address</label>
+                        <input type="text" name="rep_office_address" placeholder="Street Name, City, Region" id="rep_office_address" class="registration-form-input" />
+                    </div>
+
+                    <br>
+                    <div class="registration-input-flex">
+                        <div>
+                            <label for="landline" class="registration-form-label"> Landline Number </label>
+                            <input type="number" name="rep_landline" id="rep_landline" class="registration-form-input" />
+                        </div>
+                        <div>
+                            <label for="mobile" class="registration-form-label"> Mobile Number </label>
+                            <input type="number" name="rep_mobile" id="rep_mobile" class="registration-form-input" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="registration-form-step-3">
+                    <div class="registration-form-confirm">
+                        <p>
+                            Please confirm your password.
+                        </p>
+
+                        <div>
+                            <div>
+                                <label for="password" class="registration-form-label">Enter Password</label>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter Password" required autocomplete="new-password">
+
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="password_confirmation" class="registration-form-label">Confirm Password</label>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Enter Confirm Password" required autocomplete="new-password">
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="registration-form-btn-wrapper">
+                    <button class="registration-back-btn">
+                        Back
+                    </button>
+
+                    <button class="registration-btn">
+                        Next Step
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_1675_1807)">
+                                <path d="M10.7814 7.33312L7.20541 3.75712L8.14808 2.81445L13.3334 7.99979L8.14808 13.1851L7.20541 12.2425L10.7814 8.66645H2.66675V7.33312H10.7814Z" fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_1675_1807">
+                                    <rect width="16" height="16" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
+    <section class="already-registered">
+        <div>Already have an account?</div>
+        <br>
+        @if (Route::has('login'))
+        <a class="alt-link" href="{{ route('login') }}">Back to Sign In</a>
+        @endif
+    </section>
 </div>
+<script>
+    const stepMenuOne = document.querySelector('.registration-step-menu1');
+    const stepMenuTwo = document.querySelector('.registration-step-menu2');
+    const stepMenuThree = document.querySelector('.registration-step-menu3');
+
+    const stepOne = document.querySelector('.registration-form-step-1');
+    const stepTwo = document.querySelector('.registration-form-step-2');
+    const stepThree = document.querySelector('.registration-form-step-3');
+
+    const formSubmitBtn = document.querySelector('.registration-btn');
+    const formBackBtn = document.querySelector('.registration-back-btn');
+
+    // Function to check if all fields in a step are filled
+    function areStepFieldsFilled(step) {
+        const inputFields = step.querySelectorAll('.registration-form-input');
+        for (const field of inputFields) {
+            if (field.value.trim() === '') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Function to update the "Next Step" button state based on the current step
+    function updateNextStepButtonState() {
+        if (stepMenuOne.classList.contains('active') && !areStepFieldsFilled(stepOne)) {
+            formSubmitBtn.disabled = true;
+            formSubmitBtn.style.backgroundColor = '#CCCCCC'; // Disable color
+        } else if (stepMenuTwo.classList.contains('active') && !areStepFieldsFilled(stepTwo)) {
+            formSubmitBtn.disabled = true;
+            formSubmitBtn.style.backgroundColor = '#CCCCCC'; // Disable color
+        } else if (stepMenuThree.classList.contains('active') && !areStepFieldsFilled(stepThree)) {
+            formSubmitBtn.disabled = true;
+            formSubmitBtn.style.backgroundColor = '#CCCCCC'; // Disable color
+        } else {
+            formSubmitBtn.disabled = false;
+            formSubmitBtn.style.backgroundColor = '#28a745'; // Enable color
+        }
+    }
+
+    // Initially disable the "Next Step" button
+    formSubmitBtn.disabled = true;
+    formSubmitBtn.style.backgroundColor = '#CCCCCC'; // Disable color
+
+    // Event listener to handle "Next Step" button click
+    formSubmitBtn.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        if (stepMenuOne.classList.contains('active')) {
+            stepMenuOne.classList.remove('active');
+            stepMenuTwo.classList.add('active');
+            stepOne.classList.remove('active');
+            stepTwo.classList.add('active');
+            formBackBtn.classList.add('active');
+        } else if (stepMenuTwo.classList.contains('active')) {
+            stepMenuTwo.classList.remove('active');
+            stepMenuThree.classList.add('active');
+            stepTwo.classList.remove('active');
+            stepThree.classList.add('active');
+            formBackBtn.classList.remove('active');
+            formSubmitBtn.textContent = 'Submit';
+        } else if (stepMenuThree.classList.contains('active')) {
+            document.querySelector('form').submit();
+        }
+    });
+
+    // Event listener to handle input field changes
+    document.querySelectorAll('.registration-form-input').forEach(input => {
+        input.addEventListener('input', updateNextStepButtonState);
+    });
+
+    // Event listener to handle "Back" button click
+    formBackBtn.addEventListener("click", function(event) {
+        if (stepMenuTwo.classList.contains('active')) {
+            stepMenuTwo.classList.remove('active');
+            stepMenuOne.classList.add('active');
+            stepTwo.classList.remove('active');
+            stepOne.classList.add('active');
+            formBackBtn.classList.remove('active');
+        } else if (stepMenuThree.classList.contains('active')) {
+            stepMenuThree.classList.remove('active');
+            stepMenuTwo.classList.add('active');
+            stepThree.classList.remove('active');
+            stepTwo.classList.add('active');
+            formSubmitBtn.textContent = 'Next Step';
+        }
+    });
+</script>
 @endsection

@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@1,9..40,100&family=Noto+Sans:ital,wght@0,100;0,200;0,400;0,600;0,700;0,900;1,400;1,600;1,700&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,100;1,200;1,300;1,400&display=swap');
 
 :root {
@@ -50,11 +51,9 @@
     display: flex;
     padding: 25px 0px;
     list-style: none;
-    overflow-x: auto;
-
+    overflow-x: scroll;
     -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
-
 }
 
 .card {
@@ -175,17 +174,27 @@
     margin-top: 5vh;
 }
 .req-header{
-    font-size: 2.3rem;
+    font-size: 2rem;
     font-style: italic;
     font-weight: bold;
 }
-.req-desc{
-    width: 60%;
-    font-size: 20px;
+.no-bullets{
+    list-style-type:none;
+}
+.req-desc {
+    height: auto;
+    width: 70%; /* Default width */
+    font-size: 16px;
     border-radius: 10px;
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     text-align: justify;
+}
+.req-desc-content{
+    width: 100%;
+}
+.req-desc-upper{
+    width: 100%;
 }
 .req-desc-lower{
     font-size: 18px;
@@ -223,5 +232,10 @@
         display: flex;
         flex-direction: column;
     }
+    .req-main-hdr, .req-header{
+        text-align: center;
+    }
+
 
 }
+

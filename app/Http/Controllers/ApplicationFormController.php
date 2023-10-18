@@ -7,6 +7,7 @@ use App\Http\Requests\ApplicationRequest;
 use App\Http\Requests\RepresentativeRequest;
 use App\Models\Application;
 use App\Models\Representative;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -101,12 +102,15 @@ class ApplicationFormController extends Controller
 
     public function showApplicationData($id)
     {
-        $userApplication = Application::find($id);
+        $applicationData = Application::find($id);
 
-        if ($userApplication) {
-            return view('admin/view_application', compact('userApplication'));
+        if ($applicationData) {
+            // Assuming there's a user associated with the application
+            $userData = $applicationData->user;
+
+            return view('admin.view_application', compact('applicationData', 'userData'));
         } else {
-            return view('admin/application-view');
+            return view('admin.application-view');
         }
     }
 

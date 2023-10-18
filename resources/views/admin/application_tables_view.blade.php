@@ -18,13 +18,14 @@
             <tbody>
                 @foreach($applicationData as $application)
                 <tr>
+                    @if($application->user)
                     <td>
-                        {{ $application->fname }}
-                        {{ $application->lname }}
-
+                        {{ $application->user->first_name }}
+                        {{ $application->user->last_name }}
                     </td>
-                    <td>{{ $application->owner_address }}</td>
-                    <td>{{ $application->email }}</td>
+                    <td>{{ $application->user->home_address }}</td>
+                    <td>{{ $application->user->email }}</td>
+                    @endif
                     <td>
                         @if ($application->status == 'Pending')
                         <span class="text-warning" style="font-weight: bold;">{{ $application->status }}</span>

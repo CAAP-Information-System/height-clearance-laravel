@@ -1,3 +1,8 @@
+
+*{
+    color: #3b3b3b;
+}
+
 .auth-hdr{
     font-size: 3rem;
     color: #07275A;
@@ -12,45 +17,48 @@
     font-size: 3rem;
     font-weight: bold;
 }
-.login-card{
-    background-color: #2d4e83;
-    border-radius: 15px;
-    padding: 50px;
-    color: #ffff;
-    width: 100%;
+
+.login-main{
+    padding-top: 6vh;
 }
 .login-hdr{
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    border-bottom: 1px solid #ffff;
+    border-bottom: 1px solid #969696;
+}
+.login-form{
+    border-radius: 20px;
+    padding: 5vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .forgot-pass-btn{
     text-decoration: none;
-    color: #ffff;
-    margin-top: 20px;
-    margin-left: 10px;
+    color: #969696;
     text-align: center;
+    font-style: italic;
 }
 .forgot-pass-btn:hover{
-    color: #F99417;
+    color: #2F96D0;
+    font-weight: bold;
+    font-style: italic;
+    transition: .2s ease-in-out;
 }
 .caps-warning{
-    color: #E4A11B;
-    text-align: center;
+    color: #DC3545;
     font-weight: bold;
     font-style: italic;
 }
 .alt-link{
     font-weight: bold;
     text-decoration: none;
-    color: #ffff;
+    color: #3b3b3b;
     width: 100%;
-    padding: 7px;
+    padding: 10px;
     border-radius: 15px;
 }
 .alt-link:hover{
-    background-color: #ffff;
-    color: #07275A;
+    background-color: #FF8423;
+    color: #ffff;
     border-radius: 15px;
     transition: 0.3s ease-in-out;
 
@@ -60,10 +68,10 @@
 }
 /* CSS */
 .button-30 {
-    width: 75%;
+    width: 100%;
   align-items: center;
   appearance: none;
-  background-color: #F99417;
+  background-color: #2F96D0;
   border-radius: 4px;
   border-width: 0;
   box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;

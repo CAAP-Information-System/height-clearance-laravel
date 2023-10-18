@@ -28,6 +28,6 @@ class Application extends Model
 
     public function representative()
     {
-        return $this->hasOne(Representative::class, 'representative_id');
+        return $this->hasOne(Representative::class);
     }
 }
