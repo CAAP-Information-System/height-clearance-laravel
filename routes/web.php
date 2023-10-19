@@ -19,6 +19,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
 
 Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function(){
     Route::get('/critical-area/{id}', [App\Http\Controllers\ADMSController::class, 'criticalAreaEval'])->name('critical-area');
+    Route::get('/documentary-compliance/{id}', [App\Http\Controllers\ADMSController::class, 'viewDocumentaryCompliance'])->name('documentary-compliance');
 
 });
 Route::get('/application-queue', [AdminController::class, 'applicationQueue'])->name('application-queue');

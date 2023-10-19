@@ -61,7 +61,7 @@
                             @elseif(Auth::user()->access_role == "admin")
                             <a class="item-link" href="{{ url('admin/dashboard') }}">Dashboard</a>
                             @endif
-                            <a class="item-link" href="#">Transaction Status</a>
+                            <a class="item-link" href="#">Application Status</a>
                         </div>
 
                     </div>

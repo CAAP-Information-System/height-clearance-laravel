@@ -1,0 +1,7 @@
+.docs{
+    display: flex;
+    flex-direction: column;
+}
+.btn{
+    width: 20%;
+}

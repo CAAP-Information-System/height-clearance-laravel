@@ -25,21 +25,29 @@
             <label for="">Extension Description</label>
             <div>NA (to be added)</div>
             <label for="">Proposed Height</label>
-            <div>NA (to be added)</div>
+            <div>{{$applicationData->proposed_height}}</div>
             <label for="">Type of HCP Permanent</label>
             <div>NA (to be added)</div>
             <label for="">Latitude</label>
-            <div>NA (to be added)</div>
+            <div>
+                {{$applicationData->lat_deg}}
+                {{$applicationData->lat_min}}
+                {{$applicationData->lat_sec}}
+            </div>
             <label for="">Longitude</label>
-            <div>NA (to be added)</div>
+            <div>
+                {{$applicationData->long_deg}}
+                {{$applicationData->long_min}}
+                {{$applicationData->long_sec}}
+            </div>
             <label for="">Orthometric Height</label>
-            <div>NA (to be added)</div>
+            <div>{{$applicationData->orthometric_height}}</div>
             <label for="">Site Address</label>
             <div>{{$applicationData->site_address}}</div>
             <label for="">Reference Aerodrome/Facility</label>
             <div>NA (to be added)</div>
         </div>
     </div>
-
+    <a href="{{ route('documentary-compliance', ['id' => $applicationData->id]) }}" class="btn btn-primary">View Application</a>
 </div>
 @endsection
