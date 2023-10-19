@@ -15,7 +15,7 @@
                     <ul>
                         <li class="registration-step-menu1 active">
                             <span>1</span>
-                            Sign Up
+                            Owner/Manager
                         </li>
                         <li class="registration-step-menu2">
                             <span>2</span>
@@ -32,18 +32,18 @@
                     <div class="registration-input-flex">
                         <div>
                             <label for="firstname" class="registration-form-label"> First Name </label>
-                            <input type="text" name="first_name" placeholder="Enter First Name" id="firstname" class="registration-form-input" />
+                            <input type="text" name="first_name" placeholder="Enter First Name" id="firstname" class="registration-form-input" required />
                         </div>
                         <div>
                             <label for="lastname" class="registration-form-label"> Last Name </label>
-                            <input type="text" name="last_name" placeholder="Enter Last Name" id="lastname" class="registration-form-input" />
+                            <input type="text" name="last_name" placeholder="Enter Last Name" id="lastname" class="registration-form-input" required />
                         </div>
                     </div>
 
                     <div class="registration-input-flex">
                         <div>
                             <label for="email" class="registration-form-label"> Email Address </label>
-                            <input type="email" name="email" placeholder="example@mail.com" id="email" class="registration-form-input" />
+                            <input type="email" name="email" placeholder="example@mail.com" id="email" class="registration-form-input" required />
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -56,17 +56,17 @@
 
                     <div>
                         <label for="address" class="registration-form-label"> Address </label>
-                        <input type="text" name="home_address" id="address" placeholder="Street Name, Town/City, Province" class="registration-form-input" />
+                        <input type="text" name="home_address" id="address" placeholder="Street Name, Town/City, Province" class="registration-form-input" required />
                     </div>
                     <br>
                     <div class="registration-input-flex">
                         <div>
                             <label for="landline" class="registration-form-label"> Landline Number </label>
-                            <input type="number" name="landline" id="landline" class="registration-form-input" />
+                            <input type="number" name="landline" id="landline" class="registration-form-input" required />
                         </div>
                         <div>
                             <label for="mobile" class="registration-form-label"> Mobile Number </label>
-                            <input type="number" name="mobile" id="mobile" class="registration-form-input" />
+                            <input type="number" name="mobile" id="mobile" class="registration-form-input" required />
                         </div>
                     </div>
                 </div>
@@ -78,17 +78,17 @@
                     <div class="registration-input-flex">
                         <div>
                             <label for="firstname" class="registration-form-label"> First Name </label>
-                            <input type="text" name="rep_fname" placeholder="Enter First Name" id="firstname" class="registration-form-input" />
+                            <input type="text" name="rep_fname" placeholder="Enter First Name" id="firstname" class="registration-form-input" required />
                         </div>
                         <div>
                             <label for="lastname" class="registration-form-label"> Last Name </label>
-                            <input type="text" name="rep_lname" placeholder="Enter Last Name" id="lastname" class="registration-form-input" />
+                            <input type="text" name="rep_lname" placeholder="Enter Last Name" id="lastname" class="registration-form-input" required />
                         </div>
                     </div>
                     <div class="registration-input-flex">
                         <div>
                             <label for="email" class="registration-form-label"> Email Address </label>
-                            <input type="email" name="rep_email" placeholder="example@mail.com" id="email" class="registration-form-input" />
+                            <input type="email" name="rep_email" placeholder="example@mail.com" id="email" class="registration-form-input" required />
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -100,22 +100,22 @@
                     </div>
                     <div>
                         <label for="email" class="registration-form-label">Company Represented</label>
-                        <input type="text" name="rep_company" placeholder="Enter Company Name" id="rep_company" class="registration-form-input" />
+                        <input type="text" name="rep_company" placeholder="Enter Company Name" id="rep_company" class="registration-form-input" required />
                     </div>
                     <div>
                         <label for="email" class="registration-form-label">Company Office Address</label>
-                        <input type="text" name="rep_office_address" placeholder="Street Name, City, Region" id="rep_office_address" class="registration-form-input" />
+                        <input type="text" name="rep_office_address" placeholder="Street Name, City, Region" id="rep_office_address" class="registration-form-input" required />
                     </div>
 
                     <br>
                     <div class="registration-input-flex">
                         <div>
                             <label for="landline" class="registration-form-label"> Landline Number </label>
-                            <input type="number" name="rep_landline" id="rep_landline" class="registration-form-input" />
+                            <input type="number" name="rep_landline" id="rep_landline" class="registration-form-input" required />
                         </div>
                         <div>
                             <label for="mobile" class="registration-form-label"> Mobile Number </label>
-                            <input type="number" name="rep_mobile" id="rep_mobile" class="registration-form-input" />
+                            <input type="number" name="rep_mobile" id="rep_mobile" class="registration-form-input" required />
                         </div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                         <div>
                             <div>
                                 <label for="password" class="registration-form-label">Enter Password</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter Password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter Password" required autocomplete="new-password" required>
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -139,7 +139,7 @@
                             </div>
                             <div>
                                 <label for="password_confirmation" class="registration-form-label">Confirm Password</label>
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Enter Confirm Password" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Enter Confirm Password" required autocomplete="new-password" required>
                             </div>
 
 

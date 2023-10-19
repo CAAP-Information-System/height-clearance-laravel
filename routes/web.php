@@ -17,6 +17,12 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
 
 });
 
+Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function(){
+    Route::get('/critical-area/{id}', [App\Http\Controllers\ADMSController::class, 'criticalAreaEval'])->name('critical-area');
+
+});
+Route::get('/application-queue', [AdminController::class, 'applicationQueue'])->name('application-queue');
+
 Route::get('/fileUpload', [ApplicationFormController::class, 'testFileUpload'])->name('fileUpload');
 
 Route::get('/home', [HomeController::class, 'showHome'])->name('home');

@@ -12,14 +12,20 @@ return new class extends Migration
             $table->id();
             $table->string('permit_type');
             $table->string('building_type')->nullable();
-            $table->string('type_of_structure');
+            $table->enum('type_of_structure', ['Residential', 'Commercial']);
             $table->string('site_address');
             $table->integer('proposed_height');
             $table->date('submission_date');
             $table->string('receipt_num');
             $table->date('date_of_or');
             $table->integer('height_of_existing_structure');
-
+            $table->integer('lat_deg');
+            $table->integer('lat_min');
+            $table->integer('lat_sec');
+            $table->integer('long_deg');
+            $table->integer('long_min');
+            $table->integer('long_sec');
+            $table->integer('orthometric_height');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

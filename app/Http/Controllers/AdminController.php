@@ -54,4 +54,14 @@ class AdminController extends Controller
         }
     }
 
+
+    public function applicationQueue(Request $request)
+    {
+
+        $applicationData = Application::all();
+
+        return view('components.application_queue')->with('applicationData', $applicationData);
+
+
+    }
 }

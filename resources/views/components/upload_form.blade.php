@@ -16,16 +16,15 @@
     Sorry, your application can only be sent one at a time.
 </div>
 @endif
-<form action="{{ route('submitApplication') }}" method="post">
+<form action="{{ route('submitApplication') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="container py-5 h-100">
 
+        <div class="form-group">
+            <label for="images">Upload PDF</label>
+            <input type="file" name="images" id="images" accept=".pdf">
+        </div>
 
-
-        <!-- <input type="file" name="images" accept=".png" class="form-control-file">
-        <div style="margin-bottom: 10vh;"></div> -->
-
-        <input type="file" name="images" accept=".pdf" class="form-control-file">
         <section class="structure-data">
             <div class="header-container">
                 <div class="circle">
@@ -66,15 +65,18 @@
                     </div>
 
                     <div class="mb-4 pb-2">
-                        <div class="form-outline">
-                            <input type="text" name="type_of_structure" id="type_of_structure" class="form-control form-control-lg" required />
-                            <label class="form-label" for="form3Examplev4">Type of Structure</label>
-                        </div>
+                        <label for="type_of_structure">Type of Structure</label>
+                        <select name="type_of_structure" id="type_of_structure" class="form-control form-control-lg">
+                            <option value="">Select a Type</option>
+                            <option value="Residential" {{ old('type_of_structure') == 'Residential' ? 'selected' : '' }}>Residential</option>
+                            <option value="Commercial" {{ old('type_of_structure') == 'Commercial' ? 'selected' : '' }}>Commercial</option>
+                        </select>
                     </div>
                     <div class="mb-4 pb-2">
                         <div class="form-outline">
-                            <input type="text" name="site_address" id="site_address" class="form-control form-control-lg" required />
                             <label class="form-label" for="form3Examplev4">Site Address</label>
+                            <input type="text" name="site_address" id="site_address" class="form-control form-control-lg" required />
+
                         </div>
                     </div>
                     <div class="col-md-6 mb-4 pb-2">
@@ -93,7 +95,32 @@
                             <input type="number" id="height_of_existing_structure" name="height_of_existing_structure" class="form-control form-control-lg" required />
                             <p style="font-style: italic;" for="form3Examplev2">(meters above ground level)</p>
                         </div>
+                    </div>
+                    <div class="col-md-2 mb-4 pb-2">
+                        <div class="form-outline">
+                            <label for="latitude" class="form-label">Latitude:</label>
+                            <input type="number" id="lat_deg" name="lat_deg" class="form-control form-control-lg" required>
+                            <input type="number" id="lat_min" name="lat_min" class="form-control form-control-lg" required>
+                            <input type="number" id="lat_sec" name="lat_sec" class="form-control form-control-lg" required>
 
+                        </div>
+
+                    </div>
+                    <div class="col-md-2 mb-4 pb-2">
+                        <div class="form-outline">
+                            <label for="latitude" class="form-label">Longitude:</label>
+                            <input type="number" id="long_deg" name="long_deg" class="form-control form-control-lg" required>
+                            <input type="number" id="long_min" name="long_min" class="form-control form-control-lg" required>
+                            <input type="number" id="long_sec" name="long_sec" class="form-control form-control-lg" required>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-4 pb-2">
+                        <div class="form-outline">
+                            <label class="form-label" for="form3Examplev4">Orthometric Height</label>
+                            <input type="number" name="orthometric_height" class="form-control form-control-lg" required>
+                        </div>
                     </div>
 
                     <div class="mb-4 pb-2">

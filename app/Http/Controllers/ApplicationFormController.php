@@ -46,36 +46,46 @@ class ApplicationFormController extends Controller
         // Validate the form data (you can customize validation rules)
         $validatedData = $request->validate([
             'permit_type' => 'required|in:height_clearance_permit,height_limitation',
-            'type_of_structure' => 'required|string|max:100',
+            'type_of_structure' => 'required|in:Residential,Commercial',
             'site_address' => 'required|string|max:100',
             'proposed_height' => 'required|numeric',
             'height_of_existing_structure' => 'required|numeric',
+            'lat_deg' => 'required|numeric',
+            'lat_min' => 'required|numeric',
+            'lat_sec' => 'required|numeric',
+            'long_deg' => 'required|numeric',
+            'long_min' => 'required|numeric',
+            'long_sec' => 'required|numeric',
+            'orthometric_height' => 'required|numeric',
             'submission_date' => 'required|date',
             'receipt_num' => 'required|string|max:255',
             'date_of_or' => 'required|date',
-            // 'images' => 'required|mimes:pdf|max:2048',
+            'images' => 'mimes:pdf|nullable|max:10999'
 
         ]);
 
 
         // Specify the directories and filenames
         if ($request->hasFile('images')) {
-            $fileNameToStore = 'yes';
-            // // Get filename with the extension
-            // $filenameWithExt = $request->file('images')->getClientOriginalName();
-            // //Get just filename
-            // $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // //Get just ext
-            // $extension = $request->file('images')->getClientOriginalExtension();
-            // //file to store
-            // $fileNameToStore = $filename.'_'.time().'.'.$extension;
-            // //Upload Image
-            // $path = $request->file('images')->storeAs('public/images/', $fileNameToStore);
+            // $file = $request->file('images');
+            // $fileName = $file->getClientOriginalName();
+            // $file->storeAs('public/images', $fileName); // Save the file to storage
+            $filenameWithExt = $request->file('images')->getClientOriginalName();
+            //Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //Get just ext
+            $extension = $request->file('images')->getClientOriginalExtension();
+            //file to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            //Upload Image
+            $path = $request->file('images')->storeAs('public/images/', $fileNameToStore);
+            // If you want to store the filename in the database, replace 'File Found' with the actual filename
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
         } else {
-            $fileNameToStore = 'NO';
+            $fileNameToStore = 'Not Found';
         }
 
-        $application_number = Helper::IDGenerator(new Application(), 'application_number', 2, 'STD'); /** Generate id */
+        $application_number = Helper::IDGenerator(new Application(), 'application_number', 4, '23'); /** Generate application number */
 
         // Create a new application record
         $application = new Application($validatedData);
@@ -136,10 +146,5 @@ class ApplicationFormController extends Controller
         ];
     }
 
-    public function testFileUpload(Request $request)
-    {
-        // Validate the form data (you can customize validation rules)
 
-
-    }
 }

@@ -17,6 +17,13 @@ class Application extends Model
         'submission_date',
         'receipt_num',
         'date_of_or',
+        'lat_deg',
+        'lat_min',
+        'lat_sec',
+        'long_deg',
+        'long_min',
+        'long_sec',
+        'orthometric_height',
         'images',
     ];
     public static function generateApplicationNumber()
