@@ -29,6 +29,26 @@ Generating Key
 ```
 php artisan key:generate
 ```
+
+## File Path Storage
+The current path file will automatically be saved at a generic designation in `public/storage/images/`.
+
+### Filesystem Configuration
+Perform disk configuration in your `config/filesystems.php`.
+```
+'public' => [
+    'driver' => 'local',
+    'root' => public_path('storage'), // This is where public files are stored
+    'url' => env('APP_URL').'/storage',
+    'visibility' => 'public',
+],
+
+```
+### Making a symbolic link for the file migration.
+```
+php artisan storage:link
+```
+
 ### Migrating Database
 Make sure the settings in `.env` are configured, see Database section below
 ```
@@ -39,6 +59,7 @@ DB_DATABASE=heightclearance
 DB_USERNAME=root
 DB_PASSWORD=
 ```
+
 
 ### Running the server
 The application will require to run both artisan and vite packages

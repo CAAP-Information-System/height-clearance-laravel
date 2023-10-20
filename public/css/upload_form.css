@@ -24,7 +24,9 @@
     font-size: 35px;
     color: #07275a;
 }
-
+.gray-text {
+    color: gray;
+}
 .selection-label {
     color: #3b3b3b;
     font-size: 20px;
@@ -45,6 +47,17 @@
     font-style: italic;
     color: #575757;
 }
+
+.coordinate-fields{
+    display: flex;
+    gap: 3vh;
+}
+.coord-inp{
+    border-radius: 10px;
+    padding: 10px;
+    border: solid 1px #575757;
+}
+
 
 /* CSS */
 .button-24 {

@@ -11,12 +11,9 @@ class Application extends Model
         'type_of_structure',
         'site_address',
         'proposed_height',
+        'extension_desc',
         'height_of_existing_structure',
-        'permit_type',
-        'building_type',
         'submission_date',
-        'receipt_num',
-        'date_of_or',
         'lat_deg',
         'lat_min',
         'lat_sec',
@@ -24,7 +21,13 @@ class Application extends Model
         'long_min',
         'long_sec',
         'orthometric_height',
-        'images',
+        'fee_receipt',
+        'elevation_plan',
+        'geodetic_eng_cert',
+        'control_station',
+        'loc_plan',
+        'comp_process_report',
+        'additional_req',
         'process_status',
     ];
     public static function generateApplicationNumber()
@@ -49,5 +52,9 @@ class Application extends Model
     public function representative()
     {
         return $this->hasOne(Representative::class);
+    }
+    public function paymentReceipts()
+    {
+        return $this->hasMany(PaymentReceipt::class);
     }
 }

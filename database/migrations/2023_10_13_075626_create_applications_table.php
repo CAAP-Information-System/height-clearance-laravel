@@ -10,15 +10,12 @@ return new class extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->string('permit_type');
-            $table->string('building_type')->nullable();
             $table->enum('type_of_structure', ['Residential', 'Commercial']);
             $table->string('site_address');
+            $table->string('extension_desc')->nullable();
             $table->integer('proposed_height');
+            $table->integer('height_of_existing_structure')->nullable();
             $table->date('submission_date');
-            $table->string('receipt_num');
-            $table->date('date_of_or');
-            $table->integer('height_of_existing_structure');
             $table->integer('lat_deg');
             $table->integer('lat_min');
             $table->integer('lat_sec');
@@ -26,6 +23,12 @@ return new class extends Migration
             $table->integer('long_min');
             $table->integer('long_sec');
             $table->integer('orthometric_height');
+            $table->string('elevation_plan')->nullable();
+            $table->string('geodetic_eng_cert')->nullable();
+            $table->string('control_station')->nullable();
+            $table->string('loc_plan')->nullable();
+            $table->string('comp_process_report')->nullable();
+            $table->string('additional_req')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

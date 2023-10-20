@@ -45,11 +45,11 @@ class ApplicationFormController extends Controller
         // }
         // Validate the form data (you can customize validation rules)
         $validatedData = $request->validate([
-            'permit_type' => 'required|in:height_clearance_permit,height_limitation',
             'type_of_structure' => 'required|in:Residential,Commercial',
             'site_address' => 'required|string|max:100',
+            'extension_desc' => 'required|nullable|string|max:300',
             'proposed_height' => 'required|numeric',
-            'height_of_existing_structure' => 'required|numeric',
+            'height_of_existing_structure' => 'required|numeric|nullable',
             'lat_deg' => 'required|numeric',
             'lat_min' => 'required|numeric',
             'lat_sec' => 'required|numeric',
@@ -58,33 +58,116 @@ class ApplicationFormController extends Controller
             'long_sec' => 'required|numeric',
             'orthometric_height' => 'required|numeric',
             'submission_date' => 'required|date',
-            'receipt_num' => 'required|string|max:255',
-            'date_of_or' => 'required|date',
-            'images' => 'mimes:pdf|nullable|max:10999'
-
+            'elevation_plan' => 'mimes:pdf|nullable|max:10999',
+            'geodetic_eng_cert' => 'mimes:pdf|nullable|max:10999',
+            'control_station' => 'mimes:pdf|nullable|max:10999',
+            'loc_plan' => 'mimes:pdf|nullable|max:10999',
+            'comp_process_report' => 'mimes:pdf|nullable|max:10999',
+            'additional_req' => 'mimes:pdf|nullable|max:10999',
         ]);
 
-
-        if ($request->hasFile('images')) {
+        if ($request->hasFile('elevation_plan')) {
             // Get filename with the extension
-            $filenameWithExt = $request->file('images')->getClientOriginalName();
+            $filenameWithExt = $request->file('elevation_plan')->getClientOriginalName();
             // Get just filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get just ext
-            $extension = $request->file('images')->getClientOriginalExtension();
+            $extension = $request->file('elevation_plan')->getClientOriginalExtension();
             // File to store
-            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            $fileNameToStore_elevation_plan = $filename . '_' . time() . '.' . $extension;
             // Upload Image to the 'public' disk
-            $path = $request->file('images')->storeAs('public/images', $fileNameToStore);
+            $path = $request->file('elevation_plan')->storeAs('public/elevation_plan', $fileNameToStore_elevation_plan);
         } else {
-            $fileNameToStore = 'Not Found';
+            $fileNameToStore_elevation_plan = 'Not Found';
         }
+
+        if ($request->hasFile('geodetic_eng_cert')) {
+            // Get filename with the extension
+            $filenameWithExt = $request->file('geodetic_eng_cert')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('geodetic_eng_cert')->getClientOriginalExtension();
+            // File to store
+            $fileNameToStore_geodetic_eng_cert = $filename . '_' . time() . '.' . $extension;
+            // Upload Image to the 'public' disk
+            $path = $request->file('geodetic_eng_cert')->storeAs('public/geodetic_eng_cert', $fileNameToStore_geodetic_eng_cert);
+        } else {
+            $fileNameToStore_geodetic_eng_cert = 'Not Found';
+        }
+
+        if ($request->hasFile('control_station')) {
+            // Get filename with the extension
+            $filenameWithExt = $request->file('control_station')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('control_station')->getClientOriginalExtension();
+            // File to store
+            $fileNameToStore_control_station = $filename . '_' . time() . '.' . $extension;
+            // Upload Image to the 'public' disk
+            $path = $request->file('control_station')->storeAs('public/control_station', $fileNameToStore_control_station);
+        } else {
+            $fileNameToStore_control_station = 'Not Found';
+        }
+        if ($request->hasFile('loc_plan')) {
+            // Get filename with the extension
+            $filenameWithExt = $request->file('loc_plan')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('loc_plan')->getClientOriginalExtension();
+            // File to store
+            $fileNameToStore_loc_plan = $filename . '_' . time() . '.' . $extension;
+            // Upload Image to the 'public' disk
+            $path = $request->file('loc_plan')->storeAs('public/loc_plan', $fileNameToStore_loc_plan);
+        } else {
+            $fileNameToStore_loc_plan = 'Not Found';
+        }
+
+        if ($request->hasFile('comp_process_report')) {
+            // Get filename with the extension
+            $filenameWithExt = $request->file('comp_process_report')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('comp_process_report')->getClientOriginalExtension();
+            // File to store
+            $fileNameToStore_comp_process_report = $filename . '_' . time() . '.' . $extension;
+            // Upload Image to the 'public' disk
+            $path = $request->file('comp_process_report')->storeAs('public/comp_process_report', $fileNameToStore_comp_process_report);
+        } else {
+            $fileNameToStore_comp_process_report = 'Not Found';
+        }
+
+        if ($request->hasFile('additional_req')) {
+            // Get filename with the extension
+            $filenameWithExt = $request->file('additional_req')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('additional_req')->getClientOriginalExtension();
+            // File to store
+            $fileNameToStore_additional_req = $filename . '_' . time() . '.' . $extension;
+            // Upload Image to the 'public' disk
+            $path = $request->file('additional_req')->storeAs('public/additional_req', $fileNameToStore_additional_req);
+        }
+        else {
+            $fileNameToStore_additional_req = 'Not Found';
+        }
+
+
 
         $application_number = Helper::IDGenerator(Application::class, 'application_number', 4, '23');
 
 
         $application = new Application($validatedData);
-        $application->images = $fileNameToStore;
+        $application->elevation_plan = $fileNameToStore_elevation_plan;
+        $application->geodetic_eng_cert = $fileNameToStore_geodetic_eng_cert;
+        $application->control_station = $fileNameToStore_control_station;
+        $application->loc_plan = $fileNameToStore_loc_plan;
+        $application->comp_process_report = $fileNameToStore_comp_process_report;
+        $application->additional_req = $fileNameToStore_additional_req;
         $application->application_number = $application_number;
         $application->process_status = 'Queued for ADMS evaluation';
         $application->status = 'pending'; // Set the status here

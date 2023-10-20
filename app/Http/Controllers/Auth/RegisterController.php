@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -32,6 +33,8 @@ class RegisterController extends Controller
             'mobile' => ['required', 'numeric'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'permit_type' => ['required', 'in:height_clearance_permit,height_limitation'],
+            'building_type' => ['required', 'in:permanent,temporary'],
 
             // Add validation rules for Representative model fields here
             'rep_fname' => ['required', 'string', 'max:255'],
@@ -54,6 +57,8 @@ class RegisterController extends Controller
             'mobile' => $data['mobile'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'permit_type' => $data['permit_type'],
+            'building_type' => $data['building_type'],
         ]);
 
         $representative = Representative::create([

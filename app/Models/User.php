@@ -25,6 +25,8 @@ class User extends Authenticatable
         'mobile',
         'email',
         'password',
+        'permit_type',
+        'building_type',
     ];
 
 

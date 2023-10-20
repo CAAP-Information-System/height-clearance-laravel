@@ -30,6 +30,38 @@
 
                 <div class="registration-form-step-1 active">
                     <div class="registration-input-flex">
+                        <div class="">
+                            <label>
+                                <input class="form-check-input" type="radio" name="permit_type" value="height_clearance_permit" required>
+                                Height Clearance Permit (HCP)
+                            </label>
+                        </div>
+                        <div class="">
+                            <label>
+                                <input class="form-check-input" type="radio" name="permit_type" value="height_clearance_permit">
+                                Height Limitation (HL)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="registration-input-flex">
+                        <div class="" id="buildingTypeContainer" style="display: none;">
+
+                            <label>
+                                <input class="form-check-input" type="radio" name="building_type" value="permanent">
+                                Permanent Structure
+                            </label>
+                        </div>
+
+                        <div class="" id="buildingTypeContainer" style="display: none;">
+                            <label>
+                                <input class="form-check-input" type="radio" name="building_type" value="temporary">
+                                Temporary Structure <span style="font-style: italic;">(e.g. Crane, Temporary Elevator Housing, etc.)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="registration-input-flex">
+
                         <div>
                             <label for="firstname" class="registration-form-label"> First Name </label>
                             <input type="text" name="first_name" placeholder="Enter First Name" id="firstname" class="registration-form-input" required />
@@ -177,6 +209,26 @@
         @endif
     </section>
 </div>
+
+<script>
+    // Get the radio buttons
+    const heightClearancePermitRadio = document.querySelector('input[name="permit_type"][value="height_clearance_permit"]');
+    const permanentStructureRadio = document.querySelector('input[name="building_type"][value="permanent"]');
+    const temporaryStructureRadio = document.querySelector('input[name="building_type"][value="temporary"]');
+
+    // Add an event listener to the "Height Clearance Permit" radio button
+    heightClearancePermitRadio.addEventListener('change', function() {
+        if (this.checked) {
+            // If "Height Clearance Permit" is selected, show the "Permanent" and "Temporary" radios
+            permanentStructureRadio.parentElement.parentElement.style.display = 'block';
+            temporaryStructureRadio.parentElement.parentElement.style.display = 'block';
+        } else {
+            // If not, hide the "Permanent" and "Temporary" radios
+            permanentStructureRadio.parentElement.parentElement.style.display = 'none';
+            temporaryStructureRadio.parentElement.parentElement.style.display = 'none';
+        }
+    });
+</script>
 <script>
     const stepMenuOne = document.querySelector('.registration-step-menu1');
     const stepMenuTwo = document.querySelector('.registration-step-menu2');
