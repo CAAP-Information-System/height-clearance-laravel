@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payment_receipt', function (Blueprint $table) {
+        Schema::create('receipts', function (Blueprint $table) {
             $table->id();
             $table->string('fee_receipt')->nullable();
             $table->string('receipt_num');
-            $table->unsignedBigInteger('application_id'); // Foreign key
-            $table->foreign('application_id')->references('id')->on('applications')->onDelete('cascade'); // Define the foreign key relationship
+            $table->foreignId('application_id')->constrained('applications');
 
             $table->timestamps();
         });
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payment_receipt');
+        Schema::dropIfExists('receipts');
     }
 };

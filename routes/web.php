@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationFormController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentReceiptController;
+use App\Http\Controllers\StatusController;
 use App\Models\ApplicationForm;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,10 +24,16 @@ Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function(){
     Route::get('/documentary-compliance/{id}', [App\Http\Controllers\ADMSController::class, 'viewDocumentaryCompliance'])->name('documentary-compliance');
 
 });
-Route::get('/application-status', [ApplicationFormController::class, 'applicationStatus'])->name('application-status');
+
+Route::get('/payment-receipt/create/{application_id}', [PaymentReceiptController::class, 'create'])->name('components.payment_receipt.create');
+Route::post('/payment-receipt/store/{application_id}', [PaymentReceiptController::class, 'store'])->name('components.payment_receipt.store');
+
+Route::get('/application-status/{application_id}', [StatusController::class, 'applicationStatus'])->name('application-status');
+Route::get('/view-status', [StatusController::class, 'checkstatus'])->name('view-status');
+
 Route::get('/application-queue', [AdminController::class, 'applicationQueue'])->name('application-queue');
 Route::get('/fileUpload', [ApplicationFormController::class, 'testFileUpload'])->name('fileUpload');
-Route::get('/home', [HomeController::class, 'showHome'])->name('home');
+Route::get('/home', [StatusController::class, 'showHome'])->name('home');
 Route::get('/application', [App\Http\Controllers\ApplicationFormController::class, 'index'])->name('upload');
 Route::get('/', function () {
     return view('auth.login');

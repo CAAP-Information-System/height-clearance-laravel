@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,13 +22,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showHome()
-    {
-        return view('components/home');
-    }
+
 
     public function uploadFile()
     {
+
         return view('components/upload_file');
     }
 }

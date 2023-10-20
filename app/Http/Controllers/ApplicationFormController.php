@@ -40,9 +40,9 @@ class ApplicationFormController extends Controller
         // $applicationNumber = Application::generateApplicationNumber();
 
         $user = auth()->user();
-        // if ($user->application) {
-        //     return redirect()->back()->with('error', 'You can only submit one application per account.');
-        // }
+        if ($user->application) {
+            return redirect()->back()->with('error', 'You can only submit one application per account.');
+        }
         // Validate the form data (you can customize validation rules)
         $validatedData = $request->validate([
             'type_of_structure' => 'required|in:Residential,Commercial',
@@ -175,28 +175,10 @@ class ApplicationFormController extends Controller
         $application->save();
 
 
-        return redirect()->back()->with('success', 'Application submitted successfully.');
+        return redirect()->route('components.payment_receipt.create', ['application_id' => $application->id]);
     }
 
-    public function applicationStatus()
-    {
-        $applicationData = Application::all();
 
-        return view('components.application_status')->with('applicationData', $applicationData);
-    }
-
-    public function updateStatus(Request $request, $id)
-    {
-        $application = Application::find($id);
-        if (!$application) {
-            // Handle if the application is not found
-        }
-
-        $application->status = 'Under ADMS Evaluation';
-        $application->save();
-
-        return redirect()->back()->with('success', 'Status updated successfully.');
-    }
 
     public function getFormData($id)
     {

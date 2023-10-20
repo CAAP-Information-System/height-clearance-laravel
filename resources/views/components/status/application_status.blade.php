@@ -14,12 +14,18 @@
         </thead>
         <tbody>
             <tr>
-                <td>0001-23</td>
-                <td>2023-07-20</td>
-                <td>HCP</td>
+                <td>{{$applicationData->application_number}}</td>
+                <td>{{$applicationData->submission_date}}</td>
+                <td>
+                    @if($applicationData->user->permit_type == 'height_clearance_permit')
+                        HCP
+                    @elseif($applicationData->user->permit_type == 'height_limitation')
+                        HL
+                    @endif
+                </td>
                 <td>2023-07-27</td>
                 <td>N/A</td>
-                <td>Queued for ADMS evaluation</td>
+                <td>{{$applicationData->process_status}}</td>
             </tr>
         </tbody>
     </table>
