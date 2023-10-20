@@ -40,9 +40,9 @@ class ApplicationFormController extends Controller
         // $applicationNumber = Application::generateApplicationNumber();
 
         $user = auth()->user();
-        if ($user->application) {
-            return redirect()->back()->with('error', 'You can only submit one application per account.');
-        }
+        // if ($user->application) {
+        //     return redirect()->back()->with('error', 'You can only submit one application per account.');
+        // }
         // Validate the form data (you can customize validation rules)
         $validatedData = $request->validate([
             'permit_type' => 'required|in:height_clearance_permit,height_limitation',
@@ -65,49 +65,55 @@ class ApplicationFormController extends Controller
         ]);
 
 
-        // Specify the directories and filenames
         if ($request->hasFile('images')) {
-            // $file = $request->file('images');
-            // $fileName = $file->getClientOriginalName();
-            // $file->storeAs('public/images', $fileName); // Save the file to storage
+            // Get filename with the extension
             $filenameWithExt = $request->file('images')->getClientOriginalName();
-            //Get just filename
+            // Get just filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            //Get just ext
+            // Get just ext
             $extension = $request->file('images')->getClientOriginalExtension();
-            //file to store
-            $fileNameToStore = $filename.'_'.time().'.'.$extension;
-            //Upload Image
-            $path = $request->file('images')->storeAs('public/images/', $fileNameToStore);
-            // If you want to store the filename in the database, replace 'File Found' with the actual filename
-            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            // File to store
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            // Upload Image to the 'public' disk
+            $path = $request->file('images')->storeAs('public/images', $fileNameToStore);
         } else {
             $fileNameToStore = 'Not Found';
         }
 
-        $application_number = Helper::IDGenerator(new Application(), 'application_number', 4, '23'); /** Generate application number */
+        $application_number = Helper::IDGenerator(Application::class, 'application_number', 4, '23');
 
-        // Create a new application record
+
         $application = new Application($validatedData);
         $application->images = $fileNameToStore;
         $application->application_number = $application_number;
+        $application->process_status = 'Queued for ADMS evaluation';
+        $application->status = 'pending'; // Set the status here
         $application->user()->associate(auth()->user());
         $application->save();
-
-
-        // Save the application with a pending status
-        $application = new Application();
-        $application->fill($request->all());
-        $application->status = 'pending';
-        $application->user()->associate($user);
-        $application->save();
-
 
 
         return redirect()->back()->with('success', 'Application submitted successfully.');
     }
 
+    public function applicationStatus()
+    {
+        $applicationData = Application::all();
 
+        return view('components.application_status')->with('applicationData', $applicationData);
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $application = Application::find($id);
+        if (!$application) {
+            // Handle if the application is not found
+        }
+
+        $application->status = 'Under ADMS Evaluation';
+        $application->save();
+
+        return redirect()->back()->with('success', 'Status updated successfully.');
+    }
 
     public function getFormData($id)
     {
@@ -145,6 +151,4 @@ class ApplicationFormController extends Controller
             }),
         ];
     }
-
-
 }

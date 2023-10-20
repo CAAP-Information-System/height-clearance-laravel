@@ -22,10 +22,9 @@ Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function(){
     Route::get('/documentary-compliance/{id}', [App\Http\Controllers\ADMSController::class, 'viewDocumentaryCompliance'])->name('documentary-compliance');
 
 });
+Route::get('/application-status', [ApplicationFormController::class, 'applicationStatus'])->name('application-status');
 Route::get('/application-queue', [AdminController::class, 'applicationQueue'])->name('application-queue');
-
 Route::get('/fileUpload', [ApplicationFormController::class, 'testFileUpload'])->name('fileUpload');
-
 Route::get('/home', [HomeController::class, 'showHome'])->name('home');
 Route::get('/application', [App\Http\Controllers\ApplicationFormController::class, 'index'])->name('upload');
 Route::get('/', function () {

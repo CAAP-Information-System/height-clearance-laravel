@@ -25,6 +25,7 @@ class Application extends Model
         'long_sec',
         'orthometric_height',
         'images',
+        'process_status',
     ];
     public static function generateApplicationNumber()
     {
