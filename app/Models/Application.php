@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use function PHPSTORM_META\map;
+
 class Application extends Model
 {
     protected $fillable = [
+        'application_number',
         'type_of_structure',
         'site_address',
         'proposed_height',

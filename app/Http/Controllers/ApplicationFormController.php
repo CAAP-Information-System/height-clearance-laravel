@@ -38,7 +38,6 @@ class ApplicationFormController extends Controller
     {
 
         // $applicationNumber = Application::generateApplicationNumber();
-
         $user = auth()->user();
         if ($user->application) {
             return redirect()->back()->with('error', 'You can only submit one application per account.');
@@ -65,16 +64,20 @@ class ApplicationFormController extends Controller
             'comp_process_report' => 'mimes:pdf|nullable|max:10999',
             'additional_req' => 'mimes:pdf|nullable|max:10999',
         ]);
-
         if ($request->hasFile('elevation_plan')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
             // Get filename with the extension
             $filenameWithExt = $request->file('elevation_plan')->getClientOriginalName();
             // Get just filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get just ext
             $extension = $request->file('elevation_plan')->getClientOriginalExtension();
-            // File to store
-            $fileNameToStore_elevation_plan = $filename . '_' . time() . '.' . $extension;
+
+            // File to store with user's ID
+            $fileNameToStore_elevation_plan = $userId . '_elevation_plan_' . time() . '.' . $extension;
+
             // Upload Image to the 'public' disk
             $path = $request->file('elevation_plan')->storeAs('public/elevation_plan', $fileNameToStore_elevation_plan);
         } else {
@@ -151,8 +154,7 @@ class ApplicationFormController extends Controller
             $fileNameToStore_additional_req = $filename . '_' . time() . '.' . $extension;
             // Upload Image to the 'public' disk
             $path = $request->file('additional_req')->storeAs('public/additional_req', $fileNameToStore_additional_req);
-        }
-        else {
+        } else {
             $fileNameToStore_additional_req = 'Not Found';
         }
 
@@ -160,6 +162,8 @@ class ApplicationFormController extends Controller
 
         $application_number = Helper::IDGenerator(Application::class, 'application_number', 4, '23');
 
+
+        // $request->session()->put('application', $application);
 
         $application = new Application($validatedData);
         $application->elevation_plan = $fileNameToStore_elevation_plan;

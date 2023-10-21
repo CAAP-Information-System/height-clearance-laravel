@@ -18,6 +18,7 @@
                 {{$applicationData->user->first_name}}
                 {{$applicationData->user->last_name}}
             </div>
+
             <label for="">Type of Application</label>
             <div>{{$applicationData->permit_type}}</div>
             <label for="">Type of Structure</label>
@@ -48,6 +49,6 @@
             <div>NA (to be added)</div>
         </div>
     </div>
-    <a href="{{ route('documentary-compliance', ['id' => $applicationData->id]) }}" class="btn btn-primary">View Application</a>
+    <a href="{{ route('doc-review', ['id' => $applicationData->id]) }}" class="btn btn-primary">View Application</a>
 </div>
 @endsection

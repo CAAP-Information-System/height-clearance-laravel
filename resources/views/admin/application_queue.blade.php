@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Current Applications Submitted</h1>
     <div class="application-table-card">
-        <table class="table">
+        <table class="table table-responsive">
             <thead>
                 <tr>
                     <th>Application Number</th>
@@ -31,24 +31,56 @@
                     <td>{{$application->application_number}}</td>
                     <td>{{ $application->submission_date}}</td>
                     <td>
-                        @if ($application->permit_type == 'height_clearance_permit')
-                            HCP
-                        @elseif ($application->permit_type == 'height_limitation')
-                            HL
+                        @if ($application->user->permit_type == 'height_clearance_permit')
+                        HCP
+                        @elseif ($application->user->permit_type == 'height_limitation')
+                        HL
                         @endif
                     </td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                    <td>7</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td>10</td>
+                    <td>
+                        @if($application->process_status == 'Queued for ADMS evaluation')
+                        Ongoing
+                        @endif
+                    </td>
+                    <td>
+                        @if($application->process_status == 'Queued for ADMS evaluation')
+                        Awaiting
+                        @endif
+                    </td>
+                    <td>
+                        @if($application->process_status == 'Queued for ADMS evaluation')
+                        Awaiting
+                        @endif
+                    </td>
+                    <td>
+                        @if($application->process_status == 'Queued for ADMS evaluation')
+                        Awaiting
+                        @endif
+                    </td>
+                    <td>
+                        @if($application->process_status == 'Queued for ADMS evaluation')
+                        Awaiting
+                        @endif
+                    </td>
+                    <td>
+                        @if($application->process_status == 'Queued for ADMS evaluation')
+                        Awaiting
+                        @endif
+                    </td>
+                    <td>
+                        @if($application->process_status == 'Queued for ADMS evaluation')
+                        Awaiting
+                        @endif
+                    </td>
                     <td>11</td>
                     <td>12</td>
-                    <td>13</td>
                     <td>
-                        <a href="{{ route('critical-area', ['id' => $application->id]) }}" class="btn btn-primary">
+                        @if($application->process_status == 'Queued for ADMS evaluation')
+                        Ongoing ADMS Evaluation
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('application-eval', ['id' => $application->id]) }}" class="btn btn-primary">
                             View Application
                         </a>
                     </td>

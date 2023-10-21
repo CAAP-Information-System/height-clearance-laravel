@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ADMSController extends Controller
 {
@@ -24,7 +25,7 @@ class ADMSController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function criticalAreaEval($id)
+    public function applicationEval($id)
     {
         $applicationData = Application::find($id);
 
@@ -32,38 +33,72 @@ class ADMSController extends Controller
             // Fetches owner data through foreign ID
             $userData = $applicationData->user;
 
-            return view('adms.adms_critical_eval', compact('applicationData', 'userData'));
+            return view('adms.application_eval', compact('applicationData', 'userData'));
         } else {
             return view('components.home');
         }
     }
 
-    public function viewDocumentaryCompliance($id)
+    public function documentReview(Request $request, $id)
     {
-        $applicationData = Application::find($id);
+        if ($request->hasFile('elevation_plan')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
 
+            // Get filename with the extension
+            $filenameWithExt = $request->file('elevation_plan')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('elevation_plan')->getClientOriginalExtension();
+
+            // File to store with user's ID
+            $fileNameToStore_elevation_plan = $userId . '_elevation_plan_' . time() . '.' . $extension;
+
+            // Upload Image to the 'public' disk
+            $path = $request->file('elevation_plan')->storeAs('public/elevation_plan', $fileNameToStore_elevation_plan);
+        } else {
+            $fileNameToStore_elevation_plan = 'Not Found';
+        }
+        $user = Auth::user();
+        $applicationData = Application::find($id);
         if ($applicationData) {
             $userData = $applicationData->user;
-            return view('adms.adms_doc_compliance', compact('applicationData'));
+            return view('adms.doc_review', compact('applicationData','user'))->with('fileNameToStore_elevation_plan', $fileNameToStore_elevation_plan);
         } else {
             return redirect()->back()->with('error', 'Application not found.');
         }
     }
 
 
-    //  public function evalRemarks(Request $request, $id)
-    //  {
+    // Update Compliance Status
+    public function updateCompliance(Request $request, $applicationId)
+    {
+        $application = Application::find($applicationId);
 
-    //     $validatedData = $request->validate([
-    //         'remarks' => 'nullable|string|max:255'
+        // Validate and update compliance status for each file/field
+        $application->elevation_compliance = $request->input('elevation_compliance');
+        $application->remarks_elevation = $request->input('remarks_elevation');
+        // Add similar lines for other files/fields
 
-    //     ]);
+        // Calculate overall compliance
+        $overallCompliance = $this->calculateOverallCompliance($application);
 
-    //     $evaluation = new Application($validatedData);
-    //     $evaluation->user()->associate(auth()->user());
-    //     $evaluation->save();
+        if ($overallCompliance === 'Compliant') {
+            $application->status = 'ADMS Supervisor Review';
+            $application->adms_evaluator = 'Checked';
+        } else {
+            $application->status = 'Not Compliant';
+        }
 
-    //     return redirect()->back()->with('success', 'Application submitted successfully.');
+        $application->save();
 
-    //  }
+        return redirect()->route('adms.review', ['applicationId' => $applicationId])->with('success', 'Compliance updated successfully.');
+    }
+
+    // Helper method to calculate overall compliance
+    private function calculateOverallCompliance($application)
+    {
+        // Implement logic to check compliance for each file/field and return 'Compliant' or 'Not Compliant'
+    }
 }

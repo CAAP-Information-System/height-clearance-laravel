@@ -23,7 +23,7 @@
         <div class="row m-4 p-3">
             <div class="mb-4 pb-2">
                 <div class="form-group">
-                    <input type="file" name="fee_receipt" id="fee_receipt" accept=".pdf, .jpg, .png, .jpeg">
+                    <input type="file" name="fee_receipt" id="fee_receipt" accept=".pdf, .jpg, .png">
                 </div>
             </div>
         </div>

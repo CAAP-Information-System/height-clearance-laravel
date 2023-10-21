@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ADMSController;
 use App\Http\Controllers\ApplicationFormController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentReceiptController;
@@ -20,8 +21,9 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
 });
 
 Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function(){
-    Route::get('/critical-area/{id}', [App\Http\Controllers\ADMSController::class, 'criticalAreaEval'])->name('critical-area');
-    Route::get('/documentary-compliance/{id}', [App\Http\Controllers\ADMSController::class, 'viewDocumentaryCompliance'])->name('documentary-compliance');
+    Route::get('/application-eval/{id}', [App\Http\Controllers\ADMSController::class, 'applicationEval'])->name('application-eval');
+    Route::get('/doc-review/{id}', [App\Http\Controllers\ADMSController::class, 'documentReview'])->name('doc-review');
+    Route::post('/update-compliance/{applicationId}', [ADMSController::class, 'updateCompliance'])->name('update-compliance');
 
 });
 

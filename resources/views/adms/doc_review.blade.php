@@ -46,14 +46,14 @@
 
 
 
-    <header class="app-number">Application Number: </header>
+    <header class="app-number">Application Number: {{$applicationData->application_number}} </header>
     <div class="docs">
         <label for="">Application Information</label>
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#applicantModal">
             View
         </button>
         <label for="">Filing Fee Receipt</label>
-        <a href="#"  class="btn btn-info">View</a>
+        <a href="{{ asset('storage/elevation_plan/' . $applicationData->elevation_plan) }}" target="_blank">View Elevation Plan</a>
         <label for="">Elevation Plan of the Proposed Structure</label>
         <a href="#"  class="btn btn-info">View</a>
         <label for="">Geodetic Engineer’s Certificate (Form CAAP-ADM-AOD-002)</label>
