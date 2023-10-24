@@ -85,14 +85,19 @@ class ApplicationFormController extends Controller
         }
 
         if ($request->hasFile('geodetic_eng_cert')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
             // Get filename with the extension
             $filenameWithExt = $request->file('geodetic_eng_cert')->getClientOriginalName();
             // Get just filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get just ext
             $extension = $request->file('geodetic_eng_cert')->getClientOriginalExtension();
-            // File to store
-            $fileNameToStore_geodetic_eng_cert = $filename . '_' . time() . '.' . $extension;
+
+            // File to store with user's ID
+            $fileNameToStore_geodetic_eng_cert = $userId . 'geodetic_eng_cert' . time() . '.' . $extension;
+
             // Upload Image to the 'public' disk
             $path = $request->file('geodetic_eng_cert')->storeAs('public/geodetic_eng_cert', $fileNameToStore_geodetic_eng_cert);
         } else {
@@ -100,28 +105,39 @@ class ApplicationFormController extends Controller
         }
 
         if ($request->hasFile('control_station')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
             // Get filename with the extension
             $filenameWithExt = $request->file('control_station')->getClientOriginalName();
             // Get just filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get just ext
             $extension = $request->file('control_station')->getClientOriginalExtension();
-            // File to store
-            $fileNameToStore_control_station = $filename . '_' . time() . '.' . $extension;
+
+            // File to store with user's ID
+            $fileNameToStore_control_station = $userId . 'control_station' . time() . '.' . $extension;
+
             // Upload Image to the 'public' disk
             $path = $request->file('control_station')->storeAs('public/control_station', $fileNameToStore_control_station);
         } else {
             $fileNameToStore_control_station = 'Not Found';
         }
+
         if ($request->hasFile('loc_plan')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
             // Get filename with the extension
             $filenameWithExt = $request->file('loc_plan')->getClientOriginalName();
             // Get just filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get just ext
             $extension = $request->file('loc_plan')->getClientOriginalExtension();
-            // File to store
-            $fileNameToStore_loc_plan = $filename . '_' . time() . '.' . $extension;
+
+            // File to store with user's ID
+            $fileNameToStore_loc_plan = $userId . 'loc_plan' . time() . '.' . $extension;
+
             // Upload Image to the 'public' disk
             $path = $request->file('loc_plan')->storeAs('public/loc_plan', $fileNameToStore_loc_plan);
         } else {
@@ -129,36 +145,45 @@ class ApplicationFormController extends Controller
         }
 
         if ($request->hasFile('comp_process_report')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
             // Get filename with the extension
             $filenameWithExt = $request->file('comp_process_report')->getClientOriginalName();
             // Get just filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get just ext
             $extension = $request->file('comp_process_report')->getClientOriginalExtension();
-            // File to store
-            $fileNameToStore_comp_process_report = $filename . '_' . time() . '.' . $extension;
+
+            // File to store with user's ID
+            $fileNameToStore_comp_process_report = $userId . 'comp_process_report' . time() . '.' . $extension;
+
             // Upload Image to the 'public' disk
             $path = $request->file('comp_process_report')->storeAs('public/comp_process_report', $fileNameToStore_comp_process_report);
         } else {
             $fileNameToStore_comp_process_report = 'Not Found';
         }
 
+
         if ($request->hasFile('additional_req')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
             // Get filename with the extension
             $filenameWithExt = $request->file('additional_req')->getClientOriginalName();
             // Get just filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get just ext
             $extension = $request->file('additional_req')->getClientOriginalExtension();
-            // File to store
-            $fileNameToStore_additional_req = $filename . '_' . time() . '.' . $extension;
+
+            // File to store with user's ID
+            $fileNameToStore_additional_req = $userId . 'additional_req' . time() . '.' . $extension;
+
             // Upload Image to the 'public' disk
             $path = $request->file('additional_req')->storeAs('public/additional_req', $fileNameToStore_additional_req);
         } else {
             $fileNameToStore_additional_req = 'Not Found';
         }
-
-
 
         $application_number = Helper::IDGenerator(Application::class, 'application_number', 4, '23');
 

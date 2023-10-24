@@ -23,7 +23,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
 Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function(){
     Route::get('/application-eval/{id}', [App\Http\Controllers\ADMSController::class, 'applicationEval'])->name('application-eval');
     Route::get('/doc-review/{id}', [App\Http\Controllers\ADMSController::class, 'documentReview'])->name('doc-review');
-    Route::post('/update-compliance/{applicationId}', [ADMSController::class, 'updateCompliance'])->name('update-compliance');
+    Route::match(['get', 'post'], '/update-compliance/{id}', [ADMSController::class, 'updateCompliance'])->name('updateCompliance');
 
 });
 

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+
 use App\Models\Application;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,8 +41,13 @@ class ADMSController extends Controller
         }
     }
 
-    public function documentReview(Request $request, $id)
+    public function documentReview(Request $request, $application_id)
     {
+
+        $user = Auth::user();
+        $applicationData = Application::find($application_id);
+
+
         if ($request->hasFile('elevation_plan')) {
             // Get user's ID
             $userId = auth()->user()->id;
@@ -60,45 +67,175 @@ class ADMSController extends Controller
         } else {
             $fileNameToStore_elevation_plan = 'Not Found';
         }
-        $user = Auth::user();
-        $applicationData = Application::find($id);
+
+        if ($request->hasFile('geodetic_eng_cert')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
+            // Get filename with the extension
+            $filenameWithExt = $request->file('geodetic_eng_cert')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('geodetic_eng_cert')->getClientOriginalExtension();
+
+            // File to store with user's ID
+            $fileNameToStore_geodetic_eng_cert = $userId . 'geodetic_eng_cert' . time() . '.' . $extension;
+
+            // Upload Image to the 'public' disk
+            $path = $request->file('geodetic_eng_cert')->storeAs('public/geodetic_eng_cert', $fileNameToStore_geodetic_eng_cert);
+        } else {
+            $fileNameToStore_geodetic_eng_cert = 'Not Found';
+        }
+
+        if ($request->hasFile('control_station')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
+            // Get filename with the extension
+            $filenameWithExt = $request->file('control_station')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('control_station')->getClientOriginalExtension();
+
+            // File to store with user's ID
+            $fileNameToStore_control_station = $userId . 'control_station' . time() . '.' . $extension;
+
+            // Upload Image to the 'public' disk
+            $path = $request->file('control_station')->storeAs('public/control_station', $fileNameToStore_control_station);
+        } else {
+            $fileNameToStore_control_station = 'Not Found';
+        }
+
+        if ($request->hasFile('loc_plan')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
+            // Get filename with the extension
+            $filenameWithExt = $request->file('loc_plan')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('loc_plan')->getClientOriginalExtension();
+
+            // File to store with user's ID
+            $fileNameToStore_loc_plan = $userId . 'loc_plan' . time() . '.' . $extension;
+
+            // Upload Image to the 'public' disk
+            $path = $request->file('loc_plan')->storeAs('public/loc_plan', $fileNameToStore_loc_plan);
+        } else {
+            $fileNameToStore_loc_plan = 'Not Found';
+        }
+
+        if ($request->hasFile('comp_process_report')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
+            // Get filename with the extension
+            $filenameWithExt = $request->file('comp_process_report')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('comp_process_report')->getClientOriginalExtension();
+
+            // File to store with user's ID
+            $fileNameToStore_comp_process_report = $userId . 'comp_process_report' . time() . '.' . $extension;
+
+            // Upload Image to the 'public' disk
+            $path = $request->file('comp_process_report')->storeAs('public/comp_process_report', $fileNameToStore_comp_process_report);
+        } else {
+            $fileNameToStore_comp_process_report = 'Not Found';
+        }
+
+
+        if ($request->hasFile('additional_req')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
+            // Get filename with the extension
+            $filenameWithExt = $request->file('additional_req')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('additional_req')->getClientOriginalExtension();
+
+            // File to store with user's ID
+            $fileNameToStore_additional_req = $userId . 'additional_req' . time() . '.' . $extension;
+
+            // Upload Image to the 'public' disk
+            $path = $request->file('additional_req')->storeAs('public/additional_req', $fileNameToStore_additional_req);
+        } else {
+            $fileNameToStore_additional_req = 'Not Found';
+        }
+        // Update the application data with remarks
+
+
+
+        // Update the compliance status
+
+
         if ($applicationData) {
             $userData = $applicationData->user;
-            return view('adms.doc_review', compact('applicationData','user'))->with('fileNameToStore_elevation_plan', $fileNameToStore_elevation_plan);
+
+            return view(
+                'adms.doc_review',
+                compact('applicationData', 'user', 'fileNameToStore_elevation_plan', 'fileNameToStore_geodetic_eng_cert', 'fileNameToStore_control_station', 'fileNameToStore_loc_plan', 'fileNameToStore_comp_process_report', 'fileNameToStore_additional_req')
+            )
+                ->with('fileNameToStore_elevation_plan', $fileNameToStore_elevation_plan)
+                ->with('fileNameToStore_geodetic_eng_cert', $fileNameToStore_geodetic_eng_cert)
+                ->with('fileNameToStore_control_station', $fileNameToStore_control_station)
+                ->with('fileNameToStore_loc_plan', $fileNameToStore_loc_plan)
+                ->with('fileNameToStore_comp_process_report', $fileNameToStore_comp_process_report)
+                ->with('fileNameToStore_additional_req', $fileNameToStore_additional_req);
         } else {
             return redirect()->back()->with('error', 'Application not found.');
         }
+
+
     }
 
-
-    // Update Compliance Status
-    public function updateCompliance(Request $request, $applicationId)
+    public function updateCompliance(Request $request, $id)
     {
-        $application = Application::find($applicationId);
+    $user = Auth::user();
+    $applicationData = Application::find($id);
 
-        // Validate and update compliance status for each file/field
-        $application->elevation_compliance = $request->input('elevation_compliance');
-        $application->remarks_elevation = $request->input('remarks_elevation');
-        // Add similar lines for other files/fields
+    $request->validate([
+        'compliance_status' => 'nullable|string|max:255',
+        'elev_plan_remarks' => 'string|max:255',
+        'geodetic_eng_remarks' => 'string|max:255',
+        'control_station_remarks' => 'string|max:255',
+        'loc_plan_remarks' => 'string|max:255',
+        'comp_process_report_remarks' => 'string|max:255',
+        'additional_req_remarks' => 'string|max:255',
+        'doc_compliance_result' => 'nullable|string|max:255',
+        'crit_area_result' => 'nullable|string|max:255',
+    ]);
 
-        // Calculate overall compliance
-        $overallCompliance = $this->calculateOverallCompliance($application);
+    if ($request->isMethod('post')) {
+        // Handle the POST request to update compliance
 
-        if ($overallCompliance === 'Compliant') {
-            $application->status = 'ADMS Supervisor Review';
-            $application->adms_evaluator = 'Checked';
-        } else {
-            $application->status = 'Not Compliant';
-        }
+        // Get and update the application data with remarks
+        $staff = new Staff();
+        $staff->elev_plan_remarks = $request->input('elev_plan_remarks');
+        $staff->geodetic_eng_remarks = $request->input('geodetic_eng_remarks');
+        $staff->control_station_remarks = $request->input('control_station_remarks');
+        $staff->loc_plan_remarks = $request->input('loc_plan_remarks');
+        $staff->comp_process_report_remarks = $request->input('comp_process_report_remarks');
+        $staff->additional_req_remarks = $request->input('additional_req_remarks');
 
-        $application->save();
+        $compliance_status = $request->input('compliance_status');
 
-        return redirect()->route('adms.review', ['applicationId' => $applicationId])->with('success', 'Compliance updated successfully.');
+        // Save the updated application data
+
+        $staff->compliance_status = $compliance_status;
+        $staff->save();
+
+        return redirect()->back()->with('success', 'Remarks and compliance status saved successfully.');
+    } else {
+        // Handle the GET request to display the form or perform other actions
+
+        // You can add code here to load the form or perform other GET actions
     }
-
-    // Helper method to calculate overall compliance
-    private function calculateOverallCompliance($application)
-    {
-        // Implement logic to check compliance for each file/field and return 'Compliant' or 'Not Compliant'
     }
 }

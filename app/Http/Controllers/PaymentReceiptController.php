@@ -26,21 +26,24 @@ class PaymentReceiptController extends Controller
         ]);
 
         if ($request->hasFile('fee_receipt')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
             // Get filename with the extension
             $filenameWithExt = $request->file('fee_receipt')->getClientOriginalName();
             // Get just filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get just ext
             $extension = $request->file('fee_receipt')->getClientOriginalExtension();
-            // File to store
-            $fileNameToStore_fee_receipt = $filename . '_' . time() . '.' . $extension;
+
+            // File to store with user's ID
+            $fileNameToStore_fee_receipt = $userId . '_fee_receipt_' . time() . '.' . $extension;
+
             // Upload Image to the 'public' disk
             $path = $request->file('fee_receipt')->storeAs('public/fee_receipt', $fileNameToStore_fee_receipt);
-        }
-        else {
+        } else {
             $fileNameToStore_fee_receipt = 'Not Found';
         }
-
         // Create and store the payment receipt information
         $paymentReceipt = new Receipt();
         $paymentReceipt->application_id = $application_id;
