@@ -233,6 +233,7 @@ class ADMSController extends Controller
         $staff->loc_plan_remarks = $request->input('loc_plan_remarks');
         $staff->comp_process_report_remarks = $request->input('comp_process_report_remarks');
         $staff->additional_req_remarks = $request->input('additional_req_remarks');
+        $staff->fee_comp = $request->input('app_comp');
         $staff->fee_comp = $request->input('fee_comp');
         $staff->ep_comp = $request->input('ep_comp');
         $staff->ge_comp = $request->input('ge_comp');

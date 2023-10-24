@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
-            $table->string('compliance_status')->nullable();
             $table->string('app_comp')->nullable();
             $table->string('fee_comp')->nullable();
             $table->string('ep_comp')->nullable();

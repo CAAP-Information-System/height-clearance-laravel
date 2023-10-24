@@ -23,13 +23,15 @@
                         </li>
                         <li class="registration-step-menu3">
                             <span>3</span>
-                            Confirm
+                            Password
                         </li>
                     </ul>
                 </div>
 
                 <div class="registration-form-step-1 active">
+                    <header class="auth-field-hdr">Select a Type of Application:</header>
                     <div class="registration-input-flex">
+
                         <div class="">
                             <label>
                                 <input class="form-check-input" type="radio" name="permit_type" value="height_clearance_permit" required>
@@ -104,6 +106,7 @@
                 </div>
 
                 <div class="registration-form-step-2">
+                    <header class="auth-field-hdr">Register your Representative/Liason Officer:</header>
                     <div class="registration-form-confirm">
                         <p>Please register your Representative/Liason Officer.</p>
                     </div>

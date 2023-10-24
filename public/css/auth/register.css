@@ -24,6 +24,14 @@ body {
     color: #3b3b3b;
     font-style: italic;
 }
+.auth-field-hdr{
+    color: #4AB3E0;
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #808080;
+    font-weight: bold;
+    font-style: italic;
+}
 .registration-main-wrapper {
     display: flex;
     align-items: center;
@@ -76,7 +84,7 @@ body {
     color: #07074d;
 }
 .registration-steps li.active span {
-    background: #07275A;
+    background: #4AB3E0;
     color: #ffffff;
 }
 
