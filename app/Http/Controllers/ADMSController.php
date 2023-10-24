@@ -35,7 +35,7 @@ class ADMSController extends Controller
             // Fetches owner data through foreign ID
             $userData = $applicationData->user;
 
-            return view('adms.application_eval', compact('applicationData', 'userData'));
+            return view('adms.critical_eval', compact('applicationData', 'userData'));
         } else {
             return view('components.home');
         }
@@ -202,6 +202,7 @@ class ADMSController extends Controller
 
     $request->validate([
         'compliance_status' => 'nullable|string|max:255',
+        'application_info_remarks' => 'nullable|string|max:255',
         'elev_plan_remarks' => 'string|max:255',
         'geodetic_eng_remarks' => 'string|max:255',
         'control_station_remarks' => 'string|max:255',
@@ -210,6 +211,15 @@ class ADMSController extends Controller
         'additional_req_remarks' => 'string|max:255',
         'doc_compliance_result' => 'nullable|string|max:255',
         'crit_area_result' => 'nullable|string|max:255',
+
+        'app_comp'=> 'required|in:Complied,NotComplied',
+        'fee_comp'=> 'required|in:Complied,NotComplied',
+        'ep_comp'=> 'required|in:Complied,NotComplied',
+        'ge_comp'=> 'required|in:Complied,NotComplied',
+        'cs_comp'=> 'required|in:Complied,NotComplied',
+        'lp_comp'=> 'required|in:Complied,NotComplied',
+        'cp_comp'=> 'required|in:Complied,NotComplied',
+        'ar_comp'=> 'required|in:Complied,NotComplied',
     ]);
 
     if ($request->isMethod('post')) {
@@ -223,15 +233,22 @@ class ADMSController extends Controller
         $staff->loc_plan_remarks = $request->input('loc_plan_remarks');
         $staff->comp_process_report_remarks = $request->input('comp_process_report_remarks');
         $staff->additional_req_remarks = $request->input('additional_req_remarks');
+        $staff->fee_comp = $request->input('fee_comp');
+        $staff->ep_comp = $request->input('ep_comp');
+        $staff->ge_comp = $request->input('ge_comp');
+        $staff->cs_comp = $request->input('cs_comp');
+        $staff->lp_comp = $request->input('lp_comp');
+        $staff->cp_comp = $request->input('cp_comp');
+        $staff->ar_comp = $request->input('ar_comp');
 
-        $compliance_status = $request->input('compliance_status');
+        $doc_compliance_result = $request->input('doc_compliance_result');
 
         // Save the updated application data
 
-        $staff->compliance_status = $compliance_status;
+        $staff->doc_compliance_result = $doc_compliance_result;
         $staff->save();
 
-        return redirect()->back()->with('success', 'Remarks and compliance status saved successfully.');
+        return redirect()->route('adms.critical_eval', ['id' => $user->id]);
     } else {
         // Handle the GET request to display the form or perform other actions
 

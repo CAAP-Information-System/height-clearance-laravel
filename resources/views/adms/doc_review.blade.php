@@ -71,11 +71,12 @@
                     </button>
                 </div>
                 <div class="right-col">
-                    <!-- <div class="radios">
-                        <label><input type="radio" name="elevation_plan_complied" value="1" required> Complied</label>
-                        <label><input type="radio" name="elevation_plan_complied" value="0" required> Not Complied</label>
-                    </div> -->
-                    <!-- <input class="remarks" type="text" name="" id=""> -->
+                    <header class="remarks-header">Remarks:</header>
+                    <div class="radios">
+                        <label><input type="radio" name="app_comp" value="Complied" required> Complied</label>
+                        <label><input type="radio" name="app_comp" value="NotComplied" required> Not Complied</label>
+                    </div>
+                    <input class="remarks" type="text" name="application_info_remarks" id="application_info_remarks">
                 </div>
             </div>
 
@@ -87,10 +88,11 @@
                     <a class="button-5" href="{{ asset('storage/fee_receipt/' . $applicationData->fee_receipt) }}" target="_blank">View Payment Receipt</a>
                 </div>
                 <div class="right-col">
-                    <!-- <div class="radios">
-                        <label><input type="radio" name="elevation_plan_complied" value="1" required> Complied</label>
-                        <label><input type="radio" name="elevation_plan_complied" value="0" required> Not Complied</label>
-                    </div> -->
+                    <header class="remarks-header">Remarks:</header>
+                    <div class="radios">
+                        <label><input type="radio" name="fee_comp" value="Complied" required> Complied</label>
+                        <label><input type="radio" name="fee_comp" value="NotComplied" required> Not Complied</label>
+                    </div>
                     <input class="remarks" type="text" name="" id="">
                 </div>
             </div>
@@ -101,10 +103,11 @@
                     <a class="button-5" href="{{ asset('storage/elevation_plan/' . $applicationData->elevation_plan) }}" target="_blank">View Elevation Plan</a>
                 </div>
                 <div class="right-col">
-                    <!-- <div class="radios">
-                        <label><input type="radio" name="elevation_plan_complied" value="1" required> Complied</label>
-                        <label><input type="radio" name="elevation_plan_complied" value="0" required> Not Complied</label>
-                    </div> -->
+                    <header class="remarks-header">Remarks:</header>
+                    <div class="radios">
+                        <label><input type="radio" name="ep_comp" value="Complied" required> Complied</label>
+                        <label><input type="radio" name="ep_comp" value="NotComplied" required> Not Complied</label>
+                    </div>
                     <input class="remarks" type="text" name="elev_plan_remarks" id="elev_plan_remarks">
                 </div>
 
@@ -116,10 +119,11 @@
                     <a class="button-5" href="{{ asset('storage/geodetic_eng_cert/' . $applicationData->geodetic_eng_cert) }}" target="_blank">View Geodetic Engineer Certificate</a>
                 </div>
                 <div class="right-col">
-                    <!-- <div class="radios">
-                        <label><input type="radio" name="elevation_plan_complied" value="1" required> Complied</label>
-                        <label><input type="radio" name="elevation_plan_complied" value="0" required> Not Complied</label>
-                    </div> -->
+                    <header class="remarks-header">Remarks:</header>
+                    <div class="radios">
+                        <label><input type="radio" name="ge_comp" value="Complied" required> Complied</label>
+                        <label><input type="radio" name="ge_comp" value="NotComplied" required> Not Complied</label>
+                    </div>
                     <input class="remarks" type="text" name="geodetic_eng_remarks" id="">
                 </div>
             </div>
@@ -130,10 +134,11 @@
                     <a class="button-5" href="{{ asset('storage/control_station/' . $applicationData->control_station) }}" target="_blank">View Control Station</a>
                 </div>
                 <div class="right-col">
-                    <!-- <div class="radios">
-                        <label><input type="radio" name="elevation_plan_complied" value="1" required> Complied</label>
-                        <label><input type="radio" name="elevation_plan_complied" value="0" required> Not Complied</label>
-                    </div> -->
+                    <header class="remarks-header">Remarks:</header>
+                    <div class="radios">
+                        <label><input type="radio" name="cs_comp" value="Complied" required> Complied</label>
+                        <label><input type="radio" name="cs_comp" value="NotComplied" required> Not Complied</label>
+                    </div>
                     <input class="remarks" type="text" name="control_station_remarks" id="">
                 </div>
             </div>
@@ -144,10 +149,11 @@
                     <a class="button-5" href="{{ asset('storage/loc_plan/' . $applicationData->loc_plan) }}" target="_blank">View Location Plan</a>
                 </div>
                 <div class="right-col">
-                    <!-- <div class="radios">
-                        <label><input type="radio" name="elevation_plan_complied" value="1" required> Complied</label>
-                        <label><input type="radio" name="elevation_plan_complied" value="0" required> Not Complied</label>
-                    </div> -->
+                    <header class="remarks-header">Remarks:</header>
+                    <div class="radios">
+                        <label><input type="radio" name="lp_comp" value="Complied" required> Complied</label>
+                        <label><input type="radio" name="lp_comp" value="NotComplied" required> Not Complied</label>
+                    </div>
                     <input class="remarks" type="text" name="loc_plan_remarks" id="">
                 </div>
             </div>
@@ -158,10 +164,11 @@
                     <a class="button-5" href="{{ asset('storage/comp_process_report/' . $applicationData->comp_process_report) }}" target="_blank">View Process Report</a>
                 </div>
                 <div class="right-col">
-                    <!-- <div class="radios">
-                        <label><input type="radio" name="elevation_plan_complied" value="1" required> Complied</label>
-                        <label><input type="radio" name="elevation_plan_complied" value="0" required> Not Complied</label>
-                    </div> -->
+                    <header class="remarks-header">Remarks:</header>
+                    <div class="radios">
+                        <label><input type="radio" name="cp_comp" value="Complied" required> Complied</label>
+                        <label><input type="radio" name="cp_comp" value="NotComplied" required> Not Complied</label>
+                    </div>
                     <input class="remarks" type="text" name="comp_process_report_remarks" id="">
                 </div>
             </div>
@@ -171,17 +178,18 @@
                     <a class="button-5" href="{{ asset('storage/additional_req/' . $applicationData->additional_req) }}" target="_blank">View Additional Requirements</a>
                 </div>
                 <div class="right-col">
-                    <!-- <div class="radios">
-                        <label><input type="radio" name="elevation_plan_complied" value="1" required> Complied</label>
-                        <label><input type="radio" name="elevation_plan_complied" value="0" required> Not Complied</label>
-                    </div> -->
+                    <header class="remarks-header">Remarks:</header>
+                    <div class="radios">
+                        <label><input type="radio" name="ar_comp" value="Complied" required> Complied</label>
+                        <label><input type="radio" name="ar_comp" value="NotComplied" required> Not Complied</label>
+                    </div>
                     <input class="remarks" type="text" name="additional_req_remarks" id="">
                 </div>
             </div>
         </div>
 
         <br>
-        <input type="hidden" name="compliance_status" value="complied"> <!-- or "not_complied" -->
+        <input type="hidden" name="doc_compliance_result" value="Complied"> <!-- or "not_complied" -->
         <button class="btn btn-success" type="submit">Compliant</button>
         <!-- <button class="btn btn-danger">Not Compliant</button> -->
     </form>

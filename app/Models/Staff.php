@@ -9,6 +9,12 @@ class Staff extends Model
 {
     protected $fillable = [
         'compliance_status',
+        'ep_comp',
+        'ge_comp',
+        'cs_comp',
+        'lp_comp',
+        'cp_comp',
+        'ar_comp',
         'elev_plan_remarks',
         'geodetic_eng_remarks',
         'control_station_remarks',
@@ -17,6 +23,7 @@ class Staff extends Model
         'additional_req_remarks',
         'doc_compliance_result',
         'crit_area_result',
+
     ];
 
     public function user()
