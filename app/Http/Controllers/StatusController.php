@@ -52,4 +52,10 @@ class StatusController extends Controller
 
         return redirect()->back()->with('success', 'Status updated successfully.');
     }
+
+    public function successPage()
+    {
+
+        return view('adms/success_page');
+    }
 }

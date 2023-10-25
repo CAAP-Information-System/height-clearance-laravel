@@ -29,4 +29,6 @@ class HomeController extends Controller
 
         return view('components/upload_file');
     }
+
+
 }

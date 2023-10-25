@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('application_id')->constrained('applications');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->string('doc_compliance_result')->nullable();
+            $table->string('crit_area_result')->nullable();
+
             $table->string('app_comp')->nullable();
             $table->string('fee_comp')->nullable();
             $table->string('ep_comp')->nullable();
@@ -30,8 +35,8 @@ return new class extends Migration
             $table->string('loc_plan_remarks')->default('N/A');
             $table->string('comp_process_report_remarks')->default('N/A');
             $table->string('additional_req_remarks')->default('N/A');;
-            $table->string('doc_compliance_result')->nullable();
-            $table->string('crit_area_result')->nullable();
+
+
             $table->timestamps();
         });
     }

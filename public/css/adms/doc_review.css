@@ -1,7 +1,7 @@
-*{
-    color: #3B3B3B;
+* {
+    color: #3b3b3b;
 }
-.application-number{
+.application-number {
     font-size: 1.6rem;
 }
 .docs {
@@ -20,7 +20,7 @@ a {
     width: 70%;
     align-items: center;
     background-clip: padding-box;
-    background-color: #4AB3E0;
+    background-color: #4ab3e0;
     border: 1px solid transparent;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
@@ -62,41 +62,87 @@ a {
     transform: translateY(0);
 }
 
-.doc-grp{
+/* CSS */
+.btn-set{
+    display: flex;
+    justify-content: end;
+}
+.complied {
+
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: #405cf5;
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+        rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+        Ubuntu, sans-serif;
+    font-size: 100%;
+    height: 44px;
+    line-height: 1.15;
+    margin: 12px 0 0;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all 0.2s, box-shadow 0.08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 40%;
+}
+
+.complied:disabled {
+    cursor: default;
+}
+
+.complied:focus {
+    box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+        rgba(50, 50, 93, 0.2) 0 6px 15px 0, rgba(0, 0, 0, 0.1) 0 2px 2px 0,
+        rgba(50, 151, 211, 0.3) 0 0 0 4px;
+}
+
+.doc-grp {
     margin-top: 5vh;
     display: flex;
     gap: 10vh;
     align-items: center;
 }
-.left-col{
+.left-col {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
-.right-col{
+.right-col {
     width: 100%;
 }
-.remarks-header{
+.remarks-header {
     font-size: 1.2rem;
     font-weight: bold;
+    margin-bottom: 10px;
+    font-style: italic;
 }
-.doc-label{
+.doc-label {
     font-size: 1.5rem;
 }
-.remarks{
+.remarks {
     width: 100%;
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid #3B3B3B;
+    border: 1px solid #3b3b3b;
 }
 
 @media only screen and (max-width: 600px) {
-    .doc-grp{
+    .doc-grp {
         display: flex;
         flex-direction: column;
         margin-top: 0;
     }
-
-
 }
-

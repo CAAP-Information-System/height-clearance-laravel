@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('application_queues', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('application_id')->constrained('applications');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('queue_id')->nullable();
             $table->string('adms_eval')->default('Awaiting');
             $table->string('adms_supervisor')->default('Awaiting');

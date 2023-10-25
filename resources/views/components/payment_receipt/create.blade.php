@@ -33,7 +33,6 @@
                 <input type="text" name="receipt_num" class="form-control form-control-lg" placeholder="Enter Official Receipt Number" required>
             </div>
         </div>
-        <input type="hidden" name="queue_id" value="{{ $queue->id }}">
         <button type="submit" class="btn btn-primary">Submit Payment Receipt and Wait for Results</button>
     </form>
 </div>

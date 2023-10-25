@@ -21,12 +21,14 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
 });
 
 Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function(){
-    Route::get('/critical-eval/{id}', [App\Http\Controllers\ADMSController::class, 'applicationEval'])->name('adms.critical_eval');
     Route::get('/doc-review/{id}', [App\Http\Controllers\ADMSController::class, 'documentReview'])->name('doc-review');
     Route::match(['get', 'post'], '/update-compliance/{id}', [ADMSController::class, 'updateCompliance'])->name('updateCompliance');
-
+    Route::get('/critical-eval/{id}', [App\Http\Controllers\ADMSController::class, 'viewcriticalEvaluation'])->name('adms.critical_eval');
+    Route::post('/update-critic-eval/{id}', [App\Http\Controllers\ADMSController::class, 'updateEvaluation'])->name('updateEvaluation');
+    Route::get('/success', [StatusController::class, 'successPage'])->name('success');
 
 });
+
 
 Route::get('/payment-receipt/create/{application_id}', [PaymentReceiptController::class, 'create'])->name('components.payment_receipt.create');
 Route::post('/payment-receipt/store/{application_id}', [PaymentReceiptController::class, 'store'])->name('components.payment_receipt.store');

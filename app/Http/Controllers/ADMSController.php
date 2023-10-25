@@ -28,19 +28,7 @@ class ADMSController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function applicationEval($id)
-    {
-        $applicationData = Application::find($id);
 
-        if ($applicationData) {
-            // Fetches owner data through foreign ID
-            $userData = $applicationData->user;
-
-            return view('adms.critical_eval', compact('applicationData', 'userData'));
-        } else {
-            return view('components.home');
-        }
-    }
 
     public function documentReview(Request $request, $application_id)
     {
@@ -192,76 +180,116 @@ class ADMSController extends Controller
         } else {
             return redirect()->back()->with('error', 'Application not found.');
         }
-
-
     }
 
     public function updateCompliance(Request $request, $id)
     {
-    $user = Auth::user();
-    $applicationData = Application::find($id);
+        $user = Auth::user();
+        $applicationData = Application::find($id);
 
-    $request->validate([
-        'compliance_status' => 'nullable|string|max:255',
-        'application_info_remarks' => 'nullable|string|max:255',
-        'elev_plan_remarks' => 'string|max:255',
-        'geodetic_eng_remarks' => 'string|max:255',
-        'control_station_remarks' => 'string|max:255',
-        'loc_plan_remarks' => 'string|max:255',
-        'comp_process_report_remarks' => 'string|max:255',
-        'additional_req_remarks' => 'string|max:255',
-        'doc_compliance_result' => 'nullable|string|max:255',
-        'crit_area_result' => 'nullable|string|max:255',
+        $request->validate([
+            'compliance_status' => 'nullable|string|max:255',
+            'application_info_remarks' => 'nullable|string|max:255',
+            'elev_plan_remarks' => 'string|max:255',
+            'geodetic_eng_remarks' => 'string|max:255',
+            'control_station_remarks' => 'string|max:255',
+            'loc_plan_remarks' => 'string|max:255',
+            'comp_process_report_remarks' => 'string|max:255',
+            'additional_req_remarks' => 'string|max:255',
+            'doc_compliance_result' => 'nullable|string|max:255',
+            'crit_area_result' => 'nullable|string|max:255',
 
-        'app_comp'=> 'required|in:Complied,NotComplied',
-        'fee_comp'=> 'required|in:Complied,NotComplied',
-        'ep_comp'=> 'required|in:Complied,NotComplied',
-        'ge_comp'=> 'required|in:Complied,NotComplied',
-        'cs_comp'=> 'required|in:Complied,NotComplied',
-        'lp_comp'=> 'required|in:Complied,NotComplied',
-        'cp_comp'=> 'required|in:Complied,NotComplied',
-        'ar_comp'=> 'required|in:Complied,NotComplied',
-    ]);
+            'app_comp' => 'required|in:Complied,NotComplied',
+            'fee_comp' => 'required|in:Complied,NotComplied',
+            'ep_comp' => 'required|in:Complied,NotComplied',
+            'ge_comp' => 'required|in:Complied,NotComplied',
+            'cs_comp' => 'required|in:Complied,NotComplied',
+            'lp_comp' => 'required|in:Complied,NotComplied',
+            'cp_comp' => 'required|in:Complied,NotComplied',
+            'ar_comp' => 'required|in:Complied,NotComplied',
+        ]);
 
-    if ($request->isMethod('post')) {
-        // Handle the POST request to update compliance
+        if ($request->isMethod('post')) {
+            // Handle the POST request to update compliance
 
-        // Get and update the application data with remarks
-        $staff = new Staff();
-        $staff->elev_plan_remarks = $request->input('elev_plan_remarks');
-        $staff->geodetic_eng_remarks = $request->input('geodetic_eng_remarks');
-        $staff->control_station_remarks = $request->input('control_station_remarks');
-        $staff->loc_plan_remarks = $request->input('loc_plan_remarks');
-        $staff->comp_process_report_remarks = $request->input('comp_process_report_remarks');
-        $staff->additional_req_remarks = $request->input('additional_req_remarks');
-        $staff->fee_comp = $request->input('app_comp');
-        $staff->fee_comp = $request->input('fee_comp');
-        $staff->ep_comp = $request->input('ep_comp');
-        $staff->ge_comp = $request->input('ge_comp');
-        $staff->cs_comp = $request->input('cs_comp');
-        $staff->lp_comp = $request->input('lp_comp');
-        $staff->cp_comp = $request->input('cp_comp');
-        $staff->ar_comp = $request->input('ar_comp');
+            // Get and update the application data with remarks
+            $staff = new Staff();
+            $staff->elev_plan_remarks = $request->input('elev_plan_remarks');
+            $staff->geodetic_eng_remarks = $request->input('geodetic_eng_remarks');
+            $staff->control_station_remarks = $request->input('control_station_remarks');
+            $staff->loc_plan_remarks = $request->input('loc_plan_remarks');
+            $staff->comp_process_report_remarks = $request->input('comp_process_report_remarks');
+            $staff->additional_req_remarks = $request->input('additional_req_remarks');
+            $staff->fee_comp = $request->input('app_comp');
+            $staff->fee_comp = $request->input('fee_comp');
+            $staff->ep_comp = $request->input('ep_comp');
+            $staff->ge_comp = $request->input('ge_comp');
+            $staff->cs_comp = $request->input('cs_comp');
+            $staff->lp_comp = $request->input('lp_comp');
+            $staff->cp_comp = $request->input('cp_comp');
+            $staff->ar_comp = $request->input('ar_comp');
 
-        $doc_compliance_result = $request->input('doc_compliance_result');
+            $doc_compliance_result = $request->input('doc_compliance_result');
 
-        // Save the updated application data
-
-        $staff->doc_compliance_result = $doc_compliance_result;
-        $staff->save();
-
-        // Sets the process_status
-        $queue_status = new ApplicationQueue();
-        $queue_status->queue_id = 1; // Set an appropriate default value
-        $queue_status->adms_eval = 'Evaluated';
-        $queue_status->save();
+            // Save the updated application data
+            $staff->user_id = $id;
+            $staff->doc_compliance_result = $doc_compliance_result;
+            $staff->save();
 
 
-        return redirect()->route('adms.critical_eval', ['id' => $user->id]);
-    } else {
-        // Handle the GET request to display the form or perform other actions
 
-        // You can add code here to load the form or perform other GET actions
+
+            return redirect()->route('adms.critical_eval', ['id' => $user->id]);
+        } else {
+            // Handle the GET request to display the form or perform other actions
+
+            // You can add code here to load the form or perform other GET actions
+        }
     }
+
+    public function viewcriticalEvaluation($id)
+    {
+        $user = Auth::user();
+        $applicationData = Application::find($id);
+
+        if ($applicationData) {
+            // Fetches owner data through foreign ID
+            $userData = $applicationData->user;
+
+            return view('adms.critical_eval', compact('applicationData', 'userData', 'user'));
+        } else {
+            return view('components.home');
+        }
+    }
+
+    public function updateEvaluation(Request $request, $id)
+    {
+        $user = Auth::user();
+
+        // Find the Staff record for the user
+        $critical_eval = Staff::where('user_id', $id)->first();
+
+
+        $request->validate([
+            'crit_area_result' => 'nullable|string|max:255',
+        ]);
+
+        $userChoice = $request->input('crit_area_result');
+
+        // Update the crit_area_result field
+        $critical_eval->crit_area_result = $userChoice;
+        $critical_eval->save();
+
+        // Update the process status
+        $queue_status = ApplicationQueue::where('user_id', $id)->first();
+
+        // Check if the process status record exists and update it
+        if ($queue_status) {
+            $queue_status->adms_eval = 'Evaluated';
+            $queue_status->adms_supervisor = 'Check';
+            $queue_status->save();
+        }
+
+        return redirect()->route('success', ['id' => $user->id]);
     }
 }

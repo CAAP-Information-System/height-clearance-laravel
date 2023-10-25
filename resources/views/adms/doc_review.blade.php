@@ -76,7 +76,7 @@
                         <label><input type="radio" name="app_comp" value="Complied" required> Complied</label>
                         <label><input type="radio" name="app_comp" value="NotComplied" required> Not Complied</label>
                     </div>
-                    <input class="remarks" type="text" name="application_info_remarks" id="application_info_remarks">
+                    <input class="remarks" type="text" placeholder="Enter remarks here" name="application_info_remarks" id="application_info_remarks">
                 </div>
             </div>
 
@@ -93,7 +93,7 @@
                         <label><input type="radio" name="fee_comp" value="Complied" required> Complied</label>
                         <label><input type="radio" name="fee_comp" value="NotComplied" required> Not Complied</label>
                     </div>
-                    <input class="remarks" type="text" name="" id="">
+                    <input class="remarks" type="text" placeholder="Enter remarks here" name="" id="">
                 </div>
             </div>
 
@@ -108,7 +108,7 @@
                         <label><input type="radio" name="ep_comp" value="Complied" required> Complied</label>
                         <label><input type="radio" name="ep_comp" value="NotComplied" required> Not Complied</label>
                     </div>
-                    <input class="remarks" type="text" name="elev_plan_remarks" id="elev_plan_remarks">
+                    <input class="remarks" type="text" placeholder="Enter remarks here" name="elev_plan_remarks" id="elev_plan_remarks">
                 </div>
 
             </div>
@@ -124,7 +124,7 @@
                         <label><input type="radio" name="ge_comp" value="Complied" required> Complied</label>
                         <label><input type="radio" name="ge_comp" value="NotComplied" required> Not Complied</label>
                     </div>
-                    <input class="remarks" type="text" name="geodetic_eng_remarks" id="">
+                    <input class="remarks" type="text" placeholder="Enter remarks here" name="geodetic_eng_remarks" id="">
                 </div>
             </div>
 
@@ -139,7 +139,7 @@
                         <label><input type="radio" name="cs_comp" value="Complied" required> Complied</label>
                         <label><input type="radio" name="cs_comp" value="NotComplied" required> Not Complied</label>
                     </div>
-                    <input class="remarks" type="text" name="control_station_remarks" id="">
+                    <input class="remarks" type="text" placeholder="Enter remarks here" name="control_station_remarks" id="">
                 </div>
             </div>
 
@@ -154,7 +154,7 @@
                         <label><input type="radio" name="lp_comp" value="Complied" required> Complied</label>
                         <label><input type="radio" name="lp_comp" value="NotComplied" required> Not Complied</label>
                     </div>
-                    <input class="remarks" type="text" name="loc_plan_remarks" id="">
+                    <input class="remarks" type="text" placeholder="Enter remarks here" name="loc_plan_remarks" id="">
                 </div>
             </div>
 
@@ -169,7 +169,7 @@
                         <label><input type="radio" name="cp_comp" value="Complied" required> Complied</label>
                         <label><input type="radio" name="cp_comp" value="NotComplied" required> Not Complied</label>
                     </div>
-                    <input class="remarks" type="text" name="comp_process_report_remarks" id="">
+                    <input class="remarks" type="text" placeholder="Enter remarks here" name="comp_process_report_remarks" id="">
                 </div>
             </div>
             <div class="doc-grp">
@@ -183,15 +183,18 @@
                         <label><input type="radio" name="ar_comp" value="Complied" required> Complied</label>
                         <label><input type="radio" name="ar_comp" value="NotComplied" required> Not Complied</label>
                     </div>
-                    <input class="remarks" type="text" name="additional_req_remarks" id="">
+                    <input class="remarks" type="text" placeholder="Enter remarks here" name="additional_req_remarks" id="">
                 </div>
             </div>
         </div>
 
         <br>
         <input type="hidden" name="doc_compliance_result" value="Complied"> <!-- or "not_complied" -->
-        <button class="btn btn-success" type="submit">Compliant</button>
+        <div class="btn-set">
+            <button class="complied" type="submit">Complied</button>
+        </div>
         <!-- <button class="btn btn-danger">Not Compliant</button> -->
     </form>
 </div>
 @endsection
+
