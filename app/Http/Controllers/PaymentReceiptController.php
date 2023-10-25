@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Application;
+use App\Models\ApplicationQueue;
+use App\Models\Queue;
 use App\Models\Receipt;
 use Illuminate\Http\Request;
 
@@ -44,6 +46,8 @@ class PaymentReceiptController extends Controller
         } else {
             $fileNameToStore_fee_receipt = 'Not Found';
         }
+
+        // Update the application status or perform other actions
         // Create and store the payment receipt information
         $paymentReceipt = new Receipt();
         $paymentReceipt->application_id = $application_id;
@@ -54,7 +58,9 @@ class PaymentReceiptController extends Controller
         $paymentReceipt->save();
 
 
-        // Update the application status or perform other actions
+
+
+
 
         return redirect()->route('application-status', ['application_id' => $application_id])->with('success', 'Payment receipt created successfully.');
     }

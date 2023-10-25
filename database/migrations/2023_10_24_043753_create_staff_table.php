@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('application_id')->constrained('applications');
             $table->string('app_comp')->nullable();
             $table->string('fee_comp')->nullable();
             $table->string('ep_comp')->nullable();

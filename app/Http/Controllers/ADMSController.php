@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 
 use App\Models\Application;
+use App\Models\ApplicationQueue;
 use App\Models\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -248,6 +249,13 @@ class ADMSController extends Controller
 
         $staff->doc_compliance_result = $doc_compliance_result;
         $staff->save();
+
+        // Sets the process_status
+        $queue_status = new ApplicationQueue();
+        $queue_status->queue_id = 1; // Set an appropriate default value
+        $queue_status->adms_eval = 'Evaluated';
+        $queue_status->save();
+
 
         return redirect()->route('adms.critical_eval', ['id' => $user->id]);
     } else {
