@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Application;
+use App\Models\ApplicationQueue;
 use App\Models\Representative;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -57,17 +58,14 @@ class AdminController extends Controller
 
     public function applicationQueue(Request $request)
     {
-        if (Auth::check() && Auth::user()->access_role === 'admin') {
-            $userData = User::all();
-            $applicationData = Application::all();
-            $representativeData = Representative::all();
-            return view('admin.application_queue')->with('applicationData', $applicationData)
-            ->with('representativeData', $representativeData)
-            ->with('userData', $userData);
-        } else {
-            return redirect('/login')->with('message', 'Login as an admin to access this page.');
-        }
-
+        $userData = User::all();
+        $applicationData = Application::all();
+        $representativeData = Representative::all();
+        $applicationqueue = ApplicationQueue::all();
+        return view('admin.application_queue')->with('applicationData', $applicationData)
+        ->with('representativeData', $representativeData)
+        ->with('userData', $userData)
+        ->with('applicationqueue',$applicationqueue);
 
     }
 }

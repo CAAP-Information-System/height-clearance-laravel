@@ -8,10 +8,7 @@ use Illuminate\Http\Request;
 
 class StatusController extends Controller
 {
-    public function showHome()
-    {
-        return view('components/home');
-    }
+
     public function applicationStatus($application_id)
     {
         $applicationData = Application::find($application_id);

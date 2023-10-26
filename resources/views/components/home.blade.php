@@ -65,8 +65,19 @@
         </div>
     </section>
 
+    <section class="apply-section">
+        <div class="apply-grp">
+            <header class="apply-header">
+                Apply for an Height Clearance Now!
+            </header>
+            <a class="apply-btn" href="{{ url('application') }}">
+                Go to Application!
+            </a>
+        </div>
+    </section>
     <section class="requirements-section">
         <header class="req-main-hdr">What you specifically need...</header>
+        <hr class="border border-secondary border-2 opacity-50">
         <div class="req-block">
             <div class="req-grp">
                 <header class="req-header">1. Elevation Plan for Proposed Structure</header>

@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" type="text/css" href="{{ url('css/adms/critical_eval.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('css/adms/height_eval.css') }}">
 <div class="container">
     <div class="eval-main">
-        <form method="POST" action="{{ route('updateCriticalEvaluation', ['id' => $user->id]) }}">
+        <form method="POST" action="{{ route('updateHeightEvaluation', ['id' => $user->id]) }}">
             @csrf
             <header class="eval-hdr">
-                You’re now in <span style="color: #2F96D0;">Critical Evaluation</span>
+                You’re now in <span style="color: #2F96D0;">Height Evaluation</span>
             </header>
             <h2 class="mt-3">Application Number: {{$applicationData->application_number}}</h2>
 
@@ -109,27 +109,51 @@
                             <div class="data-value">
                                 <input type="text" value="N/A" readonly>
                             </div>
+                            <div class="data-label">Maximum Allowed Top Elevation</div>
+                            <div class="data-value">
+                                <input type="text" value="N/A" readonly>
+                            </div>
+                            <div class="data-label">Remarks</div>
+                            <div class="data-value">
+                                <input type="text" value="N/A" readonly>
+                            </div>
+                        </div>
+                        <div class="data-right">
+                            <div class="data-label">Proposed Top Elevation</div>
+                            <div class="data-value">
+                                <input type="text" value="N/A" readonly>
+                            </div>
+
+                            <div class="data-label">Evaluation Result (Approved or Denied)</div>
+                            <div class="data-value">
+                                <input type="text" value="N/A" readonly>
+                            </div>
                         </div>
 
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Orthometric Height</label>
+                            <div>{{$applicationData->orthometric_height}}</div>
+
+                            <label for="">Site Address</label>
+                            <div>{{$applicationData->site_address}}</div>
+
+                            <label for="">Reference Aerodrome/Facility</label>
+                            <div>NA (to be added)</div>
+                        </div>
                     </div>
                 </div>
                 <br>
-
-                <div>
-                    <header class="data-hdr">Critical Area Result</header>
-                    <div class="critical-area-grp">
-                        <div class="critical-area-radio">
-                            <input type="radio" name="crit_area_result" value="Within" id="within">
-                            <label class="within" for="within">Within</label>
-                            <div style="margin-left: 10vh;"></div>
-                            <input type="radio" name="crit_area_result" value="Outside" id="outside">
-                            <label class="outside" for="outside">Outside</label>
-                        </div>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-
+                <input type="hidden" name="evaluation_status" value="Evaluated"> <!-- or "not_complied" -->
+                <button class="btn btn-success" type="submit">Evaluated</button>
         </form>
     </div>
 

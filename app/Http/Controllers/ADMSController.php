@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\ADMSStaff;
+use App\Models\Aerodrome;
+use App\Models\AerodromeStaff;
 use App\Models\Application;
 use App\Models\ApplicationQueue;
 use App\Models\Staff;
@@ -188,7 +190,7 @@ class ADMSController extends Controller
         $applicationData = Application::find($id);
 
         $request->validate([
-            'compliance_status' => 'nullable|string|max:255',
+            'evaluation_status' => 'nullable|string|max:255',
             'application_info_remarks' => 'nullable|string|max:255',
             'elev_plan_remarks' => 'string|max:255',
             'geodetic_eng_remarks' => 'string|max:255',
@@ -213,7 +215,7 @@ class ADMSController extends Controller
             // Handle the POST request to update compliance
 
             // Get and update the application data with remarks
-            $staff = new Staff();
+            $staff = new Aerodrome();
             $staff->elev_plan_remarks = $request->input('elev_plan_remarks');
             $staff->geodetic_eng_remarks = $request->input('geodetic_eng_remarks');
             $staff->control_station_remarks = $request->input('control_station_remarks');
@@ -262,12 +264,12 @@ class ADMSController extends Controller
         }
     }
 
-    public function updateEvaluation(Request $request, $id)
+    public function updateCriticalEvaluation(Request $request, $id)
     {
         $user = Auth::user();
-
+        $applicationData = Application::find($id);
         // Find the Staff record for the user
-        $critical_eval = Staff::where('user_id', $id)->first();
+        $critical_eval = Aerodrome::where('user_id', $id)->first();
 
 
         $request->validate([
@@ -280,15 +282,115 @@ class ADMSController extends Controller
         $critical_eval->crit_area_result = $userChoice;
         $critical_eval->save();
 
-        // Update the process status
-        $queue_status = ApplicationQueue::where('user_id', $id)->first();
+        return redirect()->route('adms.height_eval', ['id' => $user->id]);
+    }
 
-        // Check if the process status record exists and update it
-        if ($queue_status) {
-            $queue_status->adms_eval = 'Evaluated';
-            $queue_status->adms_supervisor = 'Check';
-            $queue_status->save();
+    public function viewHeightEvaluation(Request $request, $id)
+    {
+        $user = Auth::user();
+        $applicationData = Application::find($id);
+
+
+        if ($request->hasFile('elevation_plan')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
+            // Get filename with the extension
+            $filenameWithExt = $request->file('elevation_plan')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('elevation_plan')->getClientOriginalExtension();
+
+            // File to store with user's ID
+            $fileNameToStore_elevation_plan = $userId . '_elevation_plan_' . time() . '.' . $extension;
+
+            // Upload Image to the 'public' disk
+            $path = $request->file('elevation_plan')->storeAs('public/elevation_plan', $fileNameToStore_elevation_plan);
+        } else {
+            $fileNameToStore_elevation_plan = 'Not Found';
         }
+
+        if ($request->hasFile('geodetic_eng_cert')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
+            // Get filename with the extension
+            $filenameWithExt = $request->file('geodetic_eng_cert')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('geodetic_eng_cert')->getClientOriginalExtension();
+
+            // File to store with user's ID
+            $fileNameToStore_geodetic_eng_cert = $userId . 'geodetic_eng_cert' . time() . '.' . $extension;
+
+            // Upload Image to the 'public' disk
+            $path = $request->file('geodetic_eng_cert')->storeAs('public/geodetic_eng_cert', $fileNameToStore_geodetic_eng_cert);
+        } else {
+            $fileNameToStore_geodetic_eng_cert = 'Not Found';
+        }
+
+        if ($request->hasFile('loc_plan')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
+            // Get filename with the extension
+            $filenameWithExt = $request->file('loc_plan')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('loc_plan')->getClientOriginalExtension();
+
+            // File to store with user's ID
+            $fileNameToStore_loc_plan = $userId . 'loc_plan' . time() . '.' . $extension;
+
+            // Upload Image to the 'public' disk
+            $path = $request->file('loc_plan')->storeAs('public/loc_plan', $fileNameToStore_loc_plan);
+        } else {
+            $fileNameToStore_loc_plan = 'Not Found';
+        }
+
+
+        if ($applicationData) {
+            $userData = $applicationData->user;
+
+            return view(
+                'adms.height_eval',
+                compact('applicationData', 'user')
+            )
+                ->with('fileNameToStore_elevation_plan', $fileNameToStore_elevation_plan)
+                ->with('fileNameToStore_geodetic_eng_cert', $fileNameToStore_geodetic_eng_cert)
+                ->with('fileNameToStore_loc_plan', $fileNameToStore_loc_plan);
+        } else {
+            return redirect()->back()->with('error', 'Application not found.');
+        }
+    }
+
+    public function updateHeightEvaluation(Request $request, $id)
+    {
+        $user = Auth::user();
+        $applicationData = Application::find($id);
+        $staff = Aerodrome::where('user_id', $id)->first();
+        $request->validate([
+            'evaluation_status' => 'nullable|string|max:255',
+
+        ]);
+
+
+        $evaluation_status = $request->input('evaluation_status');
+
+        // Save the updated application data
+        $staff->evaluation_status = $evaluation_status;
+        $staff->save();
+
+        // Updates the process status that the application is finished being evaluted.
+        $queue_status = new ApplicationQueue();
+        $queue_status->user_id = $id;
+        $queue_status->queue_id = 1; // Set an appropriate default value
+        $queue_status->adms_eval = 'Evaluated';
+        $queue_status->adms_supervisor = 'For Checking';
+        $queue_status->save();
 
         return redirect()->route('success', ['id' => $user->id]);
     }

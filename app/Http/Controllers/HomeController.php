@@ -22,7 +22,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-
+    public function showHome()
+    {
+        return view('components/home');
+    }
 
     public function uploadFile()
     {

@@ -1,0 +1,96 @@
+*{
+    color: #3b3b3b;
+}
+.eval-hdr{
+    font-size: 2rem;
+    text-align: center;
+    padding-bottom: 15px;
+}
+.document-views{
+    padding-bottom: 10px;
+
+}
+.file-group{
+    display: flex;
+    gap: 5vh;
+    align-items: center;
+    width: 100%;
+}
+.left-panel{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-size: 20px;
+}
+.right-panel{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.right-panel a{
+    margin: 3px;
+}
+
+
+/* CSS */
+.button-22 {
+  align-items: center;
+  appearance: button;
+  background-color: #0276FF;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: "RM Neue",sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  padding: 10px 21px;
+  text-align: center;
+  text-transform: none;
+  transition: color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-22:active {
+  background-color: #006AE8;
+}
+
+.button-22:hover {
+  background-color: #1C84FF;
+}
+.data-hdr{
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #B6B6B6;
+}
+.data{
+    padding: 10px;
+}
+.data-field{
+    display: flex;
+    gap: 30vh;
+}
+.data-label{
+    margin-top: 10px;
+    font-weight: bold;
+    font-style: italic;
+}
+.data-left .data-right{
+    width: 100%;
+}
+.data-value input{
+    padding: 7px;
+    border: 1px solid #B6B6B6;
+    border-radius: 10px;
+}

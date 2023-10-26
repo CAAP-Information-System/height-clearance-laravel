@@ -24,7 +24,9 @@ Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function(){
     Route::get('/doc-review/{id}', [App\Http\Controllers\ADMSController::class, 'documentReview'])->name('doc-review');
     Route::match(['get', 'post'], '/update-compliance/{id}', [ADMSController::class, 'updateCompliance'])->name('updateCompliance');
     Route::get('/critical-eval/{id}', [App\Http\Controllers\ADMSController::class, 'viewcriticalEvaluation'])->name('adms.critical_eval');
-    Route::post('/update-critic-eval/{id}', [App\Http\Controllers\ADMSController::class, 'updateEvaluation'])->name('updateEvaluation');
+    Route::post('/update-critic-eval/{id}', [App\Http\Controllers\ADMSController::class, 'updateCriticalEvaluation'])->name('updateCriticalEvaluation');
+    Route::get('/height-eval/{id}', [App\Http\Controllers\ADMSController::class, 'viewHeightEvaluation'])->name('adms.height_eval');
+    Route::post('/update-height-eval/{id}', [App\Http\Controllers\ADMSController::class, 'updateHeightEvaluation'])->name('updateHeightEvaluation');
     Route::get('/success', [StatusController::class, 'successPage'])->name('success');
 
 });
@@ -38,7 +40,7 @@ Route::get('/view-status', [StatusController::class, 'checkstatus'])->name('view
 
 Route::get('/application-queue', [AdminController::class, 'applicationQueue'])->name('application-queue');
 Route::get('/fileUpload', [ApplicationFormController::class, 'testFileUpload'])->name('fileUpload');
-Route::get('/home', [StatusController::class, 'showHome'])->name('home');
+Route::get('/home', [HomeController::class, 'showHome'])->name('home');
 Route::get('/application', [App\Http\Controllers\ApplicationFormController::class, 'index'])->name('upload');
 Route::get('/', function () {
     return view('auth.login');

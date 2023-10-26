@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Staff extends Model
+class Aerodrome extends Model
 {
     protected $fillable = [
-        'compliance_status',
+        'evaluation_status',
         'ep_comp',
         'ge_comp',
         'cs_comp',

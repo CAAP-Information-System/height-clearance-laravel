@@ -58,7 +58,7 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         if (auth()->check()) {
-            return redirect('/home');  // Redirect to the home page if authenticated
+            return redirect('home');  // Redirect to the home page if authenticated
         }
 
         return view('auth.login');
