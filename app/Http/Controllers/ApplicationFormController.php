@@ -39,9 +39,9 @@ class ApplicationFormController extends Controller
 
         // $applicationNumber = Application::generateApplicationNumber();
         $user = auth()->user();
-        if ($user->application) {
-            return redirect()->back()->with('error', 'You can only submit one application per account.');
-        }
+        // if ($user->application) {
+        //     return redirect()->back()->with('error', 'You can only submit one application per account.');
+        // }
         // Validate the form data (you can customize validation rules)
         $validatedData = $request->validate([
             'type_of_structure' => 'required|in:Residential,Commercial',

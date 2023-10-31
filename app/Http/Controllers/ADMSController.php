@@ -384,12 +384,104 @@ class ADMSController extends Controller
         $staff->evaluation_status = $evaluation_status;
         $staff->save();
 
+        return redirect()->route('ADMSSupervisorView', ['id' => $user->id]);
+    }
+
+    public function ADMSSupervisorView(Request $request, $id)
+    {
+        $user = Auth::user();
+        $applicationData = Application::find($id);
+
+
+        if ($request->hasFile('elevation_plan')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
+            // Get filename with the extension
+            $filenameWithExt = $request->file('elevation_plan')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('elevation_plan')->getClientOriginalExtension();
+
+            // File to store with user's ID
+            $fileNameToStore_elevation_plan = $userId . '_elevation_plan_' . time() . '.' . $extension;
+
+            // Upload Image to the 'public' disk
+            $path = $request->file('elevation_plan')->storeAs('public/elevation_plan', $fileNameToStore_elevation_plan);
+        } else {
+            $fileNameToStore_elevation_plan = 'Not Found';
+        }
+
+        if ($request->hasFile('geodetic_eng_cert')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
+            // Get filename with the extension
+            $filenameWithExt = $request->file('geodetic_eng_cert')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('geodetic_eng_cert')->getClientOriginalExtension();
+
+            // File to store with user's ID
+            $fileNameToStore_geodetic_eng_cert = $userId . 'geodetic_eng_cert' . time() . '.' . $extension;
+
+            // Upload Image to the 'public' disk
+            $path = $request->file('geodetic_eng_cert')->storeAs('public/geodetic_eng_cert', $fileNameToStore_geodetic_eng_cert);
+        } else {
+            $fileNameToStore_geodetic_eng_cert = 'Not Found';
+        }
+
+        if ($request->hasFile('loc_plan')) {
+            // Get user's ID
+            $userId = auth()->user()->id;
+
+            // Get filename with the extension
+            $filenameWithExt = $request->file('loc_plan')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('loc_plan')->getClientOriginalExtension();
+
+            // File to store with user's ID
+            $fileNameToStore_loc_plan = $userId . 'loc_plan' . time() . '.' . $extension;
+
+            // Upload Image to the 'public' disk
+            $path = $request->file('loc_plan')->storeAs('public/loc_plan', $fileNameToStore_loc_plan);
+        } else {
+            $fileNameToStore_loc_plan = 'Not Found';
+        }
+
+
+        if ($applicationData) {
+            $userData = $applicationData->user;
+
+            return view(
+                'adms.supervisor_eval',
+                compact('applicationData', 'user')
+            )
+                ->with('fileNameToStore_elevation_plan', $fileNameToStore_elevation_plan)
+                ->with('fileNameToStore_geodetic_eng_cert', $fileNameToStore_geodetic_eng_cert)
+                ->with('fileNameToStore_loc_plan', $fileNameToStore_loc_plan);
+        } else {
+            return redirect()->back()->with('error', 'Application not found.');
+        }
+    }
+
+    public function ADMSSupervisorUpdate(Request $request, $id)
+    {
+        $user = Auth::user();
+        $applicationData = Application::find($id);
+
+
         // Updates the process status that the application is finished being evaluted.
         $queue_status = new ApplicationQueue();
         $queue_status->user_id = $id;
         $queue_status->queue_id = 1; // Set an appropriate default value
         $queue_status->adms_eval = 'Evaluated';
-        $queue_status->adms_supervisor = 'For Checking';
+        $queue_status->adms_supervisor = 'Checked';
+        $queue_status->adms_chief = 'For Review';
         $queue_status->save();
 
         return redirect()->route('success', ['id' => $user->id]);

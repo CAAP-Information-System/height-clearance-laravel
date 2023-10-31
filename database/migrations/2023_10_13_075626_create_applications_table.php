@@ -23,12 +23,7 @@ return new class extends Migration
             $table->integer('long_min');
             $table->integer('long_sec');
             $table->integer('orthometric_height');
-            $table->string('elevation_plan')->nullable();
-            $table->string('geodetic_eng_cert')->nullable();
-            $table->string('control_station')->nullable();
-            $table->string('loc_plan')->nullable();
-            $table->string('comp_process_report')->nullable();
-            $table->string('additional_req')->nullable();
+
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

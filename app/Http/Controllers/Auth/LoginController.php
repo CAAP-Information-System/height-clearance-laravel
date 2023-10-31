@@ -32,11 +32,17 @@ class LoginController extends Controller
 
     public function authenticated()
     {
+        // Will redirect to Dashboard if logged in as admin
         if(Auth::user()->access_role == 'admin')
         {
             return redirect('admin/dashboard');
         }
+        // Will redirect to Home Page if logged in as Ad
         else if(Auth::user()->access_role == 'user')
+        {
+            return redirect('/home');
+        }
+        else if(Auth::user()->access_role == 'adms')
         {
             return redirect('/home');
         }

@@ -58,12 +58,15 @@
     border: solid 1px #575757;
 }
 
-
+.btn-set{
+    display: flex;
+    justify-content: center;
+}
 /* CSS */
 .button-24 {
-    width: 100%;
-    background: #ff4742;
-    border: 1px solid #ff4742;
+    width: 60%;
+    background: #2AC73A;
+    border: 1px solid #2AC73A;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
     box-sizing: border-box;
@@ -90,7 +93,7 @@
 .button-24:active {
     background-color: initial;
     background-position: 0 0;
-    color: #ff4742;
+    color: #2AC73A;
 }
 
 .button-24:active {

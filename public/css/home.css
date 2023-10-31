@@ -176,7 +176,7 @@
 .apply-btn{
     padding: 15px;
     border: 1px solid transparent;
-    border-radius: 15px;
+    border-radius: 100px;
     background-color: #FF8423;
     color: #ffff;
     font-weight: bold;
@@ -273,6 +273,15 @@
     }
     .req-main-hdr, .req-header{
         text-align: center;
+    }
+    .back-to-top{
+        text-align: center;
+        background-color: #47BFE5;
+        padding: 10px;
+        width: 40%;
+        color: #ffff;
+        border-radius: 100px;
+
     }
 
 

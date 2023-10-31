@@ -207,7 +207,9 @@
         </section>
 
 
-        <button type="submit" class="button-24" onclick="showSuccessModal()">Proceed to Payment</button>
+        <div class="btn-set">
+            <button type="submit" class="button-24" onclick="showSuccessModal()">Proceed to Payment</button>
+        </div>
 
     </div>
 </form>
