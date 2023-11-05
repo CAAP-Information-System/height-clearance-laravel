@@ -55,4 +55,9 @@ class StatusController extends Controller
 
         return view('adms/success_page');
     }
+
+    public function checkResultsPage()
+    {
+        return view('components/results/check_results');
+    }
 }

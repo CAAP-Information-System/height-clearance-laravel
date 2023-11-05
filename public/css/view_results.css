@@ -1,0 +1,33 @@
+.result-grp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.application-result-hdr{
+    font-size: 2rem;
+    text-align: center;
+    color: #07275A;
+}
+.result-img{
+    margin-top: 7vh;
+    width: auto;
+    height: 200px;
+}
+.header-msg{
+    margin-top: 4vh;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #07275A;
+}
+.sub-msg{
+    margin-top: 3vh;
+    text-align: center;
+    color: #969696;
+}
+
+.return-home-btn{
+    text-align: center;
+    color: #4AB3E0;
+    text-decoration: none;
+}

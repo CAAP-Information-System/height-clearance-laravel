@@ -4,19 +4,21 @@
 <div class="container">
     <h1>Registered Users</h1>
 
-    <table class="table table-striped">
+    <table class="table table-hover">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Email</th>
+                <th>Full Legal Name</th>
+                <th>Email Address</th>
+                <th>Date Registered</th>
                 <th>Role</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($users as $user)
             <tr>
-                <td>{{ $user->name }}</td>
+                <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                 <td>{{ $user->email }}</td>
+                <td>{{ $user->created_at }}</td>
                 <td>
                     @if ($user->access_role == 'admin')
                     <div>Administrator</div>

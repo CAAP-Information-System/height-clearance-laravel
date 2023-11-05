@@ -39,6 +39,7 @@ Route::post('/payment-receipt/store/{application_id}', [PaymentReceiptController
 
 Route::get('/application-status/{application_id}', [StatusController::class, 'applicationStatus'])->name('application-status');
 Route::get('/view-status', [StatusController::class, 'checkstatus'])->name('view-status');
+Route::get('/check-results', [StatusController::class, 'checkResultsPage'])->name('check-results');
 
 Route::get('/application-queue', [AdminController::class, 'applicationQueue'])->name('application-queue');
 Route::get('/fileUpload', [ApplicationFormController::class, 'testFileUpload'])->name('fileUpload');

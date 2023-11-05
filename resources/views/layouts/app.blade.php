@@ -62,6 +62,7 @@
                             <a class="item-link" href="{{ url('admin/dashboard') }}">Dashboard</a>
                             @endif
                             <a class="item-link" href="{{ route('view-status') }}">View Status</a>
+                            <a class="item-link" href="{{ route('check-results') }}">Check Results</a>
 
                         </div>
 
