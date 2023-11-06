@@ -7,10 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ApplicationRequest;
 use App\Http\Requests\RepresentativeRequest;
 use App\Models\Application;
+use App\Models\File;
 use App\Models\Representative;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class ApplicationFormController extends Controller
@@ -31,19 +33,23 @@ class ApplicationFormController extends Controller
      */
     public function index()
     {
-        return view('components/upload_form');
+        $user = Auth::user();
+
+        // Pass the user data to the view
+        return view('components/upload_form', ['user' => $user]);
     }
 
-    public function submitForm(Request $request): RedirectResponse
+    public function submitForm(Request $request,$id): RedirectResponse
     {
 
+        $user = Auth::user();
         // $applicationNumber = Application::generateApplicationNumber();
-        $user = auth()->user();
+        // $user = auth()->user();
         // if ($user->application) {
         //     return redirect()->back()->with('error', 'You can only submit one application per account.');
         // }
         // Validate the form data (you can customize validation rules)
-        $validatedData = $request->validate([
+        $validateForm = $request->validate([
             'type_of_structure' => 'required|in:Residential,Commercial',
             'site_address' => 'required|string|max:100',
             'extension_desc' => 'required|nullable|string|max:300',
@@ -57,6 +63,15 @@ class ApplicationFormController extends Controller
             'long_sec' => 'required|numeric',
             'orthometric_height' => 'required|numeric',
             'submission_date' => 'required|date',
+            'elevation_plan' => 'mimes:pdf|nullable|max:10999',
+            'geodetic_eng_cert' => 'mimes:pdf|nullable|max:10999',
+            'control_station' => 'mimes:pdf|nullable|max:10999',
+            'loc_plan' => 'mimes:pdf|nullable|max:10999',
+            'comp_process_report' => 'mimes:pdf|nullable|max:10999',
+            'additional_req' => 'mimes:pdf|nullable|max:10999',
+        ]);
+
+        $validateFile = $request->validate([
             'elevation_plan' => 'mimes:pdf|nullable|max:10999',
             'geodetic_eng_cert' => 'mimes:pdf|nullable|max:10999',
             'control_station' => 'mimes:pdf|nullable|max:10999',
@@ -190,18 +205,25 @@ class ApplicationFormController extends Controller
 
         // $request->session()->put('application', $application);
 
-        $application = new Application($validatedData);
-        $application->elevation_plan = $fileNameToStore_elevation_plan;
-        $application->geodetic_eng_cert = $fileNameToStore_geodetic_eng_cert;
-        $application->control_station = $fileNameToStore_control_station;
-        $application->loc_plan = $fileNameToStore_loc_plan;
-        $application->comp_process_report = $fileNameToStore_comp_process_report;
-        $application->additional_req = $fileNameToStore_additional_req;
+        $application = new Application($validateForm);
+
         $application->application_number = $application_number;
         $application->process_status = 'Queued for ADMS evaluation';
         $application->status = 'pending'; // Set the status here
         $application->user()->associate(auth()->user());
         $application->save();
+
+        $newFile = new File($validateFile);
+        $newFile->elevation_plan = $fileNameToStore_elevation_plan;
+        $newFile->geodetic_eng_cert = $fileNameToStore_geodetic_eng_cert;
+        $newFile->control_station = $fileNameToStore_control_station;
+        $newFile->loc_plan = $fileNameToStore_loc_plan;
+        $newFile->comp_process_report = $fileNameToStore_comp_process_report;
+        $newFile->additional_req = $fileNameToStore_additional_req;
+        $newFile->status = 'Pending'; // Set the initial status
+        $newFile->uploaded_by = auth()->user()->first_name; // Use the authenticated user's name
+        $newFile->application()->associate($application); // Associate the file with the application
+        $newFile->save();
 
 
         return redirect()->route('components.payment_receipt.create', ['application_id' => $application->id]);

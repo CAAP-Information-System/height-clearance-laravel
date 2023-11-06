@@ -40,7 +40,7 @@
                         </div>
                         <div class="">
                             <label>
-                                <input class="form-check-input" type="radio" name="permit_type" value="height_clearance_permit">
+                                <input class="form-check-input" type="radio" name="permit_type" value="height_limitation">
                                 Height Limitation (HL)
                             </label>
                         </div>

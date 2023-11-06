@@ -34,7 +34,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'permit_type' => ['required', 'in:height_clearance_permit,height_limitation'],
-            'building_type' => ['required', 'in:permanent,temporary'],
+            'building_type' => ['in:permanent,temporary'],
 
             // Add validation rules for Representative model fields here
             'rep_fname' => ['required', 'string', 'max:255'],

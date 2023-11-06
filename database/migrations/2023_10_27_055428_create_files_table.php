@@ -13,11 +13,20 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('application_id')->nullable();
+            $table->foreign('application_id')->references('id')->on('applications');
             $table->string('name')->nullable();
-            $table->string('file_type')->nullable();
             $table->string('status')->nullable();
             $table->string('uploaded_by')->nullable();
-            $table->foreignId('application_id')->constrained('applications');
+            $table->string('elevation_plan')->nullable();
+            $table->string('geodetic_eng_cert')->nullable();
+            $table->string('control_station')->nullable();
+            $table->string('loc_plan')->nullable();
+            $table->string('comp_process_report')->nullable();
+            $table->string('additional_req')->nullable();
+            $table->string('fee_receipt')->nullable();
+
+
             $table->timestamps();
         });
     }

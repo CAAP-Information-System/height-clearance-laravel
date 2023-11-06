@@ -10,6 +10,8 @@ return new class extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->enum('type_of_structure', ['Residential', 'Commercial']);
             $table->string('site_address');
             $table->string('extension_desc')->nullable();
@@ -24,10 +26,8 @@ return new class extends Migration
             $table->integer('long_sec');
             $table->integer('orthometric_height');
 
-            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
 
         });
     }

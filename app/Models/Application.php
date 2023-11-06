@@ -25,12 +25,12 @@ class Application extends Model
         'long_sec',
         'orthometric_height',
         'fee_receipt',
-        'elevation_plan',
-        'geodetic_eng_cert',
-        'control_station',
-        'loc_plan',
-        'comp_process_report',
-        'additional_req',
+        // 'elevation_plan',
+        // 'geodetic_eng_cert',
+        // 'control_station',
+        // 'loc_plan',
+        // 'comp_process_report',
+        // 'additional_req',
         'process_status',
     ];
     public static function generateApplicationNumber()
@@ -58,6 +58,11 @@ class Application extends Model
     }
     public function paymentReceipts()
     {
-        return $this->hasMany(PaymentReceipt::class);
+        return $this->hasMany(Receipt::class);
+    }
+
+    public function applicationFiles()
+    {
+        return $this->hasMany(File::class);
     }
 }

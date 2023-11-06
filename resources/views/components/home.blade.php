@@ -84,7 +84,7 @@
                 <div class="req-desc">
                     <div class="req-desc-content">
                         <div class="req-desc-upper">
-                            If in case, the prposed structure is to be installed/constructed atop existing structure, include the height of the existing structure.
+                            If in case, the proposed structure is to be installed/constructed atop existing structure, include the height of the existing structure.
                         </div>
                         <hr class="border border-info border-2 opacity-50">
                         <div class="req-desc-lower">

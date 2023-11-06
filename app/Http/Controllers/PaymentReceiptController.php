@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Application;
 use App\Models\ApplicationQueue;
+use App\Models\File;
 use App\Models\Queue;
 use App\Models\Receipt;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class PaymentReceiptController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'fee_receipt' => 'nullable|file|mimes:jpg,pdf,png|max:10999',
+            'fee_receipt' => 'mimes:pdf|nullable|max:10999',
             'receipt_num' => 'required|string|max:255',
         ]);
 
@@ -51,17 +52,17 @@ class PaymentReceiptController extends Controller
         // Create and store the payment receipt information
         $paymentReceipt = new Receipt();
         $paymentReceipt->application_id = $application_id;
-        $paymentReceipt->fee_receipt = $fileNameToStore_fee_receipt;
         $paymentReceipt->receipt_num = $request->input('receipt_num');
-
-        // Add other fields as needed
         $paymentReceipt->save();
 
+        $saveReceipt = new File();
+        $saveReceipt->fee_receipt = $fileNameToStore_fee_receipt;
+        $saveReceipt->save();
 
 
 
 
 
-        return redirect()->route('application-status', ['application_id' => $application_id])->with('success', 'Payment receipt created successfully.');
+        return redirect()->route('application-status', ['application_id' => $application_id]);
     }
 }

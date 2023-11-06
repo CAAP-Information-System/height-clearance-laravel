@@ -1,7 +1,7 @@
 # Height Clearance Permit (HCP) Documentation
 > Version Beta
 ### What is HCP all about?
-The CAAP has an online platform for Height Clearance Permit (HCP) issuance, which is part of their efforts to streamline the issuance of permits, licenses, and certificates for construction. They also have a virtual map of critical areas to guide stakeholders in their applications for HCP.
+The Civil Aviation Authority of the Philippines (CAAP) has an online platform for Height Evaluation which is part of their efforts to streamline the issuance of permits, licenses, and certificates for construction. They also have a virtual map of critical areas to guide stakeholders in their applications for HCP.
 
 **_Reference:_**
 [Understanding Building Height Limit in the Philippines & Exceptions](https://www.ianfulgar.com/reference/understanding-building-height-limit-in-the-philippines-exceptions/#:~:text=The%20CAAP%20has%20an%20online,in%20their%20applications%20for%20HCP.)
