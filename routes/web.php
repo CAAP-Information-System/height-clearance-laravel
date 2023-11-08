@@ -5,6 +5,7 @@ use App\Http\Controllers\ADMSController;
 use App\Http\Controllers\ApplicationFormController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentReceiptController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StatusController;
 use App\Models\ApplicationForm;
 use Illuminate\Support\Facades\Auth;
@@ -42,14 +43,16 @@ Route::get('/view-status', [StatusController::class, 'checkstatus'])->name('view
 Route::get('/check-results', [StatusController::class, 'checkResultsPage'])->name('check-results');
 
 Route::get('/application-queue', [AdminController::class, 'applicationQueue'])->name('application-queue');
-Route::get('/fileUpload', [ApplicationFormController::class, 'testFileUpload'])->name('fileUpload');
+Route::get('/apply-owner', [ApplicationFormController::class, 'apply_owner_view'])->name('apply-owner');
+Route::get('/view-profile/{application_id}', [ProfileController::class, 'index'])->name('view-profile');
 Route::get('/home', [HomeController::class, 'showHome'])->name('home');
-Route::get('/application', [App\Http\Controllers\ApplicationFormController::class, 'index'])->name('upload');
+Route::get('/application', [App\Http\Controllers\ApplicationFormController::class, 'application_form'])->name('upload');
 Route::get('/', function () {
     return view('auth.login');
 });
 
 Route::post('/submit-application', [ApplicationFormController::class, 'submitForm'])->name('submitApplication');
+Route::post('/submit-owner-details', [ApplicationFormController::class, 'submit_owner_details'])->name('submitOwnerDetails');
 Auth::routes();
 
 Route::get('form-data/{id}', [ApplicationFormController::class, 'getFormData']);

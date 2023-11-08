@@ -23,13 +23,13 @@
         <div class="row m-4 p-3">
             <div class="mb-4 pb-2">
                 <div class="form-group">
-                    <!-- <input type="file" name="fee_receipt" id="fee_receipt" accept=".pdf"> -->
+                    <!-- <input type="file" name="fee_receipt" id="fee_receipt" accept=".jpg"> -->
                 </div>
             </div>
         </div>
         <div class="mb-4 pb-2">
             <div class="form-outline">
-                <label class="form-label" for="form3Examplev4">Official Receipt Number</label>
+                <label class="form-label">Official Receipt Number</label>
                 <input type="text" name="receipt_num" class="form-control form-control-lg" placeholder="Enter Official Receipt Number" required>
             </div>
         </div>

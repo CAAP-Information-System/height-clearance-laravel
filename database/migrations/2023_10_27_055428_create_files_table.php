@@ -24,9 +24,6 @@ return new class extends Migration
             $table->string('loc_plan')->nullable();
             $table->string('comp_process_report')->nullable();
             $table->string('additional_req')->nullable();
-            $table->string('fee_receipt')->nullable();
-
-
             $table->timestamps();
         });
     }

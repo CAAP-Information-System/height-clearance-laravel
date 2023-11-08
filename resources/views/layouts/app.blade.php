@@ -9,9 +9,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Online Height Clearance</title>
+    <link rel="icon" href="asset/img/caap-logo.png" type="image/x-icon">
+
     <link rel="stylesheet" type="text/css" href="{{ url('css/app.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
@@ -71,7 +72,7 @@
                     <!-- Righ0t Side Of Navbar -->
                     @auth
                     @if(Auth::user()->access_role == 'user') <!-- Assuming isAdmin() is a method in your User model -->
-                    <a class="button-28" href="{{ url('application') }}">
+                    <a class="button-28" href="{{ url('apply-owner') }}">
                         <i class='bx bxs-log-in-circle'></i>
                         Apply for a Permit
                     </a>
@@ -88,11 +89,13 @@
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                                {{ Auth::user()->rep_fname }} {{ Auth::user()->rep_lname }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+
+
+                                <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
@@ -111,8 +114,6 @@
 
 
         <main class="py-4">
-
-
             @yield('content')
         </main>
     </div>

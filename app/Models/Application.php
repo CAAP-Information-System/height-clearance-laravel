@@ -11,6 +11,12 @@ class Application extends Model
 {
     protected $fillable = [
         'application_number',
+        'owner_fname',
+        'owner_lname',
+        'owner_email',
+        'owner_address',
+        'owner_landline',
+        'owner_mobile',
         'type_of_structure',
         'site_address',
         'proposed_height',
@@ -24,13 +30,6 @@ class Application extends Model
         'long_min',
         'long_sec',
         'orthometric_height',
-        'fee_receipt',
-        // 'elevation_plan',
-        // 'geodetic_eng_cert',
-        // 'control_station',
-        // 'loc_plan',
-        // 'comp_process_report',
-        // 'additional_req',
         'process_status',
     ];
     public static function generateApplicationNumber()

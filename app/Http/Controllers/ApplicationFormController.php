@@ -31,7 +31,33 @@ class ApplicationFormController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function apply_owner_view()
+    {
+        return view('components/apply_owner');
+    }
+
+    public function submit_owner_details(Request $request)
+    {
+        $validateForm = $request->validate([
+            'permit_type' => 'in:height_clearance_permit,height_limitation',
+            'building_type' => 'in:permanent,temporary',
+            'owner_fname' => 'required|string|max:100',
+            'owner_lname' => 'required|string|max:100',
+            'owner_email' => 'required|string|max:100',
+            'owner_address' => 'required|string|max:100',
+            'owner_landline' => 'required|numeric',
+            'owner_mobile' => 'required|numeric',
+        ]);
+        $application_number = Helper::IDGenerator(Application::class, 'application_number', 4, '23');
+
+        $application = new Application($validateForm);
+        $application->application_number = $application_number;
+        $application->save();
+
+        return redirect()->route('components.upload_form', ['application_id' => $application->id]);
+    }
+
+    public function application_form()
     {
         $user = Auth::user();
 
@@ -39,7 +65,7 @@ class ApplicationFormController extends Controller
         return view('components/upload_form', ['user' => $user]);
     }
 
-    public function submitForm(Request $request,$id): RedirectResponse
+    public function submitForm(Request $request): RedirectResponse
     {
 
         $user = Auth::user();
@@ -50,6 +76,8 @@ class ApplicationFormController extends Controller
         // }
         // Validate the form data (you can customize validation rules)
         $validateForm = $request->validate([
+            'permit_type' => 'required|in:height_clearance_permit,height_limitation',
+            'building_type' => 'required|in:Permanent,Temporary',
             'type_of_structure' => 'required|in:Residential,Commercial',
             'site_address' => 'required|string|max:100',
             'extension_desc' => 'required|nullable|string|max:300',
@@ -63,12 +91,6 @@ class ApplicationFormController extends Controller
             'long_sec' => 'required|numeric',
             'orthometric_height' => 'required|numeric',
             'submission_date' => 'required|date',
-            'elevation_plan' => 'mimes:pdf|nullable|max:10999',
-            'geodetic_eng_cert' => 'mimes:pdf|nullable|max:10999',
-            'control_station' => 'mimes:pdf|nullable|max:10999',
-            'loc_plan' => 'mimes:pdf|nullable|max:10999',
-            'comp_process_report' => 'mimes:pdf|nullable|max:10999',
-            'additional_req' => 'mimes:pdf|nullable|max:10999',
         ]);
 
         $validateFile = $request->validate([
@@ -79,6 +101,7 @@ class ApplicationFormController extends Controller
             'comp_process_report' => 'mimes:pdf|nullable|max:10999',
             'additional_req' => 'mimes:pdf|nullable|max:10999',
         ]);
+
         if ($request->hasFile('elevation_plan')) {
             // Get user's ID
             $userId = auth()->user()->id;
@@ -98,7 +121,6 @@ class ApplicationFormController extends Controller
         } else {
             $fileNameToStore_elevation_plan = 'Not Found';
         }
-
         if ($request->hasFile('geodetic_eng_cert')) {
             // Get user's ID
             $userId = auth()->user()->id;
@@ -118,7 +140,6 @@ class ApplicationFormController extends Controller
         } else {
             $fileNameToStore_geodetic_eng_cert = 'Not Found';
         }
-
         if ($request->hasFile('control_station')) {
             // Get user's ID
             $userId = auth()->user()->id;
@@ -138,7 +159,6 @@ class ApplicationFormController extends Controller
         } else {
             $fileNameToStore_control_station = 'Not Found';
         }
-
         if ($request->hasFile('loc_plan')) {
             // Get user's ID
             $userId = auth()->user()->id;
@@ -158,7 +178,6 @@ class ApplicationFormController extends Controller
         } else {
             $fileNameToStore_loc_plan = 'Not Found';
         }
-
         if ($request->hasFile('comp_process_report')) {
             // Get user's ID
             $userId = auth()->user()->id;
@@ -178,8 +197,6 @@ class ApplicationFormController extends Controller
         } else {
             $fileNameToStore_comp_process_report = 'Not Found';
         }
-
-
         if ($request->hasFile('additional_req')) {
             // Get user's ID
             $userId = auth()->user()->id;
@@ -200,14 +217,12 @@ class ApplicationFormController extends Controller
             $fileNameToStore_additional_req = 'Not Found';
         }
 
-        $application_number = Helper::IDGenerator(Application::class, 'application_number', 4, '23');
+
 
 
         // $request->session()->put('application', $application);
 
         $application = new Application($validateForm);
-
-        $application->application_number = $application_number;
         $application->process_status = 'Queued for ADMS evaluation';
         $application->status = 'pending'; // Set the status here
         $application->user()->associate(auth()->user());

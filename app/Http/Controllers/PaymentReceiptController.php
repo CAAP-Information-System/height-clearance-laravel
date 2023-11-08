@@ -23,10 +23,11 @@ class PaymentReceiptController extends Controller
     public function store(Request $request, $application_id)
     {
         // Validate the request data
-        $request->validate([
-            'fee_receipt' => 'mimes:pdf|nullable|max:10999',
+        $validateReceipt =  $request->validate([
             'receipt_num' => 'required|string|max:255',
+            'fee_receipt' => 'mimes:jpg|nullable|max:10999',
         ]);
+
 
         if ($request->hasFile('fee_receipt')) {
             // Get user's ID
@@ -40,28 +41,19 @@ class PaymentReceiptController extends Controller
             $extension = $request->file('fee_receipt')->getClientOriginalExtension();
 
             // File to store with user's ID
-            $fileNameToStore_fee_receipt = $userId . '_fee_receipt_' . time() . '.' . $extension;
+            $fileNameToStore_fee_receipt= $userId . 'fee_receipt' . time() . '.' . $extension;
 
             // Upload Image to the 'public' disk
-            $path = $request->file('fee_receipt')->storeAs('public/fee_receipt', $fileNameToStore_fee_receipt);
+            $path = $request->file('elevation_plan')->storeAs('public/elevation_plan', $fileNameToStore_fee_receipt);
         } else {
-            $fileNameToStore_fee_receipt = 'Not Found';
+            $fileNameToStore_fee_receipt= 'Not Found';
         }
 
-        // Update the application status or perform other actions
-        // Create and store the payment receipt information
-        $paymentReceipt = new Receipt();
+        $paymentReceipt = new Receipt($validateReceipt);
         $paymentReceipt->application_id = $application_id;
         $paymentReceipt->receipt_num = $request->input('receipt_num');
+        $paymentReceipt->fee_receipt = $fileNameToStore_fee_receipt;
         $paymentReceipt->save();
-
-        $saveReceipt = new File();
-        $saveReceipt->fee_receipt = $fileNameToStore_fee_receipt;
-        $saveReceipt->save();
-
-
-
-
 
         return redirect()->route('application-status', ['application_id' => $application_id]);
     }

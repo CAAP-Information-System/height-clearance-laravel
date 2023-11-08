@@ -3,6 +3,7 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('css/auth/login.css') }}">
 
+
 <section class="vh-100">
     <div class="container">
         <header class="auth-hdr">Welcome</header>
@@ -55,10 +56,8 @@
                                 Forgot your password?
                             </a>
                             @endif
-
-
                         </div>
-                        <button type="submit" class="button-30">
+                        <button type="submit" class="button-30" id="login-button">
                             Sign In
                         </button>
                         <div class="row ">
@@ -76,24 +75,4 @@
         </div>
     </div>
 </section>
-
-<script>
-    const passwordField = document.getElementById('password');
-    const showPasswordCheckbox = document.getElementById('show-password');
-
-    showPasswordCheckbox.addEventListener('change', () => {
-        const passwordFieldType = showPasswordCheckbox.checked ? 'text' : 'password';
-        passwordField.setAttribute('type', passwordFieldType);
-    });
-</script>
-<script>
-    document.getElementById('password').addEventListener('keyup', function(event) {
-        const capsLockWarning = document.getElementById('caps-lock-warning');
-        if (event.getModifierState && event.getModifierState('CapsLock')) {
-            capsLockWarning.style.display = 'block';
-        } else {
-            capsLockWarning.style.display = 'none';
-        }
-    });
-</script>
 @endsection

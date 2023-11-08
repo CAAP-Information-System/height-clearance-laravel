@@ -12,6 +12,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('permit_type');
+            $table->string('building_type')->nullable();
+            $table->string('owner_fname');
+            $table->string('owner_lname');
+            $table->string('owner_email');
+            $table->string('owner_address');
+            $table->integer('owner_landline');
+            $table->integer('owner_mobile');
             $table->enum('type_of_structure', ['Residential', 'Commercial']);
             $table->string('site_address');
             $table->string('extension_desc')->nullable();

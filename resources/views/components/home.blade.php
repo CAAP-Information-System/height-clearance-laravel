@@ -2,6 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('css/home.css') }}">
+
 <div class="container">
     <section class="getting-started-section">
         <header class="getting-started-hdr">Getting Started</header>
@@ -13,6 +14,7 @@
                 <div>
                     <header class="number-hdr">#1</header>
                     <div class="card-title">Elevation Plan for Proposed Structure</div>
+                </div>
             </li>
             <li class="card">
                 <div>
@@ -70,7 +72,7 @@
             <header class="apply-header">
                 Apply for an Height Clearance Now!
             </header>
-            <a class="apply-btn" href="{{ url('application') }}">
+            <a class="apply-btn" href="{{ url('apply-owner') }}">
                 Go to Application!
             </a>
         </div>
@@ -79,7 +81,7 @@
         <header class="req-main-hdr">What you specifically need...</header>
         <hr class="border border-secondary border-2 opacity-50">
         <div class="req-block">
-            <div class="req-grp">
+            <div class="req-grp" id="elevation-plan">
                 <header class="req-header">1. Elevation Plan for Proposed Structure</header>
                 <div class="req-desc">
                     <div class="req-desc-content">
@@ -178,4 +180,6 @@
         <i class='bx bx-up-arrow-alt'></i>
     </a>
 </div>
+
+
 @endsection
