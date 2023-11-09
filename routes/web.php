@@ -18,8 +18,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/registered-accounts', [App\Http\Controllers\AdminController::class, 'user_accountView'])->name('registered-accounts');
     Route::get('/application-view', [App\Http\Controllers\AdminController::class, 'showApplicationView'])->name('application-view');
     Route::get('/show-application/{id}', [ApplicationFormController::class, 'showApplicationData'])->name('show-application');
-
 });
+
 
 Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function(){
     Route::get('/doc-review/{id}', [App\Http\Controllers\ADMSController::class, 'documentReview'])->name('doc-review');
@@ -34,11 +34,16 @@ Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function(){
 
 });
 
+// URL PROTECTION
 Route::middleware(['payment.completed'])->group(function () {
-    // Your application routes go here
     Route::get('/application/{application_id}', [App\Http\Controllers\ApplicationFormController::class, 'application_form'])->name('upload');
-    // ...
 });
+Route::middleware(['is.loggedin'])->group(function () {
+    Route::get('/', function () {
+        return view('auth.login');
+    });
+});
+
 
 Route::get('/please-go-back', [HomeController::class, 'finishedApplication'])->name('goBack');
 
@@ -55,9 +60,7 @@ Route::get('/view-profile/{application_id}', [ProfileController::class, 'index']
 Route::get('/home', [HomeController::class, 'showHome'])->name('home');
 
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+
 
 Route::post('/submit-application', [ApplicationFormController::class, 'submitForm'])->name('submitApplication');
 Route::post('/submit-owner-details', [ApplicationFormController::class, 'submit_owner_details'])->name('submitOwnerDetails');

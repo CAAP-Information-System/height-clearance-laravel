@@ -71,5 +71,6 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         // ...
         'payment.completed' => \App\Http\Middleware\PaymentCompleted::class,
+        'is.loggedin' => \App\Http\Middleware\AuthMiddleware::class,
     ];
 }
