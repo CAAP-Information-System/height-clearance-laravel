@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ApplicationRequest;
-use App\Http\Requests\RepresentativeRequest;
 use App\Models\Application;
 use App\Models\File;
-use App\Models\Representative;
+use App\Models\Owner;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -38,23 +36,22 @@ class ApplicationFormController extends Controller
 
     public function submit_owner_details(Request $request)
     {
-        $validateForm = $request->validate([
-            'permit_type' => 'in:height_clearance_permit,height_limitation',
+        $validateOwner = $request->validate([
+            'permit_type' => 'required|in:height_clearance_permit,height_limitation',
             'building_type' => 'in:permanent,temporary',
             'owner_fname' => 'required|string|max:100',
             'owner_lname' => 'required|string|max:100',
             'owner_email' => 'required|string|max:100',
             'owner_address' => 'required|string|max:100',
             'owner_landline' => 'required|numeric',
-            'owner_mobile' => 'required|numeric',
+            'owner_mobile' => 'nullable|numeric',
         ]);
-        $application_number = Helper::IDGenerator(Application::class, 'application_number', 4, '23');
 
-        $application = new Application($validateForm);
-        $application->application_number = $application_number;
-        $application->save();
 
-        return redirect()->route('components.upload_form', ['application_id' => $application->id]);
+        $ownerapplication = new Owner($validateOwner);
+        $ownerapplication->save();
+
+        return redirect()->route('upload');
     }
 
     public function application_form()
@@ -76,8 +73,6 @@ class ApplicationFormController extends Controller
         // }
         // Validate the form data (you can customize validation rules)
         $validateForm = $request->validate([
-            'permit_type' => 'required|in:height_clearance_permit,height_limitation',
-            'building_type' => 'required|in:Permanent,Temporary',
             'type_of_structure' => 'required|in:Residential,Commercial',
             'site_address' => 'required|string|max:100',
             'extension_desc' => 'required|nullable|string|max:300',
@@ -218,7 +213,7 @@ class ApplicationFormController extends Controller
         }
 
 
-
+        $application_number = Helper::IDGenerator(Application::class, 'application_number', 4, '23');
 
         // $request->session()->put('application', $application);
 

@@ -11,12 +11,6 @@ class Application extends Model
 {
     protected $fillable = [
         'application_number',
-        'owner_fname',
-        'owner_lname',
-        'owner_email',
-        'owner_address',
-        'owner_landline',
-        'owner_mobile',
         'type_of_structure',
         'site_address',
         'proposed_height',

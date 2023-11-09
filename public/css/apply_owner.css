@@ -108,3 +108,60 @@
     font-style: italic;
     color: #969696;
 }
+.form-check {
+    display: block;
+    margin-bottom: 10px; /* Add margin between the radio buttons */
+}
+/* Customize radio buttons */
+.form-check-input[type="radio"] {
+    display: none; /* Hide the actual radio buttons */
+}
+
+.form-check-label {
+    cursor: pointer; /* Change cursor to pointer on hover for labels */
+    color: #3b3b3b;
+}
+
+.form-check-label:before {
+    content: " "; /* Add an empty space before the labels */
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4AB3E0; /* Border color for the radio button */
+    border-radius: 50%; /* Make it a circle */
+    margin-right: 8px; /* Space between the radio button and label */
+    vertical-align: middle;
+
+}
+
+/* Style the radio buttons based on their state */
+.form-check-input:checked + .form-check-label:before {
+    background-color: #4AB3E0; /* Background color when selected */
+}
+
+/* Hover effect on labels */
+.form-check-label:hover:before {
+    border-color: #4AB3E0; /* Change border color on hover */
+}
+
+/* Focus effect on labels */
+.form-check-input:focus + .form-check-label:before {
+    box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25); /* Add a focus ring */
+}
+/* Style the text when radio button is checked */
+.form-check-input:checked + .form-check-label {
+    color: #07275a; /* Text color for checked */
+    font-weight: bold;
+}
+
+/* Style for disabled radio buttons */
+.form-check-input:disabled + .form-check-label {
+    color: #888;
+    cursor: not-allowed;
+}
+
+/* Interactive hover effect for the labels */
+.form-check-label:hover {
+    background-color: #f5f5f5;
+    border-radius: 6px;
+}

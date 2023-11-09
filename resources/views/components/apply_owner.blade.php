@@ -63,7 +63,7 @@
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-outline">
                         <label class="form-label" for="form3Examplev2">First Name</label>
-                        <input type="text" placeholder="e.g. Juan" id="owner_lname" name="owner_fname" class="form-control form-control-lg" required />
+                        <input type="text" placeholder="e.g. Juan" id="owner_fname" name="owner_fname" class="form-control form-control-lg" required />
                     </div>
                 </div>
                 <div class="col-md-6 mb-4 pb-2">
@@ -93,7 +93,7 @@
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-outline">
                         <label class="form-label" for="form3Examplev3">Mobile Number</label>
-                        <input type="number" placeholder="Enter Mobile Number" id="owner_mobile" *name="owner_mobile" class="form-control form-control-lg" required />
+                        <input type="number" placeholder="Enter Mobile Number" id="owner_mobile" name="owner_mobile" class="form-control form-control-lg" required />
                     </div>
                 </div>
             </div>
