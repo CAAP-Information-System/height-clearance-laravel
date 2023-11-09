@@ -37,8 +37,8 @@ class ApplicationFormController extends Controller
     public function submit_owner_details(Request $request)
     {
         $validateOwner = $request->validate([
-            'permit_type' => 'required|in:height_clearance_permit,height_limitation',
-            'building_type' => 'in:permanent,temporary',
+            'permit_type' => 'required|in:HCP,HL',
+            'building_type' => 'in:Permanent,Temporary',
             'owner_fname' => 'required|string|max:100',
             'owner_lname' => 'required|string|max:100',
             'owner_email' => 'required|string|max:100',
@@ -49,6 +49,7 @@ class ApplicationFormController extends Controller
 
 
         $ownerapplication = new Owner($validateOwner);
+        $ownerapplication->permit_type = $request->input('permit_type');
         $ownerapplication->save();
 
         return redirect()->route('upload');

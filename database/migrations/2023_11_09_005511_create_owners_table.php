@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('application_id')->nullable();
             $table->foreign('application_id')->references('id')->on('applications');
             $table->string('permit_type');
-            $table->string('building_type')->nullable();
+            $table->string('building_type')->default('Not Applicable');
             $table->string('owner_fname');
             $table->string('owner_lname');
             $table->string('owner_email');

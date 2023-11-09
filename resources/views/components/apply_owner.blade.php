@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('css/apply_owner.css') }}">
 <div class="container">
@@ -26,13 +25,13 @@
                     <div class="registration-input-flex">
                         <div class="building-type-block">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="permit_type" value="height_clearance_permit" id="height_clearance_permit">
+                                <input class="form-check-input" type="radio" name="permit_type" value="HCP" id="height_clearance_permit">
                                 <label class="form-check-label" for="height_clearance_permit">
                                     Height Clearance Permit (HCP)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="permit_type" value="height_limitation" id="height_limitation">
+                                <input class="form-check-input" type="radio" name="permit_type" value="HL" id="height_limitation">
                                 <label class="form-check-label" for="height_limitation">
                                     Height Limitation (HL)
                                 </label>
@@ -40,21 +39,19 @@
                         </div>
                     </div>
                     <div class="registration-input-flex">
-                        <div class="" id="buildingTypeContainer" style="display: none;">
+                        <div class="building-type-block" id="buildingTypeContainer" style="display: none;">
                             <header class="select-hdr">Please specify building type:</header>
-                            <div class="building-type-block">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="building_type" value="permanent" id="permanent">
-                                    <label class="form-check-label" for="permanent">
-                                        Permanent Structure
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="building_type" value="temporary" id="temporary">
-                                    <label class="form-check-label" for="temporary">
-                                        Temporary Structure <span style="font-style: italic;">(e.g. Crane, Temporary Elevator Housing, etc.)</span>
-                                    </label>
-                                </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="building_type" value="permanent" id="permanent">
+                                <label class="form-check-label" for="permanent">
+                                    Permanent Structure
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="building_type" value="Temporary" id="temporary">
+                                <label class="form-check-label" for="temporary">
+                                    Temporary Structure <span style="font-style: italic;">(e.g. Crane, Temporary Elevator Housing, etc.)</span>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -67,7 +64,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 mb-4 pb-2">
-                    <div class="form-outline">
+                    <div class "form-outline">
                         <label class="form-label" for="form3Examplev3">Last Name</label>
                         <input type="text" placeholder="e.g. Dela Cruz" id="owner_lname" name="owner_lname" class="form-control form-control-lg" required />
                     </div>
@@ -102,7 +99,6 @@
         <div class="btn-set">
             <button type="submit" class="button-24">Proceed to Application Permit</button>
         </div>
-
     </div>
 </form>
 </div>
@@ -114,7 +110,7 @@
     // Add an event listener to the permit type radio buttons
     permitTypeRadio.forEach(function(radio) {
         radio.addEventListener('change', function() {
-            if (radio.value === 'height_clearance_permit') {
+            if (radio.value === 'HCP') {
                 // If "Height Clearance Permit" is selected, show the "Permanent" and "Temporary" radios
                 buildingTypeContainer.style.display = 'block';
             } else {
@@ -125,4 +121,3 @@
     });
 </script>
 @endsection
-
