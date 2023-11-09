@@ -3,7 +3,11 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('css/auth/register.css') }}">
 <div class="container">
-    <div class="title">Registration</div>
+    <div class="reg-hdr">
+        <img src="{{ asset('asset/img/caap-logo.png') }}" alt="CAAP Logo" class="reg-caap-logo">
+        <header class="title">Registration</header>
+    </div>
+    <hr class="border border-secondary border-2 opacity-50">
     <form class="register-user" action="{{ route('register') }}" method="POST">
         @csrf
         <div class="user__details">
@@ -51,8 +55,9 @@
         </div>
     </form>
 </div>
+<hr class="border border-secondary border-2 opacity-50">
 <section class="already-registered">
-    <div>Already have an account?</div>
+    <div class="alt-label">Already have an account?</div>
     <br>
     @if (Route::has('login'))
     <a class="alt-link" href="{{ route('login') }}">Back to Sign In</a>

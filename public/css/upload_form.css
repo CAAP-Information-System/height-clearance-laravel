@@ -65,8 +65,8 @@
 /* CSS */
 .button-24 {
     width: 60%;
-    background: #2ac73a;
-    border: 1px solid #2ac73a;
+    background: #2E9A39;
+    border: 1px solid #2E9A39;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
     box-sizing: border-box;
@@ -93,7 +93,7 @@
 .button-24:active {
     background-color: initial;
     background-position: 0 0;
-    color: #2ac73a;
+    color: #2E9A39;
 }
 
 .button-24:active {
@@ -161,3 +161,4 @@
     background-color: #f5f5f5;
     border-radius: 6px;
 }
+

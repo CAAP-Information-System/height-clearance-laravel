@@ -27,10 +27,9 @@ class HomeController extends Controller
         return view('components/home');
     }
 
-    public function uploadFile()
+    public function finishedApplication()
     {
-
-        return view('components/upload_file');
+        return view('message_template/application_finished');
     }
 
 

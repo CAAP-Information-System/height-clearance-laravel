@@ -72,7 +72,7 @@
                     <!-- Righ0t Side Of Navbar -->
                     @auth
                     @if(Auth::user()->access_role == 'user') <!-- Assuming isAdmin() is a method in your User model -->
-                    <a class="button-28" href="{{ url('apply-owner') }}">
+                    <a class="button-28" href="{{ url('owner-form') }}">
                         <i class='bx bxs-log-in-circle'></i>
                         Apply for a Permit
                     </a>

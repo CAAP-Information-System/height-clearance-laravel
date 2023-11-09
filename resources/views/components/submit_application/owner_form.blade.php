@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" type="text/css" href="{{ url('css/apply_owner.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('css/owner_form.css') }}">
 <div class="container">
     <header class="upload-hdr">
         Please enter the information of your <span style="color: #2F96D0;">Building Owner/Manager</span>
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 mb-4 pb-2">
-                    <div class "form-outline">
+                    <div class="form-outline">
                         <label class="form-label" for="form3Examplev3">Last Name</label>
                         <input type="text" placeholder="e.g. Dela Cruz" id="owner_lname" name="owner_lname" class="form-control form-control-lg" required />
                     </div>

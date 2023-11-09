@@ -1,0 +1,29 @@
+:root{
+    --font: #3b3b3b;
+    --secondary: #2D4E83;
+    --tertiary: #2F96D0;
+}
+
+.container{
+    color: var(--font);
+}
+
+.payment-header{
+    text-align: center;
+    font-size: 2rem;
+}
+.applicant-info{
+    padding-bottom: 20px;
+}
+.applicant-info-hdr{
+    font-size: 35px;
+}
+.applicant-info span{
+    display: block;
+    font-size: 20px;
+    font-style: italic;
+
+}
+.applicant-num{
+    color: #2F96D0;
+}

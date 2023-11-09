@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" type="text/css" href="{{ url('css/payment.css') }}">
 <div class="container">
-    <h1>Create Payment Receipt for Application #{{ $application->application_number }}</h1>
+    <header class="payment-header">Payment Receipt for Applicant Number: <span class="applicant-num">{{ $application->application_number }}</span></header>
 
     @if(session('success'))
     <div class="alert alert-success">
@@ -13,12 +14,12 @@
     <form action="{{ route('components.payment_receipt.store', ['application_id' => $application->id]) }}" method="POST">
         @csrf
 
-        <!-- Application Information -->
-        <h2>Application Information</h2>
-        <p>Application Number: {{ $application->application_number }}</p>
-        <p>Applicant Name: {{ $application->user->first_name }} {{ $application->user->last_name }}</p>
+        <div class="applicant-info">
+            <header class="applicant-info-hdr">Application Information</header>
+            <span>Application Number: {{ $application->application_number }}</span>
+            <span>Full Name: {{ $application->user->rep_fname }} {{ $application->user->rep_lname }}</span>
+        </div>
 
-        <!-- Payment Receipt Details -->
         <h2>Payment Receipt Details</h2>
         <div class="row m-4 p-3">
             <div class="mb-4 pb-2">

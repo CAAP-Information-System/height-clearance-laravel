@@ -67,6 +67,9 @@ class Kernel extends HttpKernel
         'isAdmin' => \App\Http\Middleware\AdminMiddleware::class,
         'isADMS' => \App\Http\Middleware\ADMSMiddleware::class,
         'is_forEval' => \App\Http\Middleware\EvaluationMiddleware::class,
-
+    ];
+    protected $routeMiddleware = [
+        // ...
+        'payment.completed' => \App\Http\Middleware\PaymentCompleted::class,
     ];
 }

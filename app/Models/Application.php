@@ -16,7 +16,6 @@ class Application extends Model
         'proposed_height',
         'extension_desc',
         'height_of_existing_structure',
-        'submission_date',
         'lat_deg',
         'lat_min',
         'lat_sec',

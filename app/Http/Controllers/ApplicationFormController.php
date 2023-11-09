@@ -31,7 +31,7 @@ class ApplicationFormController extends Controller
      */
     public function apply_owner_view()
     {
-        return view('components/apply_owner');
+        return view('components/submit_application/owner_form');
     }
 
     public function submit_owner_details(Request $request)
@@ -52,15 +52,15 @@ class ApplicationFormController extends Controller
         $ownerapplication->permit_type = $request->input('permit_type');
         $ownerapplication->save();
 
-        return redirect()->route('upload');
+        return redirect()->route('upload',['application_id' => $ownerapplication->id]);
     }
 
-    public function application_form()
+    public function application_form($id)
     {
-        $user = Auth::user();
+        $owner = Owner::find($id);
 
         // Pass the user data to the view
-        return view('components/upload_form', ['user' => $user]);
+        return view('components/submit_application/upload_form', ['owner' => $owner]);
     }
 
     public function submitForm(Request $request): RedirectResponse
@@ -74,19 +74,18 @@ class ApplicationFormController extends Controller
         // }
         // Validate the form data (you can customize validation rules)
         $validateForm = $request->validate([
-            'type_of_structure' => 'required|in:Residential,Commercial',
-            'site_address' => 'required|string|max:100',
-            'extension_desc' => 'required|nullable|string|max:300',
-            'proposed_height' => 'required|numeric',
-            'height_of_existing_structure' => 'required|numeric|nullable',
-            'lat_deg' => 'required|numeric',
-            'lat_min' => 'required|numeric',
-            'lat_sec' => 'required|numeric',
-            'long_deg' => 'required|numeric',
-            'long_min' => 'required|numeric',
-            'long_sec' => 'required|numeric',
-            'orthometric_height' => 'required|numeric',
-            'submission_date' => 'required|date',
+            'type_of_structure' => 'nullable|in:Residential,Commercial',
+            'site_address' => 'nullable|string|max:100',
+            'extension_desc' => 'nullable|string|max:300',
+            'proposed_height' => 'nullable|numeric',
+            'height_of_existing_structure' => 'nullable|numeric|nullable',
+            'lat_deg' => 'nullable|numeric',
+            'lat_min' => 'nullable|numeric',
+            'lat_sec' => 'nullable|numeric',
+            'long_deg' => 'nullable|numeric',
+            'long_min' => 'nullable|numeric',
+            'long_sec' => 'nullable|numeric',
+            'orthometric_height' => 'nullable|numeric',
         ]);
 
         $validateFile = $request->validate([
@@ -220,6 +219,7 @@ class ApplicationFormController extends Controller
 
         $application = new Application($validateForm);
         $application->process_status = 'Queued for ADMS evaluation';
+        $application->application_number = $application_number;
         $application->status = 'pending'; // Set the status here
         $application->user()->associate(auth()->user());
         $application->save();

@@ -16,12 +16,14 @@
 }
 
 body {
+    color: #3b3b3b;
     display: flex;
     height: 100vh;
     justify-content: center; /*center vertically */
     align-items: center; /* center horizontally */
     padding: 10px;
 }
+
 /* container and .register-user */
 .container {
     max-width: 700px;
@@ -30,8 +32,18 @@ body {
     padding: 25px 30px;
     border-radius: 5px;
 }
+.container .reg-hdr{
+    display: flex;
+    gap: 2vh;
+    align-items: center;
+}
+.container .reg-caap-logo{
+    height: auto;
+    width: 100px;;
+}
 .container .title {
-    font-size: 25px;
+    color: #2D4E83;
+    font-size: 35px;
     font-weight: 500;
     position: relative;
 }
@@ -95,25 +107,6 @@ body {
     border-color: #2f96d0;
 }
 
-/* inside the .register-user gender details */
-
-.register-user .gender__details .gender__title {
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.register-user .gender__details .category {
-    display: flex;
-    width: 80%;
-    margin: 15px 0;
-    justify-content: space-between;
-}
-
-.gender__details .category label {
-    display: flex;
-    align-items: center;
-}
-
 .register-user input[type="radio"] {
     display: none;
 }
@@ -139,6 +132,24 @@ body {
 
 .register-user .button .register:hover {
     background: #ff8423;
+}
+
+.already-registered{
+    text-align: center;
+}
+.alt-label{
+    font-weight: bold;
+    font-style: italic;
+
+}
+.alt-link{
+    padding: 5px;
+}
+.alt-link:hover{
+    cursor: pointer;
+    border-top: 1px solid #2f96d0;
+    border-bottom: 1px solid #2f96d0;
+    transition: .3s ease-in;
 }
 
 @media only screen and (max-width: 584px) {

@@ -72,7 +72,7 @@
             <header class="apply-header">
                 Apply for an Height Clearance Now!
             </header>
-            <a class="apply-btn" href="{{ url('apply-owner') }}">
+            <a class="apply-btn" href="{{ url('owner-form') }}">
                 Go to Application!
             </a>
         </div>

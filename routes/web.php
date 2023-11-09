@@ -34,6 +34,13 @@ Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function(){
 
 });
 
+Route::middleware(['payment.completed'])->group(function () {
+    // Your application routes go here
+    Route::get('/application/{application_id}', [App\Http\Controllers\ApplicationFormController::class, 'application_form'])->name('upload');
+    // ...
+});
+
+Route::get('/please-go-back', [HomeController::class, 'finishedApplication'])->name('goBack');
 
 Route::get('/payment-receipt/create/{application_id}', [PaymentReceiptController::class, 'create'])->name('components.payment_receipt.create');
 Route::post('/payment-receipt/store/{application_id}', [PaymentReceiptController::class, 'store'])->name('components.payment_receipt.store');
@@ -43,10 +50,11 @@ Route::get('/view-status', [StatusController::class, 'checkstatus'])->name('view
 Route::get('/check-results', [StatusController::class, 'checkResultsPage'])->name('check-results');
 
 Route::get('/application-queue', [AdminController::class, 'applicationQueue'])->name('application-queue');
-Route::get('/apply-owner', [ApplicationFormController::class, 'apply_owner_view'])->name('apply-owner');
+Route::get('/owner-form', [ApplicationFormController::class, 'apply_owner_view'])->name('owner-form');
 Route::get('/view-profile/{application_id}', [ProfileController::class, 'index'])->name('view-profile');
 Route::get('/home', [HomeController::class, 'showHome'])->name('home');
-Route::get('/application', [App\Http\Controllers\ApplicationFormController::class, 'application_form'])->name('upload');
+
+
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -56,5 +64,4 @@ Route::post('/submit-owner-details', [ApplicationFormController::class, 'submit_
 Auth::routes();
 
 Route::get('form-data/{id}', [ApplicationFormController::class, 'getFormData']);
-
 
