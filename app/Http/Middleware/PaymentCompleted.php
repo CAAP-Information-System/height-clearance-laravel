@@ -22,6 +22,6 @@ class PaymentCompleted
         }
 
         // Redirect to home page if payment is not completed
-        return redirect('/home');
+        return redirect('/please-go-back');
     }
 }

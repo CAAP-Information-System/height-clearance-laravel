@@ -1,0 +1,23 @@
+.main-message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.robot-ui{
+    height: auto;
+    width: 500px;
+}
+
+.message-header{
+    font-size: 3.2rem;
+    color: #2D4E83;
+    font-weight: bold;
+    text-align: center;
+}
+.submessage{
+    margin-top: 3vh;
+    font-size: 20px;
+    color: #969696;
+    font-style: italic;
+}
