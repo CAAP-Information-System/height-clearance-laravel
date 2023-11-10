@@ -42,7 +42,7 @@
                         <div class="building-type-block" id="buildingTypeContainer" style="display: none;">
                             <header class="select-hdr">Please specify building type:</header>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="building_type" value="permanent" id="permanent">
+                                <input class="form-check-input" type="radio" name="building_type" value="Permanent" id="permanent">
                                 <label class="form-check-label" for="permanent">
                                     Permanent Structure
                                 </label>

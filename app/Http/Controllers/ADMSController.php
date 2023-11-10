@@ -9,6 +9,7 @@ use App\Models\AerodromeStaff;
 use App\Models\Application;
 use App\Models\ApplicationQueue;
 use App\Models\Staff;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,6 +32,18 @@ class ADMSController extends Controller
      */
 
 
+    public function queuedApplicants()
+    {
+
+        if (Auth::check() && Auth::user()->access_role === 'adms') {
+            $userData = User::all();
+            $applicationData = Application::all();
+            return view('adms.queue')->with('applicationData', $applicationData)
+            ->with('userData', $userData);
+        } else {
+            return redirect('/login')->with('message', 'Login as an admin to access this page.');
+        }
+    }
 
     public function documentReview(Request $request, $application_id)
     {

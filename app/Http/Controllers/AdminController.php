@@ -46,9 +46,7 @@ class AdminController extends Controller
         if (Auth::check() && Auth::user()->access_role === 'admin') {
             $userData = User::all();
             $applicationData = Application::all();
-            $representativeData = Representative::all();
             return view('admin.application_tables_view')->with('applicationData', $applicationData)
-            ->with('representativeData', $representativeData)
             ->with('userData', $userData);
         } else {
             return redirect('/login')->with('message', 'Login as an admin to access this page.');
