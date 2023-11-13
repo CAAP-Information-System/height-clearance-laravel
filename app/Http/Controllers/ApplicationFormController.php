@@ -37,8 +37,6 @@ class ApplicationFormController extends Controller
     public function submit_owner_details(Request $request)
     {
         $validateOwner = $request->validate([
-            'permit_type' => 'required|in:HCP,HL',
-            'building_type' => 'in:Permanent,Temporary',
             'owner_fname' => 'required|string|max:100',
             'owner_lname' => 'required|string|max:100',
             'owner_email' => 'required|string|max:100',
@@ -49,7 +47,7 @@ class ApplicationFormController extends Controller
 
 
         $ownerapplication = new Owner($validateOwner);
-        $ownerapplication->permit_type = $request->input('permit_type');
+
         $ownerapplication->save();
 
         return redirect()->route('upload',['application_id' => $ownerapplication->id]);
@@ -74,6 +72,8 @@ class ApplicationFormController extends Controller
         // }
         // Validate the form data (you can customize validation rules)
         $validateForm = $request->validate([
+            'permit_type' => 'nullable|in:HCP,HL',
+            'building_type' => 'nullable|in:Permanent,Temporary',
             'type_of_structure' => 'nullable|in:Residential,Commercial',
             'site_address' => 'nullable|string|max:100',
             'extension_desc' => 'nullable|string|max:300',
@@ -222,6 +222,8 @@ class ApplicationFormController extends Controller
         $application->application_number = $application_number;
         $application->status = 'pending'; // Set the status here
         $application->user()->associate(auth()->user());
+        $application->owner_id = auth()->user()->id; // Set the owner_id explicitly
+        $application->permit_type = $request->input('permit_type');
         $application->save();
 
         $newFile = new File($validateFile);

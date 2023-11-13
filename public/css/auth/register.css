@@ -107,6 +107,12 @@ body {
     border-color: #2f96d0;
 }
 
+.user__details .input__company input:focus,
+.user__details .input__company input:valid {
+    border-color: #2f96d0;
+}
+
+
 .register-user input[type="radio"] {
     display: none;
 }

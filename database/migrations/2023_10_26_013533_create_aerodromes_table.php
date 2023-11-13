@@ -29,13 +29,13 @@ return new class extends Migration
             $table->string('cp_comp')->nullable();
             $table->string('ar_comp')->nullable();
 
-            $table->string('application_info_remarks')->default('N/A');
-            $table->string('elev_plan_remarks')->default('N/A');
-            $table->string('geodetic_eng_remarks')->default('N/A');
-            $table->string('control_station_remarks')->default('N/A');
-            $table->string('loc_plan_remarks')->default('N/A');
-            $table->string('comp_process_report_remarks')->default('N/A');
-            $table->string('additional_req_remarks')->default('N/A');;
+            $table->string('application_info_remarks')->nullable();
+            $table->string('elev_plan_remarks')->nullable();
+            $table->string('geodetic_eng_remarks')->nullable();
+            $table->string('control_station_remarks')->nullable();
+            $table->string('loc_plan_remarks')->nullable();
+            $table->string('comp_process_report_remarks')->nullable();
+            $table->string('additional_req_remarks')->nullable();;
 
 
             $table->timestamps();

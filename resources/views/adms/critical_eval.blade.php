@@ -35,7 +35,7 @@
                         <div class="data-left">
                             <div class="data-label">Name of Structure Owner</div>
                             <div class="data-value">
-                                <input type="text" value="{{$applicationData->user->first_name . ' ' . $applicationData->user->last_name}}" readonly>
+                            <input type="text" value="{{$userData->owner_fname . ' ' . $userData->owner_lname }}" readonly>
                             </div>
 
                             <div class="data-label">Type of Structure</div>

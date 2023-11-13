@@ -23,9 +23,9 @@ class PaymentReceiptController extends Controller
     public function store(Request $request, $application_id)
     {
         // Validate the request data
-        $validateReceipt =  $request->validate([
+        $request->validate([
             'receipt_num' => 'required|string|max:255',
-            'fee_receipt' => 'mimes:jpg|nullable|max:10999',
+            'fee_receipt' => 'mimes:pdf|nullable|max:10999',
         ]);
 
 
@@ -44,15 +44,16 @@ class PaymentReceiptController extends Controller
             $fileNameToStore_fee_receipt= $userId . 'fee_receipt' . time() . '.' . $extension;
 
             // Upload Image to the 'public' disk
-            $path = $request->file('elevation_plan')->storeAs('public/elevation_plan', $fileNameToStore_fee_receipt);
+            $path = $request->file('fee_receipt')->storeAs('public/fee_receipt', $fileNameToStore_fee_receipt);
         } else {
             $fileNameToStore_fee_receipt= 'Not Found';
         }
 
-        $paymentReceipt = new Receipt($validateReceipt);
+        $paymentReceipt = new Receipt();
         $paymentReceipt->application_id = $application_id;
-        $paymentReceipt->receipt_num = $request->input('receipt_num');
         $paymentReceipt->fee_receipt = $fileNameToStore_fee_receipt;
+        $paymentReceipt->receipt_num = $request->input('receipt_num');
+
         $paymentReceipt->save();
 
         return redirect()->route('application-status', ['application_id' => $application_id]);

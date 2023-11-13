@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Owner extends Model
 {
     protected $fillable = [
-        'permit_type',
-        'building_type',
         'owner_fname',
         'owner_lname',
         'owner_email',
@@ -20,10 +18,14 @@ class Owner extends Model
 
     public function application()
     {
-        return $this->belongsTo(Application::class);
+        return $this->hasMany(Application::class, 'owner_id');
     }
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function files()
+    {
+        return $this->hasMany(File::class);
     }
 }

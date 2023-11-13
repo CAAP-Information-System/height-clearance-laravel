@@ -2,3 +2,8 @@
     color: #3b3b3b;
     font-family: 'Noto Sans';
 }
+.queue-hdr{
+    font-size: 2.5rem;
+    text-align: center;
+    padding-bottom: 15px;
+}

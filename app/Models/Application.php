@@ -11,6 +11,8 @@ class Application extends Model
 {
     protected $fillable = [
         'application_number',
+        'permit_type',
+        'building_type',
         'type_of_structure',
         'site_address',
         'proposed_height',
@@ -56,5 +58,9 @@ class Application extends Model
     public function applicationFiles()
     {
         return $this->hasMany(File::class);
+    }
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class, 'owner_id');
     }
 }

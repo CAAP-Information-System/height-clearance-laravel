@@ -17,15 +17,16 @@
             <tbody>
                 <tr>
                     <td>{{$applicationData->application_number}}</td>
-                    <td>{{$applicationData->submission_date}}</td>
+                    <td>{{ $applicationData->created_at->format('Y-m-d') }}</td>
+
                     <td>
-                        @if($applicationData->user->permit_type == 'height_clearance_permit')
+                        @if($applicationData->permit_type == 'HCP')
                         HCP
-                        @elseif($applicationData->user->permit_type == 'height_limitation')
+                        @elseif($applicationData->permit_type == 'HL')
                         HL
                         @endif
                     </td>
-                    <td>2023-07-27</td>
+                    <td>{{ $applicationData->created_at->addDays(7)->format('Y-m-d') }}</td>
                     <td>N/A</td>
                     <td>{{$applicationData->process_status}}</td>
                 </tr>

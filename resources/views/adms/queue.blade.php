@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url('css/adms/queue.css') }}">
 <div class="container">
     <div class="main-content">
-        <header class="queue-hdr">Current Applications Submitted</header>
+        <header class="queue-hdr">Queued Applications</header>
         <div class="application-table-card">
             <table class="table">
                 <thead>

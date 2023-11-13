@@ -14,34 +14,63 @@ use Illuminate\Support\Facades\Route;
 
 // ADMIN MIDDLEWARE
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
+    // Dashboard route for admins
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboardView'])->name('dashboard');
+
+    // Registered accounts route for admins
     Route::get('/registered-accounts', [App\Http\Controllers\AdminController::class, 'user_accountView'])->name('registered-accounts');
+
+    // Application view route for admins
     Route::get('/application-view', [App\Http\Controllers\AdminController::class, 'showApplicationView'])->name('application-view');
+
+    // Show application data route for admins
     Route::get('/show-application/{id}', [ApplicationFormController::class, 'showApplicationData'])->name('show-application');
 });
 
 // ADMS MIDDLEWARE
 Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function () {
+    // Queued applicants route for ADMS
     Route::get('/queue', [App\Http\Controllers\ADMSController::class, 'queuedApplicants'])->name('queue');
+
+    // Document review route for ADMS
     Route::get('/doc-review/{id}', [App\Http\Controllers\ADMSController::class, 'documentReview'])->name('doc-review');
+
+    // Update compliance route for ADMS
     Route::match(['get', 'post'], '/update-compliance/{id}', [ADMSController::class, 'updateCompliance'])->name('updateCompliance');
+
+    // Critical evaluation route for ADMS
     Route::get('/critical-eval/{id}', [App\Http\Controllers\ADMSController::class, 'viewcriticalEvaluation'])->name('adms.critical_eval');
+
+    // Update critical evaluation route for ADMS
     Route::post('/update-critic-eval/{id}', [App\Http\Controllers\ADMSController::class, 'updateCriticalEvaluation'])->name('updateCriticalEvaluation');
+
+    // Height evaluation route for ADMS
     Route::get('/height-eval/{id}', [App\Http\Controllers\ADMSController::class, 'viewHeightEvaluation'])->name('adms.height_eval');
+
+    // Update height evaluation route for ADMS
     Route::post('/update-height-eval/{id}', [App\Http\Controllers\ADMSController::class, 'updateHeightEvaluation'])->name('updateHeightEvaluation');
+
+    // Supervisor evaluation route for ADMS
     Route::get('/supervisor-eval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSSupervisorView'])->name('ADMSSupervisorView');
+
+    // Update supervisor evaluation route for ADMS
     Route::post('/update-supervisor-eval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSSupervisorUpdate'])->name('ADMSSupervisorUpdate');
+
+    // Success page route for ADMS
     Route::get('/success', [StatusController::class, 'successPage'])->name('success');
 });
 
 // URL PROTECTION
 Route::middleware(['checkPaymentCompleted'])->group(function () {
-
+    // Routes protected by checking payment completion
 });
 
 Route::middleware(['payment.completed'])->group(function () {
+    // Routes protected by payment completion middleware
 });
+
 Route::middleware(['is.loggedin'])->group(function () {
+    // Default route to the login page for logged-in users
     Route::get('/', function () {
         return view('auth.login');
     });
@@ -67,9 +96,6 @@ Route::get('/application-queue', [AdminController::class, 'applicationQueue'])->
 
 Route::get('/view-profile/{application_id}', [ProfileController::class, 'index'])->name('view-profile');
 Route::get('/home', [HomeController::class, 'showHome'])->name('home');
-
-
-
 
 Auth::routes();
 

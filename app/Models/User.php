@@ -63,5 +63,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Application::class, 'user_id');
     }
-
+    public function owner()
+    {
+        return $this->hasOne(Owner::class);
+    }
 }

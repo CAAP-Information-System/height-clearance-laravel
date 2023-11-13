@@ -8,6 +8,7 @@ use App\Models\Aerodrome;
 use App\Models\AerodromeStaff;
 use App\Models\Application;
 use App\Models\ApplicationQueue;
+use App\Models\Owner;
 use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -45,11 +46,11 @@ class ADMSController extends Controller
         }
     }
 
-    public function documentReview(Request $request, $application_id)
+    public function documentReview(Request $request, $id)
     {
 
         $user = Auth::user();
-        $applicationData = Application::find($application_id);
+        $applicationData = Application::find($id);
 
 
         if ($request->hasFile('elevation_plan')) {
@@ -152,7 +153,6 @@ class ADMSController extends Controller
             $fileNameToStore_comp_process_report = 'Not Found';
         }
 
-
         if ($request->hasFile('additional_req')) {
             // Get user's ID
             $userId = auth()->user()->id;
@@ -172,19 +172,13 @@ class ADMSController extends Controller
         } else {
             $fileNameToStore_additional_req = 'Not Found';
         }
-        // Update the application data with remarks
-
-
-
-        // Update the compliance status
 
 
         if ($applicationData) {
-            $userData = $applicationData->user;
-
+            $userData = $applicationData->owner;
             return view(
-                'adms.doc_review',
-                compact('applicationData', 'user', 'fileNameToStore_elevation_plan', 'fileNameToStore_geodetic_eng_cert', 'fileNameToStore_control_station', 'fileNameToStore_loc_plan', 'fileNameToStore_comp_process_report', 'fileNameToStore_additional_req')
+                'adms/doc_review',
+                compact('applicationData', 'user','userData', 'fileNameToStore_elevation_plan', 'fileNameToStore_geodetic_eng_cert', 'fileNameToStore_control_station', 'fileNameToStore_loc_plan', 'fileNameToStore_comp_process_report', 'fileNameToStore_additional_req')
             )
                 ->with('fileNameToStore_elevation_plan', $fileNameToStore_elevation_plan)
                 ->with('fileNameToStore_geodetic_eng_cert', $fileNameToStore_geodetic_eng_cert)
@@ -205,29 +199,27 @@ class ADMSController extends Controller
         $request->validate([
             'evaluation_status' => 'nullable|string|max:255',
             'application_info_remarks' => 'nullable|string|max:255',
-            'elev_plan_remarks' => 'string|max:255',
-            'geodetic_eng_remarks' => 'string|max:255',
-            'control_station_remarks' => 'string|max:255',
-            'loc_plan_remarks' => 'string|max:255',
-            'comp_process_report_remarks' => 'string|max:255',
-            'additional_req_remarks' => 'string|max:255',
+            'elev_plan_remarks' => 'nullable|string|max:255',
+            'geodetic_eng_remarks' => 'nullable|string|max:255',
+            'control_station_remarks' => 'nullable|string|max:255',
+            'loc_plan_remarks' => 'nullable|string|max:255',
+            'comp_process_report_remarks' => 'nullable|string|max:255',
+            'additional_req_remarks' => 'nullable|string|max:255',
             'doc_compliance_result' => 'nullable|string|max:255',
             'crit_area_result' => 'nullable|string|max:255',
 
-            'app_comp' => 'required|in:Complied,NotComplied',
-            'fee_comp' => 'required|in:Complied,NotComplied',
-            'ep_comp' => 'required|in:Complied,NotComplied',
-            'ge_comp' => 'required|in:Complied,NotComplied',
-            'cs_comp' => 'required|in:Complied,NotComplied',
-            'lp_comp' => 'required|in:Complied,NotComplied',
-            'cp_comp' => 'required|in:Complied,NotComplied',
-            'ar_comp' => 'required|in:Complied,NotComplied',
+            'app_comp' => 'nullable|string',
+            'fee_comp' => 'nullable|string',
+            'ep_comp' => 'nullable|string',
+            'ge_comp' => 'nullable|string',
+            'cs_comp' => 'nullable|string',
+            'lp_comp' => 'nullable|string',
+            'cp_comp' => 'nullable|string',
+            'ar_comp' => 'nullable|string',
         ]);
 
         if ($request->isMethod('post')) {
-            // Handle the POST request to update compliance
 
-            // Get and update the application data with remarks
             $staff = new Aerodrome();
             $staff->elev_plan_remarks = $request->input('elev_plan_remarks');
             $staff->geodetic_eng_remarks = $request->input('geodetic_eng_remarks');
@@ -256,9 +248,6 @@ class ADMSController extends Controller
 
             return redirect()->route('adms.critical_eval', ['id' => $user->id]);
         } else {
-            // Handle the GET request to display the form or perform other actions
-
-            // You can add code here to load the form or perform other GET actions
         }
     }
 
@@ -269,7 +258,7 @@ class ADMSController extends Controller
 
         if ($applicationData) {
             // Fetches owner data through foreign ID
-            $userData = $applicationData->user;
+            $userData = $applicationData->owner;
 
             return view('adms.critical_eval', compact('applicationData', 'userData', 'user'));
         } else {

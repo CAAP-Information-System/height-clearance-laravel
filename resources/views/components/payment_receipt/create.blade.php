@@ -11,7 +11,7 @@
     </div>
     @endif
 
-    <form action="{{ route('components.payment_receipt.store', ['application_id' => $application->id]) }}" method="POST">
+    <form action="{{ route('components.payment_receipt.store', ['application_id' => $application->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="applicant-info">
@@ -24,7 +24,7 @@
         <div class="row m-4 p-3">
             <div class="mb-4 pb-2">
                 <div class="form-group">
-                    <!-- <input type="file" name="fee_receipt" id="fee_receipt" accept=".jpg"> -->
+                    <input type="file" name="fee_receipt" id="fee_receipt" accept=".pdf">
                 </div>
             </div>
         </div>

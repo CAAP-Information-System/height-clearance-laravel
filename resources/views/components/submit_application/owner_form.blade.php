@@ -20,42 +20,6 @@
             </div>
 
             <div class="row m-2 p-2">
-                <header class="select-hdr">Select Type of Application:</header>
-                <div class="mb-4 pb-2">
-                    <div class="registration-input-flex">
-                        <div class="building-type-block">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="permit_type" value="HCP" id="height_clearance_permit">
-                                <label class="form-check-label" for="height_clearance_permit">
-                                    Height Clearance Permit (HCP)
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="permit_type" value="HL" id="height_limitation">
-                                <label class="form-check-label" for="height_limitation">
-                                    Height Limitation (HL)
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="registration-input-flex">
-                        <div class="building-type-block" id="buildingTypeContainer" style="display: none;">
-                            <header class="select-hdr">Please specify building type:</header>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="building_type" value="Permanent" id="permanent">
-                                <label class="form-check-label" for="permanent">
-                                    Permanent Structure
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="building_type" value="Temporary" id="temporary">
-                                <label class="form-check-label" for="temporary">
-                                    Temporary Structure <span style="font-style: italic;">(e.g. Crane, Temporary Elevator Housing, etc.)</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-outline">
