@@ -3,44 +3,38 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('css/adms/queue.css') }}">
 <div class="container">
+    <header class="queue-hdr">Queued <span style="color: #4AB3E0;">Applications</span></header>
     <div class="main-content">
-        <header class="queue-hdr">Queued Applications</header>
-        <div class="application-table-card">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Application Number</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Owner Address</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($applicationData as $application)
-                    <tr>
-                        <td>{{ $application->application_number }}</td>
-                        @if($application->user)
-                        <td>{{ $application->user->rep_fname }} {{ $application->user->rep_lname }}</td>
-                        <td>{{ $application->user->rep_office_address }}</td>
-                        <td>{{ $application->user->email }}</td>
-                        @endif
-                        <td>
-                            @if ($application->status == 'Pending')
-                            <span class="text-warning" style="font-weight: bold;">{{ $application->status }}</span>
-                            @else
-                            {{ $application->status }}
-                            @endif
-                        </td>
-                        <td>
-                            <a href="{{ route('doc-review', ['id' => $application->id]) }}" class="btn btn-primary">View Application</a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+
+        @foreach($applicationData as $application)
+        <div class="application-card">
+            <header class="app-num">{{ $application->application_number }}</header>
+            <p class="status">
+                @if($application->status == 'pending')
+                <span style="color: #D9A406; text-align: center;">Pending</span>
+                @elseif($application->status == 'failed')
+                <span style="color: #C6303E; text-align: center;">Resubmit Application</span>
+                @else
+                <span style="color: #2E9A39; text-align: center;">Completed</span>
+                @endif
+            </p>
+            <hr class="border border-secondary border-2 opacity-50">
+            <div class="application-card-body">
+                @if($application->user)
+                <div class="details">
+                    <div class="name">{{ $application->user->rep_fname }} {{ $application->user->rep_lname }}</div>
+                    <div>{{ $application->user->rep_office_address }}</div>
+                </div>
+                <p class="email">{{ $application->user->email }}</p>
+                @endif
+            </div>
+
+            <a href="{{ route('doc-review', ['id' => $application->id]) }}" class="view-btn">
+                <i class='bx bxs-caret-right-circle'></i>
+                View Application
+            </a>
         </div>
+        @endforeach
     </div>
 </div>
 @endsection

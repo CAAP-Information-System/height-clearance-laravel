@@ -29,6 +29,7 @@ class StatusController extends Controller
         $user = $request->user();
         $application = $user->application;
 
+
         if ($application) {
             return view('components.status.view_status', ['application' => $application]);
         } else {
@@ -60,4 +61,33 @@ class StatusController extends Controller
     {
         return view('components/results/check_results');
     }
+
+    public function checkSubmission(Request $request, $id)
+    {
+        $applicationData = Application::with('aerodrome')->find($id);
+
+        // 0 == file is under evaluation/processing
+        if ($applicationData->is_ForEval == "0") {
+            return view('message_template/check_results');
+        }
+        // 1 == file has been successfully evaluated/processed
+        else if ($applicationData->is_ForEval == "1") {
+            return view('message_template/success_application');
+        }
+        // 2 == file has been rejected or for resubmission
+        else {
+            return view('message_template/failed_application',compact('applicationData'));
+        }
+    }
+
+    public function showApplications()
+{
+    // Get the authenticated user
+    $user = auth()->user();
+
+    // Retrieve applications sent by the user
+    $applications = Application::where('user_id', $user->id)->get();
+
+    return view('components.status.view_status', compact('applications'));
+}
 }

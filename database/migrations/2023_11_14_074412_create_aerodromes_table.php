@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-
+            $table->foreignId('application_id')->constrained('applications');
             $table->string('evaluation_status')->nullable();
             $table->string('doc_compliance_result')->nullable();
             $table->string('crit_area_result')->nullable();
@@ -36,8 +36,6 @@ return new class extends Migration
             $table->string('loc_plan_remarks')->nullable();
             $table->string('comp_process_report_remarks')->nullable();
             $table->string('additional_req_remarks')->nullable();;
-
-
             $table->timestamps();
         });
     }

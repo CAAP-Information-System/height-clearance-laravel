@@ -12,7 +12,9 @@
     background-color: #2d4e83;
     color: #ffff;
     border-radius: 10px;
-    transition: 0.2s;
+    transition: 0.1s;
+    font-weight: bold;
+
 }
 /* Sidebar */
 .sidebar {
@@ -79,6 +81,12 @@
     .sidebar {
         width: 100%;
     }
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
 }
 .sidebar .active {
     border-radius: 5px;

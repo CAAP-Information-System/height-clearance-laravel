@@ -1,0 +1,121 @@
+.status-main{
+    margin-top: 13vh;
+}
+
+.application-result-hdr{
+    font-size: 2.5rem;
+    text-align: center;
+    color: #07275A;
+    margin-bottom: 25px;
+}
+.report-card {
+    display: flex;
+    justify-content: space-around;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 15px;
+    color: #3b3b3b;
+    align-items: center; /* Center items vertically */
+    padding: 20px;
+}
+
+.status-img {
+    width: 200px;
+    height: auto;
+}
+
+.status-title {
+    font-weight: bold;
+    font-size: 35px;
+}
+.left-col {
+    color: #07275A;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center items horizontally */
+    width: 40%;
+}
+
+.right-col {
+    width: 40%;
+}
+.status-failed{
+    font-size: 25px;
+    color: #808080;
+}
+
+.status-bullet li{
+    list-style-type: none;
+    font-size: 20px;
+    color: #07275A;
+
+}
+.post-message{
+    margin-top: 35px;
+    font-size: 20px;
+    color: #808080;
+    font-style: italic;
+}
+
+
+.status-caption {
+    font-size: 20px;
+    text-align: center;
+}
+
+.status-success{
+    font-size: 40px;
+    font-style: italic;
+    color: #808080;
+    font-weight: bold;
+}
+.success-submessage{
+    font-size: 20px;
+    color: #07275A;
+}
+
+.return-home-btn{
+    text-align: center;
+    color: #4AB3E0;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 100px;
+    border: 1px solid #4AB3E0;
+    padding: 10px 15px;
+    transition: .2s ease-in;
+}
+.return-home-btn:hover{
+    background-color: #4AB3E0;
+    color: #ffff;
+}
+
+@media only screen and (max-width: 600px) {
+    .status-main{
+        margin-top: 0;
+    }
+    .report-card{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .status-img {
+        width: 250px;
+        height: auto;
+    }
+    .status-title {
+        font-weight: bold;
+        font-size: 40px;
+    }
+    .left-col {
+        color: #07275A;
+        width: 100%;
+    }
+    .right-col {
+        padding-top: 3vh;
+        color: #07275A;
+        width: 100%;
+    }
+    .status-caption {
+        font-size: 20px;
+    }
+}

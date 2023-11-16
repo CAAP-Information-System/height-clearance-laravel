@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
@@ -50,7 +53,6 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     @auth
@@ -58,15 +60,30 @@
                         <div class="navbar-nav">
                             <i class="fa-solid fa-house"></i>
                             @if(Auth::user()->access_role == "user")
-                            <a class="item-link" href="{{ url('home') }}">Home</a>
+                            <a class="item-link" href="{{ url('home') }}">
+                                <i class='bx bxs-home'></i>
+                                Home
+                            </a>
                             @elseif(Auth::user()->access_role == "admin")
-                            <a class="item-link" href="{{ url('admin/dashboard') }}">Dashboard</a>
+                            <a class="item-link" href="{{ url('admin/dashboard') }}">
+                                <i class='bx bxs-grid-alt'></i>
+                                Dashboard
+                            </a>
+                            @elseif(Auth::user()->access_role == "adms")
+                            <a class="item-link" href="{{ url('adms/queue') }}">
+                                <i class='bx bx-list-ul'></i>
+                                Queued Applications
+                            </a>
                             @endif
-                            <a class="item-link" href="{{ route('view-status') }}">View Status</a>
-                            <a class="item-link" href="{{ route('check-results') }}">Check Results</a>
-
+                            <a class="item-link" href="{{ route('view-status') }}">
+                                <i class='bx bx-detail'></i>
+                                View Status
+                            </a>
+                            <a class="item-link" href="{{ route('check-results') }}">
+                                <i class='bx bx-check-square'></i>
+                                Check Results
+                            </a>
                         </div>
-
                     </div>
                     @endauth
                     <!-- Righ0t Side Of Navbar -->
@@ -95,9 +112,9 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
 
-                                <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class='bx bx-exit'></i>
+                                    Logout
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

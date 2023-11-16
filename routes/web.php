@@ -89,8 +89,9 @@ Route::get('/payment-receipt/create/{application_id}', [PaymentReceiptController
 Route::post('/payment-receipt/store/{application_id}', [PaymentReceiptController::class, 'store'])->name('components.payment_receipt.store');
 
 Route::get('/application-status/{application_id}', [StatusController::class, 'applicationStatus'])->name('application-status');
-Route::get('/view-status', [StatusController::class, 'checkstatus'])->name('view-status');
+Route::get('/view-status', [StatusController::class, 'showApplications'])->name('view-status');
 Route::get('/check-results', [StatusController::class, 'checkResultsPage'])->name('check-results');
+Route::get('/check-submission/{id}', [StatusController::class, 'checkSubmission'])->name('check-submission');
 
 Route::get('/application-queue', [AdminController::class, 'applicationQueue'])->name('application-queue');
 

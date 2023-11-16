@@ -44,7 +44,7 @@ class LoginController extends Controller
         }
         else if(Auth::user()->access_role == 'adms')
         {
-            return redirect('/home');
+            return redirect('adms/queue');
         }
         else{
             return redirect('/');

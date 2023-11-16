@@ -26,6 +26,7 @@ class Application extends Model
         'long_sec',
         'orthometric_height',
         'process_status',
+        'is_ForEval',
     ];
     public static function generateApplicationNumber()
     {
@@ -55,9 +56,13 @@ class Application extends Model
         return $this->hasMany(Receipt::class);
     }
 
-    public function applicationFiles()
+    public function aerodrome()
     {
-        return $this->hasMany(File::class);
+        return $this->hasOne(Aerodrome::class);
+    }
+    public function files()
+    {
+        return $this->hasOne(File::class);
     }
     public function owner()
     {
