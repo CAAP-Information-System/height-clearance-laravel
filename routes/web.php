@@ -5,6 +5,7 @@ use App\Http\Controllers\ADMSController;
 use App\Http\Controllers\ApplicationFormController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentReceiptController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StatusController;
 use App\Models\ApplicationForm;
@@ -51,13 +52,18 @@ Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function () {
     Route::post('/update-height-eval/{id}', [App\Http\Controllers\ADMSController::class, 'updateHeightEvaluation'])->name('updateHeightEvaluation');
 
     // Supervisor evaluation route for ADMS
-    Route::get('/supervisor-eval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSSupervisorView'])->name('ADMSSupervisorView');
+
 
     // Update supervisor evaluation route for ADMS
-    Route::post('/update-supervisor-eval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSSupervisorUpdate'])->name('ADMSSupervisorUpdate');
+
 
     // Success page route for ADMS
-    Route::get('/success', [StatusController::class, 'successPage'])->name('success');
+    Route::get('/application-passed', [App\Http\Controllers\ADMSController::class, 'proceedToSupervisor'])->name('application-passed');
+});
+
+Route::prefix('supervisor')->middleware(['auth', 'isADMSSupervisor'])->group(function (){
+    Route::get('/supervisor-eval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSSupervisorView'])->name('ADMSSupervisorView');
+    Route::post('/update-supervisor-eval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSSupervisorUpdate'])->name('ADMSSupervisorUpdate');
 });
 
 // URL PROTECTION
@@ -101,3 +107,4 @@ Route::get('/home', [HomeController::class, 'showHome'])->name('home');
 Auth::routes();
 
 Route::get('form-data/{id}', [ApplicationFormController::class, 'getFormData']);
+Route::post('generate-pdf', [PDFController::class, 'generatePDF'])->name('generate-pdf');

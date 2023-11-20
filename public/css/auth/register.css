@@ -156,6 +156,7 @@ body {
     border-top: 1px solid #2f96d0;
     border-bottom: 1px solid #2f96d0;
     transition: .3s ease-in;
+    text-decoration: none;
 }
 
 @media only screen and (max-width: 584px) {

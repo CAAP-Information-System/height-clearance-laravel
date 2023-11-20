@@ -46,6 +46,10 @@ class LoginController extends Controller
         {
             return redirect('adms/queue');
         }
+        else if(Auth::user()->access_role == 'supervisor')
+        {
+            return redirect('adms/queue');
+        }
         else{
             return redirect('/');
         }

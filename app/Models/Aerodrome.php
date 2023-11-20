@@ -23,6 +23,7 @@ class Aerodrome extends Model
         'additional_req_remarks',
         'doc_compliance_result',
         'crit_area_result',
+        'reference_aerodrome',
 
     ];
 

@@ -66,6 +66,7 @@
 .button-22:hover {
   background-color: #DC4C64;
   color: #ffff;
+  text-decoration: none;
 }
 .data-hdr{
     font-size: 1.5rem;
@@ -77,6 +78,10 @@
 }
 .data{
     padding: 10px;
+}
+.data-label{
+    margin-top: 20px;
+    font-weight: bold;
 }
 .data-field{
     display: flex;
@@ -101,6 +106,10 @@
     border: 1px solid #B6B6B6;
     border-radius: 10px;
 }
+.data-value input:focus {
+    border-color: #2F96D0; /* Replace 'your-color' with the desired color code */
+}
+
 .edit-link{
     background-color: #4AB3E0;
     padding: 10px;
@@ -109,6 +118,7 @@
 }
 
 .edit-link:hover{
+    text-decoration: none;
     background-color: #FF8423;
     color: #ffff;
     transition: .2s ease-in;
@@ -126,10 +136,54 @@
     align-items: center;
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.dropdown-content option {
+    display: block;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.critical-area-grp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 input[type="radio"] {
     display: none;
 }
-
+.warning-msg{
+    font-size: 27px;
+    color: #969696;
+    text-align: center;
+    font-style: italic;
+}
 .critical-area-label {
     cursor: pointer;
     font-size: 1.5rem;
@@ -167,7 +221,7 @@ input[type="radio"]:checked + #within-label {
 
 .submit-btn {
     width: 70%;
-    background-color: #2E9A39;
+    background-color: #006AE8;
     color: #ffff;
     padding: 10px 20px;
     border: none;
@@ -184,4 +238,6 @@ input[type="radio"]:checked + #within-label {
 .submit-btn:active {
     transform: translateY(2px);
 }
+
+
 

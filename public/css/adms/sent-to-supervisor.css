@@ -1,0 +1,28 @@
+.report-container{
+    color: #3b3b3b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4vh;
+}
+.report-title{
+    font-size: 2.5rem;
+}
+.task-img{
+    width: auto;
+    height: 350px;
+}
+.report-submessage{
+    margin-top: 35px;
+    font-size: 20px;
+    color: #969696;
+    font-style: italic;
+}
+.return-queue{
+    font-size: 20px;
+    margin-top: 4vh;
+}
+.return-queue:hover{
+    text-decoration: none;
+}

@@ -1,6 +1,94 @@
 * {
     color: #3b3b3b;
 }
+/* MODAL CSS */
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.detail {
+    margin-bottom: 15px;
+}
+
+.detail-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.detail-value {
+    margin: 0;
+}
+
+/* Close button styles */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+    transition: color 0.3s ease-in-out;
+}
+
+.close-btn:hover {
+    color: #e74c3c; /* Change to your preferred hover color */
+}
+
+/* Modal Animation */
+.modal.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Overlay animation */
+.modal.fade-in .modal-content {
+    transform: translateY(-50px);
+    opacity: 0;
+    animation: slideIn 0.3s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/*  */
 .application-number {
     font-size: 1.6rem;
 }
@@ -50,10 +138,12 @@ a {
 .button-5:focus {
     background-color: #fb8332;
     box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    text-decoration: none;
+    color: #ffff;
 }
 
 .button-5:hover {
-    transform: translateY(-1px);
+    transform: translateY(-4px);
 }
 
 .button-5:active {
@@ -68,7 +158,6 @@ a {
     justify-content: end;
 }
 .complied {
-
     appearance: button;
     backface-visibility: hidden;
     background-color: #405cf5;
@@ -81,7 +170,7 @@ a {
     cursor: pointer;
     font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
         Ubuntu, sans-serif;
-    font-size: 100%;
+    font-size:20px;
     height: 44px;
     line-height: 1.15;
     margin: 12px 0 0;
@@ -92,13 +181,16 @@ a {
     text-align: center;
     text-transform: none;
     transform: translateZ(0);
-    transition: all 0.2s, box-shadow 0.08s ease-in;
+    transition: all 0.3s, box-shadow 0.08s ease-in;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 40%;
+    width: 50%;
 }
-
+.complied:hover{
+    border-radius: 100px;
+    background-color: #4ab3e0;
+}
 .complied:disabled {
     cursor: default;
 }

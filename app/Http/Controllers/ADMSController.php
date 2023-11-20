@@ -281,13 +281,209 @@ class ADMSController extends Controller
     {
         $user = Auth::user();
         $applicationData = Application::find($id);
+        $airports = [
+            "ACME (Maconacon Isabela) Airstrip",
+            "Alabat Community Airport (ACA)",
+            "Allah Valley Community Airport (AVCA)",
+            "Alta Vista Agri-Ventures Airstrip",
+            "AMSFC (Kapalong) Airstrip",
+            "AMSFC (Magatos) Airstrip",
+            "ANFLO BANANA CORPORATION Airstrip",
+            "Antique Principal Airport (APA)",
+            "Apurauan Airstrip",
+            "Bacolod Principal Airport (BPA)",
+            "Bacon Community Airport (BCA)",
+            "Bagabag Community Airport (BCA)",
+            "Baguio Principal Airport (BPA)",
+            "Baler Community Airport (BCA)",
+            "Balesin Airstrip",
+            "Bantayan Community Airport (BCA)",
+            "Basa Air Base (BAB)",
+            "Basco Principal Airport (BPA)",
+            "Berong Aerodrome",
+            "Bicol Airport (BA)",
+            "Bienvenida Airstrip",
+            "Biliran Community Airport (BCA)",
+            "Binalonan Airstrip",
+            "Bislig Community Airport (BCA)",
+            "Bohol-Panglao Principal Airport (BPPA)",
+            "Borongan Community Airport (BCA)",
+            "Buayan Airport",
+            "Buksuk Airstrip",
+            "Bulan Community Airport (BCA)",
+            "Butuan Principal Airport (BPA)",
+            "Cagayan Community Airport (CCA)",
+            "Cagayan de Oro Military Airport (CDOMA)",
+            "Calapan Community Airport (CCA)",
+            "Calatagan Hacienda Bigaa Airstrip",
+            "Calbayog Principal Airport (CPA)",
+            "Camiguin Principal Airport (CPA)",
+            "Camotes Airstrip",
+            "Camp Capinpin Airstrip (CCA)",
+            "Camp Capinpin Military Airport (CCMA)",
+            "Catarman Principal Airport (CPA)",
+            "Catbalogan Community Airport (CCA)",
+            "Cauayan Principal Airport (CPA)",
+            "ComVal Tropical Fruits, Inc. Airstrip",
+            "Corregidor Airstrip",
+            "Cotabato Principal Airport (CPA)",
+            "Culion Airport",
+            "Cuyo Principal Airport (CPA)",
+            "Dacudao Airstrip",
+            "Daet Community Airport (DCA)",
+            "Daniel Z. Romualdez Principal Airport (DZRPA)",
+            "Dapco Airstrip",
+            "Del Monte Airstrip",
+            "Delta Farms Aerodrome",
+            "Dilasag Pateco (Aurora) Airstrip",
+            "Dinapigue Airstrip",
+            "Diosdado Macapagal International Airport (DMIA)",
+            "Dipolog Principal Airport (DPA)",
+            "Dolefil Airstrip",
+            "Don Jesus Soriano Airstrip",
+            "Dumaguete Principal Airport (DPA)",
+            "Emilio Aguinaldo Airstrip",
+            "Evergreen Farms Airstrip",
+            "Farmingtown Airstrip",
+            "Fernando Air Base (FAB)",
+            "Filminera Amoroy Airstrip",
+            "Fort Magsaysay Airstrip",
+            "Fort Magsaysay Military Airport",
+            "Francisco B. Reyes Principal Airport (FBRPA)",
+            "Francisco Bangoy International Airport (FBIA)",
+            "FS Dizon & Sons, Inc. (Antiquera) Airstrip",
+            "FS Dizon & Sons, Inc. (Mawab) Airstrip",
+            "Gadeco-Guihing Airstrip",
+            "Godofredo P. Ramos Principal Airport (GPRPA)",
+            "Guimaras Airstrip",
+            "Guiuan Community Airport (GCA)",
+            "Hermana Mayor (Zambales) Airstrip",
+            "Hermana Menor (Zambales) Airstrip",
+            "Herminio Teves & Company Inc. Airstrip",
+            "Hijo Plantation Airstrip",
+            "Hilongos Community Airport (HCA)",
+            "Iba Community Airport (ICA)",
+            "Iligan Community Airport (ICA)",
+            "Iloilo International Airport (IIA)",
+            "Ipil Community Airport (ICA)",
+            "Itbayat Community Airport (ICA)",
+            "Jesus Magsaysay Airstrip",
+            "Jolo Principal Airport (JPA)",
+            "Jomalig Community Airport (JCA)",
+            "Kabankalan Airport",
+            "Kalibo International Airport (KIA)",
+            "Kling Plantation Airstrip",
+            "La Filipina Airstrip",
+            "La Frutera Airstrip",
+            "LADECO-Lapanday Airstrip",
+            "LADECO-Maryland Airstrip",
+            "Laguindingan Principal Airport (LPA)",
+            "Lallo Principal Airport (LPA)",
+            "Laoag International Airport (LIA)",
+            "Legazpi Principal Airport (LPA)",
+            "Lepanto Airstrip",
+            "Liloy Community Airport (LCA)",
+            "Lingayen Community Airport (LCA)",
+            "Lubang Community Airport (LCA)",
+            "Lunga-og Airstrip",
+            "M'lang Airport",
+            "M&S Company Airstrip",
+            "Maasin Community Airport (MCA)",
+            "Mabag Airstrip",
+            "Macgum Airstrip",
+            "Mactan-Cebu International Airport (MCIA)",
+            "Sangley Principal Airport (SPA)",
+            "Malabang Community Airport (MCA)",
+            "Malalag Airstrip",
+            "Malita Airstrip",
+            "Mamburao Community Airport (MCA)",
+            "Mannie W. Barradas Airstrip",
+            "Maragusan Airstrip",
+            "Marinduque Principal Airport (MPA)",
+            "Marsman Estate Airstrip",
+            "Masbate Principal Airport (MPA)",
+            "Mati Community Airport (MCA)",
+            "MD New Corella Agri-Ventures Airstrip",
+            "MD Panabo Agri Ventures, Inc Airstrip",
+            "MDRVAVI Airstrip",
+            "Mt. Kitanglad Agri Development Corp Airstrip",
+            "Naga Principal Airport (NPA)",
+            "NEDA (Bo. NEDA) Airstrip",
+            "Ninoy Aquino International Airport (NAIA)",
+            "Nonoc Mining Airstrip",
+            "Nova Vista Management & Development",
+            "OADI Airstrip",
+            "Omni (Tarlac) Airstrip",
+            "Omni Aviation Corporation – Airstrip",
+            "Ormoc Principal Airport (OPA)",
+            "Ozamiz Principal Airport (OPA)",
+            "Pacific Air-Val- Coron Airstrip",
+            "Pagadian Principal Airport (PPA)",
+            "San Vicente Principal Airport",
+            "Palanan Community Airport (PCA)",
+            "Pamalican II Airstrip",
+            "Pasar Airstrip",
+            "PICOP Airstrip",
+            "Pinamalayan Community Airport (PCA)",
+            "Plaridel Community Airport (PCA)",
+            "Puerto Princesa International Airport (PPIA)",
+            "Refugio Airstrip",
+            "Rio Tuba Airstrip",
+            "Romblon Principal Airport (RPA)",
+            "Rosales Community Airport (RCA)",
+            "Roxas Municipal Airstrip",
+            "Roxas Principal Airport (RPA)",
+            "San Fernando  Community Airport (SFCA)",
+            "San Isidro Ranch Airstrip",
+            "San Jose Principal Airport (SJPA)",
+            "SAN VICENTE AIRPORT",
+            "San Vicente Principal Airport (SVPA)",
+            "Sandoval Airstrip",
+            "Sanga-sanga Principal Airport (SPA)",
+            "Sangley Principal Airport (SPA)",
+            "SEMIRARA (Vulcan)",
+            "Siargao Principal Airport (SPA)",
+            "Siocon Community Airport (SCA)",
+            "Sipalay Airstrip",
+            "Siquijor Community Airport (SCA)",
+            "Sirawai Airstrip",
+            "Sodaco Airstrip",
+            "Subic Bay Principal Airport (SBPA)",
+            "Surigao Principal Airport (SPA)",
+            "TADECO I Airstrip",
+            "TADECO II Airstrip",
+            "Tambler Principal Airport (TPA)",
+            "Tampakan Airstrip",
+            "Tandag Principal Airport (TPA)",
+            "Tapian Airstrip",
+            "Tarumpitao Airstrip",
+            "Ten Knots (TKDC) Airstrip",
+            "Tuguegarao Principal Airport (TPA)",
+            "Ubay Community Airport (UCA)",
+            "Vigan Community Airport (VCA)",
+            "Virac Principal Airport (VPA)",
+            "Wao Airport",
+            "Wasig Community Airport (WCA)",
+            "Western Agri Ventures Corp. Airstrip",
+            "Woodland Airpark Airstrip",
+            "Zamboanga Principal Airport (ZPA)",
+            "Bacong Airport (BA)",
+            "Zamboanga-Mercedes Airport",
+            "New Siargao Airport",
+            "Bulacan (San Miguel) Airport",
+            "Casiguran Airport",
+            "Bukidnon (Maraymaray) Airport",
+            "Lallo Pincipal Airport (LPA)",
+            "San Vicente Naval Airstrip (SVNA)",
+            "Calayan Airport (CA)",
+        ];
 
         if ($applicationData) {
             // Fetches owner data through foreign ID
             $userData = $applicationData->owner;
             $files = File::where('application_id', $applicationData->id)->first();
             $receipt = Receipt::where('application_id', $applicationData->id)->first();
-            return view('adms.critical_eval', compact('applicationData', 'userData', 'user', 'files', 'receipt'));
+            return view('adms.critical_eval', compact('applicationData', 'userData', 'user', 'files', 'receipt','airports'));
         } else {
             return view('components.home');
         }
@@ -307,7 +503,9 @@ class ADMSController extends Controller
 
         $userChoice = $request->input('crit_area_result');
 
+        $reference_aerodrome = $request->input('reference_aerodrome');
         // Update the crit_area_result field
+        $critical_eval->reference_aerodrome = $reference_aerodrome;
         $critical_eval->crit_area_result = $userChoice;
         $critical_eval->save();
         // Redirect based on the value of crit_area_result
@@ -587,11 +785,13 @@ class ADMSController extends Controller
 
         if ($applicationData) {
             $userData = $applicationData->owner;
+            $aerodrome = $applicationData->aerodrome;
             $files = File::where('application_id', $applicationData->id)->first();
             $receipt = Receipt::where('application_id', $applicationData->id)->first();
+
             return view(
                 'adms.height_eval',
-                compact('applicationData', 'user', 'userData','airports','files', 'receipt')
+                compact('applicationData', 'user', 'userData','airports','files', 'receipt','aerodrome')
             )
                 ->with('fileNameToStore_elevation_plan', $fileNameToStore_elevation_plan)
                 ->with('fileNameToStore_geodetic_eng_cert', $fileNameToStore_geodetic_eng_cert)
@@ -606,10 +806,18 @@ class ADMSController extends Controller
         $user = Auth::user();
         $applicationData = Application::find($id);
         $staff = Aerodrome::where('user_id', $id)->first();
+
         $request->validate([
             'evaluation_status' => 'nullable|string|max:255',
+            'ref_aerodrome' => 'nullable',
 
         ]);
+
+        $queue_status = new ApplicationQueue();
+        $queue_status->user_id = $id;
+        $queue_status->queue_id = 1; // Set an appropriate default value
+        $queue_status->adms_eval = 'Evaluated';
+        $queue_status->save();
 
 
         $evaluation_status = $request->input('evaluation_status');
@@ -618,8 +826,13 @@ class ADMSController extends Controller
         $staff->evaluation_status = $evaluation_status;
         $staff->save();
 
-        return redirect()->route('ADMSSupervisorView', ['id' => $user->id]);
+        return redirect()->route('application-passed', ['id' => $user->id]);
     }
+    public function proceedToSupervisor()
+    {
+        return view('adms.proceed_to_supervisor',);
+    }
+
 
     public function ADMSSupervisorView(Request $request, $id)
     {
@@ -690,7 +903,7 @@ class ADMSController extends Controller
 
         if ($applicationData) {
             $userData = $applicationData->user;
-
+            $files = File::where('application_id', $applicationData->id)->first();
             return view(
                 'adms.supervisor_eval',
                 compact('applicationData', 'user')
@@ -702,22 +915,23 @@ class ADMSController extends Controller
             return redirect()->back()->with('error', 'Application not found.');
         }
     }
-
     public function ADMSSupervisorUpdate(Request $request, $id)
     {
         $user = Auth::user();
-        $applicationData = Application::find($id);
 
+        // Check if the ApplicationQueue record exists
+        $queue_status = ApplicationQueue::where('user_id', $id)->first();
 
-        // Updates the process status that the application is finished being evaluted.
-        $queue_status = new ApplicationQueue();
-        $queue_status->user_id = $id;
-        $queue_status->queue_id = 1; // Set an appropriate default value
-        $queue_status->adms_eval = 'Evaluated';
+        if (!$queue_status) {
+            // If the record doesn't exist, you may choose to handle it accordingly
+            return redirect()->route('home')->with('error', 'ApplicationQueue record not found.');
+        }
+
+        // Updates the process status that the application is finished being evaluated.
         $queue_status->adms_supervisor = 'Checked';
         $queue_status->adms_chief = 'For Review';
         $queue_status->save();
 
-        return redirect()->route('success', ['id' => $user->id]);
+        return redirect()->route('home',['id' => $user->id]);
     }
 }

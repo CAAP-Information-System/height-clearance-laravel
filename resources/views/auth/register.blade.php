@@ -8,6 +8,9 @@
         <header class="title">Registration</header>
     </div>
     <hr class="border border-secondary border-2 opacity-50">
+    @if ($errors->has('rep_mobile'))
+        <div class="error-message">{{ $errors->first('rep_mobile') }}</div>
+    @endif
     <form class="register-user" action="{{ route('register') }}" method="POST">
         @csrf
         <div class="user__details">
@@ -37,7 +40,7 @@
             </div>
             <div class="input__box">
                 <span class="details">Phone Number</span>
-                <input type="number" placeholder="09123456789" name="rep_mobile" required>
+                <input type="number" placeholder="09123456789" name="rep_mobile" maxlength="11" required>
             </div>
             <div class="input__box">
                 <span class="details">Password</span>

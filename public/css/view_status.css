@@ -60,3 +60,25 @@
     color: #ffff;
 
 }
+
+.not-found-img{
+    height: auto;
+    width: 300px;
+
+}
+.not-found-info{
+    margin-top: 4vh;
+    text-align: center;
+}
+.not-found-hdr{
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2D4E83;
+
+}
+.not-found-msg{
+    font-size: 1.7rem;
+    font-style: italic;
+    color: #969696;
+    font-weight: 100;
+}

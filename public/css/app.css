@@ -14,7 +14,7 @@
     border-radius: 10px;
     transition: 0.1s;
     font-weight: bold;
-
+    text-decoration: none;
 }
 /* Sidebar */
 .sidebar {
@@ -50,7 +50,7 @@
     min-height: 60px;
     min-width: 0;
     outline: none;
-    padding: 16px 24px;
+    padding: 16px 15px;
     text-align: center;
     text-decoration: none;
     transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
@@ -70,6 +70,8 @@
     background-color: #4ab3e0;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
+    text-decoration: none;
+    border-radius: 100px;
 }
 
 .button-28:active {
@@ -82,10 +84,10 @@
         width: 100%;
     }
 }
-a{
+a {
     text-decoration: none;
 }
-a:hover{
+a:hover {
     text-decoration: none;
 }
 .sidebar .active {

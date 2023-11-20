@@ -19,7 +19,11 @@ return new class extends Migration
             $table->string('evaluation_status')->nullable();
             $table->string('doc_compliance_result')->nullable();
             $table->string('crit_area_result')->nullable();
-
+            $table->string('reference_aerodrome')->nullable();
+            $table->integer('max_allowed_top_elev')->nullable();
+            $table->string('height_eval_remarks')->nullable();
+            $table->integer('proposed_top_elev')->nullable();
+            $table->string('eval_result_choice')->nullable();
             $table->string('app_comp')->nullable();
             $table->string('fee_comp')->nullable();
             $table->string('ep_comp')->nullable();

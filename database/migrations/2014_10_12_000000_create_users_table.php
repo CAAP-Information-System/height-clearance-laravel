@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('rep_landline');
-            $table->integer('rep_mobile');
+            $table->integer('rep_landline')->unique();
+            $table->string('rep_mobile', 11)->unique();
 
             $table->rememberToken();
             $table->timestamps();

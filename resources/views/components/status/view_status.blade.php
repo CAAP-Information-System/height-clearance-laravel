@@ -28,7 +28,13 @@
                 @endforeach
             </div>
             @else
-            <p>No applications found.</p>
+            <section class="not-found-sect">
+                <img class="not-found-img" src="{{ asset('asset/img/not-found.svg') }}" alt="file not found">
+                <div class="not-found-info">
+                    <header class="not-found-hdr">Oops, Sorry!</header>
+                    <div class="not-found-msg">No application has been found yet.</div>
+                </div>
+            </section>
             @endif
         </div>
     </div>

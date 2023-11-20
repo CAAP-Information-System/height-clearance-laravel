@@ -31,11 +31,12 @@ class RegisterController extends Controller
             'rep_company' => ['required', 'string', 'max:255'],
             'rep_office_address' => ['required', 'string', 'max:255'],
             'rep_landline' => ['required', 'numeric'],
-            'rep_mobile' => ['required', 'numeric'],
+            'rep_mobile' => ['required', 'numeric', 'digits:11'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
 
         ]);
+
     }
 
     protected function create(array $data)
@@ -50,6 +51,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
 
 
         return $user;
