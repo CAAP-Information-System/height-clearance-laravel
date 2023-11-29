@@ -810,6 +810,10 @@ class ADMSController extends Controller
         $request->validate([
             'evaluation_status' => 'nullable|string|max:255',
             'ref_aerodrome' => 'nullable',
+            'eval_result_choice' => 'nullable|in:Approved,Denied',
+            'proposed_top_elev' => 'nullable|numeric',
+            'max_allowed_top_elev' => 'nullable|numeric',
+            'height_eval_remarks' => 'nullable|string',
 
         ]);
 
@@ -821,9 +825,17 @@ class ADMSController extends Controller
 
 
         $evaluation_status = $request->input('evaluation_status');
+        $proposed_top_elev = $request->input('proposed_top_elev');
+        $max_allowed_top_elev = $request->input('max_allowed_top_elev');
+        $height_eval_remarks = $request->input('height_eval_remarks');
+        $eval_result_choice = $request->input('eval_result_choice');
 
         // Save the updated application data
         $staff->evaluation_status = $evaluation_status;
+        $staff->proposed_top_elev = $proposed_top_elev;
+        $staff->max_allowed_top_elev = $max_allowed_top_elev;
+        $staff->height_eval_remarks = $height_eval_remarks;
+        $staff->eval_result_choice = $eval_result_choice;
         $staff->save();
 
         return redirect()->route('application-passed', ['id' => $user->id]);

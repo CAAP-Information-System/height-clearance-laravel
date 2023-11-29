@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('max_allowed_top_elev')->nullable();
             $table->string('height_eval_remarks')->nullable();
             $table->integer('proposed_top_elev')->nullable();
-            $table->string('eval_result_choice')->nullable();
+            $table->enum('eval_result_choice', ['Approved', 'Denied'])->nullable();
             $table->string('app_comp')->nullable();
             $table->string('fee_comp')->nullable();
             $table->string('ep_comp')->nullable();

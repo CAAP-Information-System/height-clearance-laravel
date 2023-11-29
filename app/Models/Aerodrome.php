@@ -24,6 +24,10 @@ class Aerodrome extends Model
         'doc_compliance_result',
         'crit_area_result',
         'reference_aerodrome',
+        'max_allowed_top_elev',
+        'height_eval_remarks',
+        'proposed_top_elev',
+        'eval_result_choice',
 
     ];
 

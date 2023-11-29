@@ -72,11 +72,13 @@
                     </div>
                     <div class="mb-4 pb-2">
                         <label for="type_of_structure">Type of Structure</label>
-                        <select name="type_of_structure" id="type_of_structure" class="form-control form-control-lg">
-                            <option value="">Select a Type</option>
-                            <option value="Residential" {{ old('type_of_structure') == 'Residential' ? 'selected' : '' }}>Residential</option>
-                            <option value="Commercial" {{ old('type_of_structure') == 'Commercial' ? 'selected' : '' }}>Commercial</option>
-                        </select>
+                        <div class="dropdown">
+                            <select name="eval_result_choice" id="type_of_structure" class="form-control form-control-lg">
+                                <option value="">Select a Type</option>
+                                <option value="Approved" {{ old('eval_result_choice') == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                <option value="Denied" {{ old('eval_result_choice') == 'Denied' ? 'selected' : '' }}>Denied</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="mb-4 pb-2">
@@ -285,7 +287,6 @@
     // Trigger the initial state based on the default selected values
     handleTypeChange();
     // Add an event listener to the permit type radio buttons
-
 </script>
 
 <script>

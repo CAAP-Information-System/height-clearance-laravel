@@ -243,7 +243,6 @@ class ApplicationFormController extends Controller
     }
 
 
-
     public function getFormData($id)
     {
         $formData = Application::find($id);

@@ -96,6 +96,9 @@
     border: 1px solid #b6b6b6;
     border-radius: 10px;
 }
+.airport{
+    width: 400px;
+}
 .dropdown {
     position: relative;
     display: inline-block;

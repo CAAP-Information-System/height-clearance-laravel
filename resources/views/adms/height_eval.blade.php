@@ -141,13 +141,8 @@
 
                         <div class="data-label">Reference Aerodome/Facility</div>
                         <div class="data-value">
-                            <div class="dropdown">
-                                <select class="dropbtn" name="reference_aerodrome" id="selectedAirport">
-                                    <option value="" disabled selected>Select an Airport</option>
-                                    @foreach ($airports as $airport)
-                                    <option value="{{ $aerodrome->reference_aerodrome }}">{{ $airport }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="data-value">
+                                <input class="airport" type="text" value="{{$aerodrome->reference_aerodrome}}">
                                 <a class="edit-link" href="">Edit</a>
                                 <label for="retain_reference_aerodrome">Retain</label>
                                 <input type="checkbox" id="retain_reference_aerodrome" name="retain_reference_aerodrome" value="1">
@@ -156,22 +151,28 @@
                         </div>
                         <div class="data-label">Maximum Allowed Top Elevation</div>
                         <div class="data-value">
-                            <input type="text" placeholder="Enter data">
+                            <input type="text" name="max_allowed_top_elev" placeholder="Enter data">
                         </div>
                         <div class="data-label">Remarks</div>
                         <div class="data-value">
-                            <input type="text" placeholder="Enter data">
+                            <input type="text" name="height_eval_remarks" placeholder="Enter data">
                         </div>
                     </div>
                     <div class="data-right">
                         <div class="data-label">Proposed Top Elevation</div>
                         <div class="data-value">
-                            <input type="text" placeholder="Enter data">
+                            <input type="text" name="proposed_top_elev" placeholder="Enter data">
                         </div>
 
                         <div class="data-label">Evaluation Result (Approved or Denied)</div>
                         <div class="data-value">
-                            <input type="text" placeholder="Enter data">
+                            <div class="dropdown">
+                                <select name="eval_result_choice" id="type_of_structure" class="form-control form-control-lg">
+                                    <option value="">Select a Type</option>
+                                    <option value="Approved" {{ old('eval_result_choice') == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                    <option value="Denied" {{ old('eval_result_choice') == 'Denied' ? 'selected' : '' }}>Denied</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
