@@ -8,7 +8,7 @@
         <form method="POST" action="{{ route('ADMSSupervisorUpdate', ['id' => $user->id]) }}">
             @csrf
             <header class="eval-hdr">
-                You’re now in <span style="color: #2F96D0;">Supervisor's Evaluation</span>
+                You’re now in <span style="color: #2F96D0;">ADMS Chief's Approval</span>
             </header>
             <h2 class="mt-3">Application Number: {{$applicationData->application_number}}</h2>
 
@@ -193,7 +193,7 @@
             <div class="checked-btn-container">
                 <button type="submit" class="checked-btn">
                     <i class='bx bx-check bx-sm'></i>
-                    Checked
+                    Noted
                 </button>
 
             </div>

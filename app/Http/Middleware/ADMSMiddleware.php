@@ -18,9 +18,6 @@ class ADMSMiddleware
     {
         if(Auth::check()){
 
-            // admin == 1
-            // user == 0
-
             if(Auth::user()->access_role == 'adms') {
                 return $next($request);
             }

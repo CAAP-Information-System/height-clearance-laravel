@@ -21,7 +21,7 @@ class ADMSSupervisorMiddleware
             // admin == 1
             // user == 0
 
-            if(Auth::user()->access_role == 'supervisor') {
+            if (Auth::user()->access_role == 'supervisor' || Auth::user()->access_role == 'chief') {
                 return $next($request);
             }
             else{

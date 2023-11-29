@@ -1,20 +1,25 @@
-# Height Clearance Permit (HCP) Documentation
+# Height Clearance Permit (HCP) Documentation 🛫
 > Version Beta
 ### What is HCP all about?
 The Civil Aviation Authority of the Philippines (CAAP) has an online platform for Height Evaluation which is part of their efforts to streamline the issuance of permits, licenses, and certificates for construction. They also have a virtual map of critical areas to guide stakeholders in their applications for HCP.
 
 **_Reference:_**
 [Understanding Building Height Limit in the Philippines & Exceptions](https://www.ianfulgar.com/reference/understanding-building-height-limit-in-the-philippines-exceptions/#:~:text=The%20CAAP%20has%20an%20online,in%20their%20applications%20for%20HCP.)
-## TODO:
->[!IMPORTANT]
-> Maintain flow of task for smooth development and testing
-1. Enable user/admin authentication
-2. Enable proper user access
-3. Construct proper framework hierarchy
-4. Establish Admin-side interface
-5. Implement design interface using Bootstrap
-6. Complete documentation of the system
-7. Test user input validation
+
+## Features and Functions
+
+### Streamlined Verification Process 👁️
+The application enables faster verification process for the user. The user will be able to upload the necessary documents for the application. The admin will be able to verify the documents and approve the application. The user will be notified through email for the status of the application.
+
+### Live Critical Map 🗺️
+The application will be able to display the critical map of the Philippines. The map will be able to display the existing radius of _critical areas_ in the map. It is enabled and powered by javascript which grants faster loading of map coordinates including the coordinates for each regions.
+
+### Multiple Upload 🗃️
+The application will be able to upload multiple files at once. The user will be able to upload multiple files in a single request. The application will be able to store the files in the designated folder in the server. The application will be able to display the uploaded files in the application.
+
+### Email Notification 📨
+The application will be able to send email notifications to the user. Once the user has submitted the application, the user will be notified through email. The user will be notified for the status of the application. The user will be notified for the approval of the application.
+
 
 # Getting Started
 Installing Composer packages

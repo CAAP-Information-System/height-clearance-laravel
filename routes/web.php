@@ -66,6 +66,11 @@ Route::prefix('supervisor')->middleware(['auth', 'isADMSSupervisor'])->group(fun
     Route::post('/update-supervisor-eval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSSupervisorUpdate'])->name('ADMSSupervisorUpdate');
 });
 
+Route::prefix('chief')->middleware(['auth', 'isADMSSupervisor'])->group(function (){
+    Route::get('/chief-approval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSChiefView'])->name('ADMSChiefView');
+    Route::post('/update-chief-approval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSChiefUpdate'])->name('ADMSChiefUpdate');
+});
+
 // URL PROTECTION
 Route::middleware(['checkPaymentCompleted'])->group(function () {
     // Routes protected by checking payment completion
