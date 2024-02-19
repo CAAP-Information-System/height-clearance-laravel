@@ -1,0 +1,200 @@
+.eval-main {
+    color: #3b3b3b;
+    width: 100%;
+}
+.eval-hdr {
+    font-size: 2rem;
+    text-align: center;
+    padding-bottom: 15px;
+}
+.eval-subhdr{
+    text-align: center;
+    font-size: 17px;
+    font-style: italic;
+    color: #969696;
+    padding-bottom: 4vh;
+}
+.document-views {
+    padding-bottom: 10px;
+}
+.file-group {
+    display: flex;
+    gap: 5vh;
+    align-items: center;
+    width: 100%;
+}
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-size: 20px;
+}
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.right-panel a {
+    margin: 3px;
+}
+
+/* CSS */
+.button-22 {
+    align-items: center;
+    appearance: button;
+    background-color: #0276ff;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    font-family: "RM Neue", sans-serif;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+    padding: 10px 21px;
+    text-align: center;
+    text-transform: none;
+    transition: color 0.13s ease-in-out, background 0.13s ease-in-out,
+        opacity 0.13s ease-in-out, box-shadow 0.13s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-22:active {
+    background-color: #006ae8;
+}
+
+.button-22:hover {
+    text-decoration: none;
+    background-color: #1c84ff;
+}
+.data-hdr {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #b6b6b6;
+}
+.data {
+    padding: 10px;
+}
+.data-field {
+    display: flex;
+    gap: 15vh;
+}
+.data-label {
+    margin-top: 10px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+.data-value input {
+    padding: 7px;
+    border: 1px solid #b6b6b6;
+    border-radius: 10px;
+}
+.airport{
+    width: 400px;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.dropdown-content option {
+    display: block;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.edit-link {
+    background-color: #4ab3e0;
+    padding: 10px;
+    border-radius: 15px;
+    color: #ffff;
+}
+
+.edit-link:hover {
+    text-decoration: none;
+    background-color: #ff8423;
+    color: #ffff;
+    transition: 0.2s ease-in;
+}
+.checked-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    margin-top: 3vh;
+}
+
+.checked-btn {
+    margin-bottom: 10px; /* Adjust the margin between buttons */
+}
+
+.or {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #8d8d8d;
+    font-style: italic;
+}
+.return-btn {
+    padding: 10px;
+    font-size: 1.3rem;
+    border-radius: 20px;
+    color: #006ae8;
+    border: 2px solid transparent;
+}
+.return-btn:hover {
+    transition: 0.1s ease-in;
+    border: 2px solid #4ab3e0;
+    color: #006ae8;
+}
+.checked-btn {
+    width: 50%;
+    background-color: #2E9A39;
+    color: #ffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s;
+}
+
+.checked-btn:hover {
+    background-color: #1f6aa6;
+}
+
+.checked-btn:active {
+    transform: translateY(2px);
+}

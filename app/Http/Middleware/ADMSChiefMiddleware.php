@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class ADMSSupervisorMiddleware
+class ADMSChiefMiddleware
 {
     /**
      * Handle an incoming request.
@@ -21,7 +21,7 @@ class ADMSSupervisorMiddleware
             // admin == 1
             // user == 0
 
-            if (Auth::user()->access_role == 'adms-supervisor') {
+            if (Auth::user()->access_role == 'adms-chief') {
                 return $next($request);
             }
             else{

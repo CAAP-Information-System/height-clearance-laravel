@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" type="text/css" href="{{ url('css/adms/supervisor.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('css/adms/chief.css') }}">
 <div class="container">
 
     <div class="eval-main">
-        <form method="POST" action="{{ route('ADMSSupervisorUpdate', ['id' => $user->id]) }}">
+        <form method="POST" action="{{ route('ADMSChiefUpdate', ['id' => $user->id]) }}">
             @csrf
             <header class="eval-hdr">
-                You’re now in <span style="color: #2F96D0;">ADMS Chief's Approval</span>
+                Final Height Application Review for <span style="color: #2F96D0;">Evaluation Chief</span>
             </header>
+            <p class="eval-subhdr">The application has been successfully reviewed by the ADMS Checker/Supervisor.</p>
             <h2 class="mt-3">Application Number: {{$applicationData->application_number}}</h2>
 
             <div class="document-views">
@@ -192,7 +193,7 @@
 
             <div class="checked-btn-container">
                 <button type="submit" class="checked-btn">
-                    <i class='bx bx-check bx-sm'></i>
+                    <i class="fa-solid fa-check"></i>
                     Noted
                 </button>
 

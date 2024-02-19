@@ -17,6 +17,7 @@
 }
 
 
+
 .container {
     max-width: 1400px;
     padding: 0 15px;
@@ -150,7 +151,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5vh;
+    gap: 20vh;
 }
 
 .apply-section {
@@ -187,6 +188,7 @@
     transition: 0.3s ease-in-out;
     cursor: pointer;
     color: #ff8423;
+    text-decoration: none;
 }
 .requirements-section {
     padding: 5vh;
@@ -212,7 +214,7 @@
     width: 100%;
     font-size: 2rem;
     font-style: italic;
-    font-weight: bold;
+    color: #3b3b3b;
 }
 .no-bullets {
     list-style-type: none;
@@ -251,6 +253,7 @@
     border-radius: 100px;
 }
 .back-to-top:hover {
+    text-decoration: none;
     background-color: #ffff;
     font-weight: bold;
     transition: 0.3s ease-in-out;

@@ -80,6 +80,8 @@
                                 <label for="retain_latitude">Retain</label>
                                 <input type="checkbox" id="retain_latitude" name="retain_latitude" value="1">
                             </div>
+
+                            @if($applicationData->permit_type == 'HCP' && $applicationData->building_type == 'Permanent')
                             <div class="data-label">Type of HCP Permanent</div>
                             <div class="data-value">
                                 <input name="type_of_hcp" type="text" value="N/A" style="width: 50%;">
@@ -87,6 +89,8 @@
                                 <label for="retain_type_of_hcp">Retain</label>
                                 <input type="checkbox" id="retain_type_of_hcp" name="retain_type_of_hcp" value="1">
                             </div>
+                            @endif
+
                         </div>
                         <div class="data-right">
                             @unless($applicationData->permit_type !='HCP' && $applicationData->building_type !='Temporary'&& $applicationData->building_type !='Permanent')

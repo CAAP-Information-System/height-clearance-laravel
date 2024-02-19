@@ -47,7 +47,7 @@ class ApplicationFormController extends Controller
 
 
         $ownerapplication = new Owner($validateOwner);
-
+        $ownerapplication->user()->associate(auth()->user());
         $ownerapplication->save();
 
         return redirect()->route('upload',['application_id' => $ownerapplication->id]);
@@ -65,6 +65,7 @@ class ApplicationFormController extends Controller
     {
 
         $user = Auth::user();
+
         // $applicationNumber = Application::generateApplicationNumber();
         // $user = auth()->user();
         // if ($user->application) {
@@ -212,7 +213,6 @@ class ApplicationFormController extends Controller
             $fileNameToStore_additional_req = 'Not Found';
         }
 
-
         $application_number = Helper::IDGenerator(Application::class, 'application_number', 4, '23');
 
         // $request->session()->put('application', $application);
@@ -240,6 +240,7 @@ class ApplicationFormController extends Controller
 
 
         return redirect()->route('components.payment_receipt.create', ['application_id' => $application->id]);
+
     }
 
 

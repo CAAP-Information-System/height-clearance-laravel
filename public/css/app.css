@@ -9,11 +9,10 @@
     margin: 5px;
 }
 .item-link:hover {
-    background-color: #2d4e83;
+    background-color: #50A9FB;
     color: #ffff;
     border-radius: 10px;
     transition: 0.1s;
-    font-weight: bold;
     text-decoration: none;
 }
 /* Sidebar */

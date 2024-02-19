@@ -4,8 +4,10 @@
 <link rel="stylesheet" type="text/css" href="{{ url('css/home.css') }}">
 
 <div class="container">
-    <section class="getting-started-section">
-        <header class="getting-started-hdr">Getting Started</header>
+    <header class="getting-started-hdr">Getting Started</header>
+</div>
+<!-- <section class="getting-started-section">
+
         <div class="requirements">Requirements for application:</div>
         <p class="req-submessage">Preferred to be initially read by the Geodetic Engineer. Data should be complete, legible, correct and with no erasures. Any discrepancy in complying these requirements may delay processing.</p>
         <hr class="border border-secondary border-2 opacity-50">
@@ -53,30 +55,31 @@
                 </div>
             </li>
         </ul>
-    </section>
+    </section> -->
 
-    <section class="guide-section">
-        <header class="guide-header">How will the application be processed?</header>
-        <div class="guide-section-main">
+<section class="guide-section">
+    <header class="guide-header">How will the application be processed?</header>
+    <div class="guide-section-main">
 
-            <div class="img-grp">
-                <img class="guide-img" src="{{ asset('asset/img/apply-clearance.png') }}" alt="Apply for a clearance">
-                <img class="guide-img" src="{{ asset('asset/img/verify-application.png') }}" alt="Verifying application">
-                <img class="guide-img" src="{{ asset('asset/img/receive-results.png') }}" alt="Receiving application">
-            </div>
+        <div class="img-grp">
+            <img class="guide-img" src="{{ asset('asset/img/apply-clearance.png') }}" alt="Apply for a clearance">
+            <img class="guide-img" src="{{ asset('asset/img/verify-application.png') }}" alt="Verifying application">
+            <img class="guide-img" src="{{ asset('asset/img/receive-results.png') }}" alt="Receiving application">
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="apply-section">
-        <div class="apply-grp">
-            <header class="apply-header">
-                Apply for an Height Clearance Now!
-            </header>
-            <a class="apply-btn" href="{{ url('owner-form') }}">
-                Go to Application!
-            </a>
-        </div>
-    </section>
+<section class="apply-section">
+    <div class="apply-grp">
+        <header class="apply-header">
+            Apply for an Height Clearance Now!
+        </header>
+        <a class="apply-btn" href="{{ url('owner-form') }}">
+            Go to Application!
+        </a>
+    </div>
+</section>
+<div class="container">
     <section class="requirements-section">
         <header class="req-main-hdr">What you specifically need...</header>
         <hr class="border border-secondary border-2 opacity-50">
@@ -86,7 +89,7 @@
                 <div class="req-desc">
                     <div class="req-desc-content">
                         <div class="req-desc-upper">
-                            If in case, the proposed structure is to be installed/constructed atop existing structure, include the height of the existing structure.
+                            If in case, the proposed structure is to be installed/constructed atop existing structure, <b class="text-primary">include the height of the existing structure</b>.
                         </div>
                         <hr class="border border-info border-2 opacity-50">
                         <div class="req-desc-lower">
@@ -101,7 +104,7 @@
                 <div class="req-desc">
                     <div class="req-desc-content">
                         <div class="req-desc-upper">
-                            Minimum of 4 concerns proposed structure or site, provide the Geodetic Coordinates (WGS-84 Datum) and Orthometric Height (EGM2008)
+                            Minimum of 4 concerns proposed structure or site, provide the <b class="text-primary">Geodetic Coordinates (WGS-84 Datum)</b> and <b class="text-primary">Orthometric Height (EGM2008)</b>
                         </div>
                         <hr class="border border-info border-2 opacity-50">
                         <div class="req-desc-lower">
@@ -116,7 +119,7 @@
                 <header class="req-header">3. Certification of Control Station Used</header>
                 <div class="req-desc">
                     <div class="req-desc-upper">
-                        Copy/copies of Elevation Reference with Orthometric Height and Horizontal Control Reference with WGS-84 Coordinates (Latitude/Longitude) from known control station of National Mapping and Resource Information Authority (NAMRIA) or CAAP
+                        Copy/copies of Elevation Reference with Orthometric Height and Horizontal Control Reference with <b class="text-primary">WGS-84 Coordinates (Latitude/Longitude)</b> from known control station of National Mapping and Resource Information Authority (NAMRIA) or CAAP
                     </div>
                     <hr class="border border-info border-2 opacity-50">
                     <div class="req-desc-lower">
@@ -129,7 +132,7 @@
                 <header class="req-header">4. Location Plan with Vicinity Map</header>
                 <div class="req-desc">
                     <div class="req-desc-upper">
-                        Copy/copies of Elevation Reference with Orthometric Height and Horizontal Control Reference with WGS-84 Coordinates (Latitude/Longitude) from known control station of National Mapping and Resource Information Authority (NAMRIA) or CAAP
+                        Copy/copies of Elevation Reference with Orthometric Height and Horizontal Control Reference with <b class="text-primary">WGS-84 Coordinates (Latitude/Longitude)</b> from known control station of National Mapping and Resource Information Authority (NAMRIA) or CAAP
                     </div>
                     <hr class="border border-info border-2 opacity-50">
                     <div class="req-desc-lower">
@@ -175,11 +178,11 @@
 
     </section>
 
+
     <a href="#" class="back-to-top">
         Back to Top
         <i class='bx bx-up-arrow-alt'></i>
     </a>
 </div>
-
 
 @endsection

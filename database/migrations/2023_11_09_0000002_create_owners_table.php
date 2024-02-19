@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('owners', function (Blueprint $table) {
             $table->id();
-
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('owner_fname');
             $table->string('owner_lname');
             $table->string('owner_email');

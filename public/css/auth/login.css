@@ -62,7 +62,7 @@
 }
 .alt-link{
     font-weight: bold;
-    text-decoration: none;
+    text-decoration: none !important;
     color: #3b3b3b;
     width: 100%;
     padding: 10px;
@@ -118,49 +118,16 @@
     border-color: #2f96d0;
 }
 
-/* CSS */
-.button-30 {
+.sign-in{
     width: 100%;
-  align-items: center;
-  appearance: none;
-  background-color: #2F96D0;
-  border-radius: 4px;
-  border-width: 0;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
-  box-sizing: border-box;
-  color: #F3F3F3;
-  cursor: pointer;
-  display: inline-flex;
-  font-weight: bold;
-  height: 48px;
-  justify-content: center;
-  line-height: 1;
-  list-style: none;
-  overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
-  position: relative;
-  text-align: left;
-  text-decoration: none;
-  transition: box-shadow .15s,transform .15s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  will-change: box-shadow,transform;
-  font-size: 18px;
+    padding: 15px;
+    background-color: #2F96D0;
+    text-align: center;
+    font-size: 17px;
+    color: #ffff;
+    border: none;
+    border-radius: 99px;
 }
-
-.button-30:focus {
-  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-}
-
-.button-30:hover {
-  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-  transform: translateY(-2px);
-}
-
-.button-30:active {
-  box-shadow: #D6D6E7 0 3px 7px inset;
-  transform: translateY(2px);
+.sign-in:hover{
+    background-color: #969696;
 }

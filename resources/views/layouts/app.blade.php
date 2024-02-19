@@ -22,6 +22,10 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
@@ -43,6 +47,29 @@
 
 <body>
     <div id="app">
+        <!-- Sidebar -->
+        @if(auth()->check() && Auth::user()->access_role == "admin")
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4">
+                    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action py-2" data-mdb-ripple-init>
+                        <i class="fa-solid fa-house"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="{{ url('admin/application-view') }}" class="list-group-item list-group-item-action py-2" data-mdb-ripple-init aria-current="true">
+                        <i class="fa-solid fa-hourglass-half"></i>
+                        <span>Pending Applications</span>
+                    </a>
+                    <a href="{{ route('registered-accounts') }}" class="list-group-item list-group-item-action py-2" data-mdb-ripple-init aria-current="true">
+                        <i class="fa-solid fa-users"></i>
+                        <span>Registered Accounts</span>
+                    </a>
+
+                </div>
+            </div>
+        </nav>
+        @endif
+        <!-- Sidebar -->
         @auth
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -58,45 +85,36 @@
                     @auth
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <i class="fa-solid fa-house"></i>
-                            @if(Auth::user()->access_role == "user")
+                            @if(auth()->check() &&  Auth::user()->access_role == "user")
                             <a class="item-link" href="{{ url('home') }}">
-                                <i class='bx bxs-home'></i>
+                                <i class="fa-solid fa-house"></i>
                                 Home
                             </a>
-                            @elseif(Auth::user()->access_role == "admin")
-                            <a class="item-link" href="{{ url('admin/dashboard') }}">
-                                <i class='bx bxs-grid-alt'></i>
-                                Dashboard
-                            </a>
-                            @elseif(Auth::user()->access_role == "adms")
+                            @elseif(auth()->check() &&  Auth::user()->access_role == "adms")
                             <a class="item-link" href="{{ url('adms/queue') }}">
-                                <i class='bx bx-list-ul'></i>
+                                <i class="fa-solid fa-users-line"></i>
                                 Queued Applications
+                            </a>
+                            @elseif(auth()->check() &&  Auth::user()->access_role == "adms-supervisor")
+                            <a class="item-link" href="{{ route('supervisor-home') }}">
+                                <i class="fa-solid fa-house"></i>
+                                Home
                             </a>
                             @endif
                             <a class="item-link" href="{{ route('view-status') }}">
-                                <i class='bx bx-detail'></i>
+                                <i class="fa-solid fa-chart-simple"></i>
                                 View Status
-                            </a>
-                            <a class="item-link" href="{{ route('check-results') }}">
-                                <i class='bx bx-check-square'></i>
-                                Check Results
                             </a>
                         </div>
                     </div>
                     @endauth
                     <!-- Righ0t Side Of Navbar -->
                     @auth
-                    @if(Auth::user()->access_role == 'user') <!-- Assuming isAdmin() is a method in your User model -->
+                    @if(auth()->check() &&  Auth::user()->access_role == 'user') <!-- Assuming isAdmin() is a method in your User model -->
                     <a class="button-28" href="{{ url('owner-form') }}">
                         <i class='bx bxs-log-in-circle'></i>
                         Apply for a Permit
                     </a>
-                    @elseif(Auth::user()->access_role == 'admin') <!-- Assuming isAdmin() is a method in your User model -->
-                    <a class="button-28" href="{{ url('admin/application-view') }}">
-                        <i class='bx bxs-time-five bx-xs'></i>
-                        Pending Applications</a>
                     @endif
                     @endauth
                     <div style="margin-right: 20px;"></div>

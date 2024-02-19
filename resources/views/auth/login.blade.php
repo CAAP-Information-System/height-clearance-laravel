@@ -70,7 +70,7 @@
                                 @endif
                             </div>
                         </div>
-                        <button type="submit" class="button-30" id="login-button">
+                        <button type="submit" class="sign-in" id="login-button">
                             Sign In
                         </button>
                         <div class="row ">

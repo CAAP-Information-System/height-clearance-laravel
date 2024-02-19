@@ -5,7 +5,6 @@
 <div class="container">
     <form method="post" action="{{ route('generate-pdf') }}" target="_blank">
         @csrf
-        <button class="btn btn-info" type="submit">view</button>
     </form>
     <form method="POST" action="{{ route('updateCompliance', ['id' => $applicationData->id]) }}">
         @csrf
@@ -89,7 +88,6 @@
             <div class="doc-grp">
                 <div class="left-col">
                     <label class="doc-label" for="">2. Filing Fee Receipt</label>
-                    <a href="">View Elevation Plan</a>
                     <a class="button-5" href="{{ asset('storage/fee_receipt/' . $receipt->fee_receipt) }}" target="_blank">View Fee Receipt</a>
                 </div>
                 <div class="right-col">

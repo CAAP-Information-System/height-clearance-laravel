@@ -10,6 +10,7 @@
         </span>
     </header>
 
+
     <form action="{{ route('submitApplication') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="container py-5 h-100">

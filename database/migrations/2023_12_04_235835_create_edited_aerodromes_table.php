@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('airtraffics', function (Blueprint $table) {
+        Schema::create('edited_aerodromes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('airtraffics');
+        Schema::dropIfExists('edited_aerodromes');
     }
 };

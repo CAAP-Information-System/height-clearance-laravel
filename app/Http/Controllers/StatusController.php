@@ -86,7 +86,8 @@ class StatusController extends Controller
     $user = auth()->user();
 
     // Retrieve applications sent by the user
-    $applications = Application::where('user_id', $user->id)->get();
+    $applications = Application::with('owner')->where('user_id', $user->id)->get();
+
 
     return view('components.status.view_status', compact('applications'));
 }

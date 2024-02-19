@@ -34,40 +34,37 @@ Route::prefix('adms')->middleware(['auth', 'isADMS'])->group(function () {
     Route::get('/queue', [App\Http\Controllers\ADMSController::class, 'queuedApplicants'])->name('queue');
 
     // Document review route for ADMS
-    Route::get('/doc-review/{id}', [App\Http\Controllers\ADMSController::class, 'documentReview'])->name('doc-review');
+    Route::get('/doc-review/{application_id}', [App\Http\Controllers\ADMSController::class, 'documentReview'])->name('doc-review');
 
     // Update compliance route for ADMS
-    Route::match(['get', 'post'], '/update-compliance/{id}', [ADMSController::class, 'updateCompliance'])->name('updateCompliance');
+    Route::match(['get', 'post'], '/update-compliance/{application_id}', [ADMSController::class, 'updateCompliance'])->name('updateCompliance');
 
     // Critical evaluation route for ADMS
-    Route::get('/critical-eval/{id}', [App\Http\Controllers\ADMSController::class, 'viewcriticalEvaluation'])->name('adms.critical_eval');
+    Route::get('/critical-eval/{application_id}', [App\Http\Controllers\ADMSController::class, 'viewcriticalEvaluation'])->name('adms.critical_eval');
 
     // Update critical evaluation route for ADMS
-    Route::post('/update-critic-eval/{id}', [App\Http\Controllers\ADMSController::class, 'updateCriticalEvaluation'])->name('updateCriticalEvaluation');
+    Route::post('/update-critic-eval/{application_id}', [App\Http\Controllers\ADMSController::class, 'updateCriticalEvaluation'])->name('updateCriticalEvaluation');
 
     // Height evaluation route for ADMS
-    Route::get('/height-eval/{id}', [App\Http\Controllers\ADMSController::class, 'viewHeightEvaluation'])->name('adms.height_eval');
+    Route::get('/height-eval/{application_id}', [App\Http\Controllers\ADMSController::class, 'viewHeightEvaluation'])->name('adms.height_eval');
 
     // Update height evaluation route for ADMS
-    Route::post('/update-height-eval/{id}', [App\Http\Controllers\ADMSController::class, 'updateHeightEvaluation'])->name('updateHeightEvaluation');
-
-    // Supervisor evaluation route for ADMS
-
-
-    // Update supervisor evaluation route for ADMS
-
+    Route::post('/update-height-eval/{application_id}', [App\Http\Controllers\ADMSController::class, 'updateHeightEvaluation'])->name('updateHeightEvaluation');
 
     // Success page route for ADMS
     Route::get('/application-passed', [App\Http\Controllers\ADMSController::class, 'proceedToSupervisor'])->name('application-passed');
 });
 
-Route::prefix('supervisor')->middleware(['auth', 'isADMSSupervisor'])->group(function (){
-    Route::get('/supervisor-eval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSSupervisorView'])->name('ADMSSupervisorView');
+Route::prefix('adms-supervisor')->middleware(['auth', 'isADMSSupervisor'])->group(function (){
+    Route::get('/home', [App\Http\Controllers\ADMSController::class, 'ADMSSupervisorHome'])->name('supervisor-home');
+    Route::get('/evaluation/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSSupervisorView'])->name('ADMSSupervisorView');
     Route::post('/update-supervisor-eval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSSupervisorUpdate'])->name('ADMSSupervisorUpdate');
+    Route::get('/proceed-to-chief', [App\Http\Controllers\ADMSController::class, 'proceedToChief'])->name('proceed-to-chief');
 });
 
-Route::prefix('chief')->middleware(['auth', 'isADMSSupervisor'])->group(function (){
-    Route::get('/chief-approval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSChiefView'])->name('ADMSChiefView');
+Route::prefix('adms-chief')->middleware(['auth', 'isADMSChief'])->group(function (){
+    Route::get('/home', [App\Http\Controllers\ADMSController::class, 'ADMSChiefHome'])->name('chief-home');
+    Route::get('/approval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSChiefView'])->name('ADMSChiefView');
     Route::post('/update-chief-approval/{id}', [App\Http\Controllers\ADMSController::class, 'ADMSChiefUpdate'])->name('ADMSChiefUpdate');
 });
 
@@ -90,8 +87,8 @@ Route::middleware(['is.loggedin'])->group(function () {
 // APPLICATION FORM
 Route::get('/owner-form', [ApplicationFormController::class, 'apply_owner_view'])->name('owner-form');
 Route::get('/application/{application_id}', [App\Http\Controllers\ApplicationFormController::class, 'application_form'])->name('upload');
+Route::post('/submit-owner-details' ,[ApplicationFormController::class, 'submit_owner_details'])->name('submitOwnerDetails');
 Route::post('/submit-application', [ApplicationFormController::class, 'submitForm'])->name('submitApplication');
-Route::post('/submit-owner-details', [ApplicationFormController::class, 'submit_owner_details'])->name('submitOwnerDetails');
 
 // MESSAGES
 Route::get('/please-go-back', [HomeController::class, 'finishedApplication'])->name('goBack');

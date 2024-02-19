@@ -12,18 +12,19 @@
             <div class="card-container">
                 @foreach ($applications as $application)
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-hdr">
                         <header class="app-num">{{ $application->application_number }}</header>
 
                     </div>
                     <div class="card-body">
                         <p class="owner-name">{{ $application->owner->owner_fname }} {{ $application->owner->owner_lname }}</p>
-
+                        <p class="owner-email">{{ $application->user->rep_company }}</p>
+                        <a class="view-application-btn" href="{{ route('check-submission', ['id' => $application->id]) }}">
+                            <i class='bx bxs-navigation'></i>
+                            View Application
+                        </a>
                     </div>
-                    <a class="view-application-btn" href="{{ route('check-submission', ['id' => $application->id]) }}">
-                        <i class='bx bxs-navigation'></i>
-                        View Status
-                    </a>
+
                 </div>
                 @endforeach
             </div>

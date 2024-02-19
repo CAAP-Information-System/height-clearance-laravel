@@ -5,7 +5,7 @@
 <div class="container">
 
     <div class="eval-main">
-        <form method="POST" action="{{ route('updateHeightEvaluation', ['id' => $user->id]) }}">
+        <form method="POST" action="{{ route('updateHeightEvaluation', ['application_id' => $user->id]) }}">
             @csrf
             <header class="eval-hdr">
                 You’re now in <span style="color: #2F96D0;">Height Evaluation</span>
@@ -147,7 +147,6 @@
                                 <label for="retain_reference_aerodrome">Retain</label>
                                 <input type="checkbox" id="retain_reference_aerodrome" name="retain_reference_aerodrome" value="1">
                             </div>
-
                         </div>
                         <div class="data-label">Maximum Allowed Top Elevation</div>
                         <div class="data-value">
@@ -186,7 +185,7 @@
                     Evaluated
                 </button>
                 <p class="or">If the provided data is <span style="color: #DC4C64; font-weight: bold;">incomplete</span>:</p>
-                <a href="{{ route('adms.critical_eval', ['id' => $applicationData->id]) }}" class="return-btn">
+                <a href="{{ route('adms.critical_eval', ['application_id' => $applicationData->id]) }}" class="return-btn">
                     <i class='bx bxs-home'></i>
                     Return Home
                 </a>

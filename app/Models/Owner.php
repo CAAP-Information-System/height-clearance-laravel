@@ -18,7 +18,7 @@ class Owner extends Model
 
     public function application()
     {
-        return $this->hasMany(Application::class, 'owner_id');
+        return $this->hasOne(Application::class, 'owner_id');
     }
     public function user()
     {

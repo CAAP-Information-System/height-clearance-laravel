@@ -22,6 +22,7 @@
             <div class="application-card-body">
                 @if($application->user)
                 <div class="details">
+                    <label class="label-name">Applicant Name:</label>
                     <div class="name">{{ $application->user->rep_fname }} {{ $application->user->rep_lname }}</div>
                     <div>{{ $application->user->rep_office_address }}</div>
                 </div>

@@ -192,8 +192,8 @@
 
             <div class="checked-btn-container">
                 <button type="submit" class="checked-btn">
-                    <i class='bx bx-check bx-sm'></i>
-                    Checked
+                    <i class="fa-solid fa-check"></i>
+                    Reviewed
                 </button>
 
             </div>

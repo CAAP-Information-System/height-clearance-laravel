@@ -9,9 +9,10 @@
 .report-title{
     font-size: 2.5rem;
 }
-.task-img{
+.proceed-img{
+    margin-top: 5vh;
     width: auto;
-    height: 350px;
+    height: 300px;
 }
 .report-submessage{
     margin-top: 35px;
@@ -22,7 +23,12 @@
 .return-queue{
     font-size: 20px;
     margin-top: 4vh;
+    padding: 25px;
+    background-color: #50A9FB;
+    color: #ffff !important;
+    border-radius: 99px;
 }
 .return-queue:hover{
     text-decoration: none;
+    background-color: #969696;
 }

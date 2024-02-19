@@ -40,11 +40,16 @@
     color: #2D4E83;
     margin-bottom: 10px;
 }
+.label-name{
+    font-weight: none;
+    color: #3b3b3b;
+}
 .name{
     font-weight: bold;
+    font-size: 25px;
 }
 .email{
-    font-size: 20px;
+    font-size: 16px;
     color: #969696;
     font-style: italic;
 }

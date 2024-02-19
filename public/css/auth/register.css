@@ -133,11 +133,10 @@ body {
     font-weight: 500;
     border-radius: 5px;
     background: #2f96d0;
-    transition: all 0.3s ease;
 }
 
 .register-user .button .register:hover {
-    background: #ff8423;
+    background: #969696;
 }
 
 .already-registered{
