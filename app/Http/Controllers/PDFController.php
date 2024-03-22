@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Storage;
 class PDFController extends Controller
 {
 
-    public function generatePDF()
+    public function createNonComplianceLetter()
     {
         $users = User::get();
         $usercount = User::count();

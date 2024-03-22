@@ -131,4 +131,4 @@ Route::get('/home', [HomeController::class, 'showHome'])->name('home');
 
 
 Route::get('form-data/{id}', [ApplicationFormController::class, 'getFormData']);
-Route::get('generate-pdf', [PDFController::class, 'generatePDF'])->name('generate-pdf');
+Route::get('non-compliance-letter', [PDFController::class, 'createNonComplianceLetter'])->name('non-compliance-letter');
