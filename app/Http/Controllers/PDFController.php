@@ -17,16 +17,17 @@ class PDFController extends Controller
 
     public function createNonComplianceLetter()
     {
-        $users = User::get();
-        $usercount = User::count();
+        $contxt = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed'=> TRUE
+            ]
+        ]);
         $pdf = FacadePdf::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
-        $data = [
-            'title' => '59th DGCA Registration Report',
-            'date' => date('m/d/Y'),
-            'users' => $users,
-        ];
+        $pdf->getDomPDF()->setHttpContext($contxt);
         $pdf->setPaper('A4');
-        $pdf->loadView('.pdf.non_compliance_letter', $data);
+        $pdf->loadView('pdf.non_compliance_letter');
         // Stream the generated PDF
         return $pdf->stream();
     }
