@@ -7,7 +7,7 @@
     <div class="eval-main">
 
 
-        <form method="POST" action="{{ route('updateCriticalEvaluation', ['id' => $user->id]) }}">
+        <form method="POST" action="{{ route('updateCriticalEvaluation', ['application_id' => $user->id]) }}">
             @csrf
             <header class="eval-hdr">
                 You’re now in <span style="color: #2F96D0;">Critical Evaluation</span>

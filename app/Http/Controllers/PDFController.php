@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
@@ -16,17 +17,16 @@ class PDFController extends Controller
 
     public function generatePDF()
     {
-        $contxt = stream_context_create([
-            'ssl' => [
-                'verify_peer' => FALSE,
-                'verify_peer_name' => FALSE,
-                'allow_self_signed'=> TRUE
-            ]
-        ]);
+        $users = User::get();
+        $usercount = User::count();
         $pdf = FacadePdf::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
-        $pdf->getDomPDF()->setHttpContext($contxt);
+        $data = [
+            'title' => '59th DGCA Registration Report',
+            'date' => date('m/d/Y'),
+            'users' => $users,
+        ];
         $pdf->setPaper('A4');
-        $pdf->loadView('pdf.non_compliance_letter');
+        $pdf->loadView('.pdf.non_compliance_letter', $data);
         // Stream the generated PDF
         return $pdf->stream();
     }

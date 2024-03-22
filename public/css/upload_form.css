@@ -162,3 +162,11 @@
     border-radius: 6px;
 }
 
+@media screen and (max-width: 768px) {
+    .coordinate-fields{
+        display: block;
+    }
+    .coord-inp{
+        margin-top: 15px;
+    }
+  }

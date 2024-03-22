@@ -73,7 +73,7 @@
                             <div class="data-label">Proposed Height</div>
                             <div class="data-value">
                                 <input name="proposed_height" type="text" value="{{$applicationData->proposed_height}}" style="width: 50%;">
-                                <a class="edit-link" href="">Edit</a>
+
                                 <label for="retain_proposed_height">Retain</label>
                                 <input type="checkbox" id="retain_proposed_height" name="retain_proposed_height" value="1">
                             </div>
@@ -84,7 +84,7 @@
                                 <input type="text" name="latitude_min" value="{{$applicationData->lat_min}}" style="width: 15%;">
                                 <input type="text" name="latitude_sec" value="{{$applicationData->lat_sec}}" style="width: 15%;">
 
-                                <a class="edit-link" href="">Edit</a>
+
                                 <label for="retain_latitude">Retain</label>
                                 <input type="checkbox" id="retain_latitude" name="retain_latitude" value="1">
                             </div>
@@ -92,7 +92,7 @@
                             <div class="data-label">Type of HCP Permanent</div>
                             <div class="data-value">
                                 <input name="type_of_hcp" type="text" placeholder="Enter data" style="width: 50%;">
-                                <a class="edit-link" href="">Edit</a>
+
                                 <label for="retain_type_of_hcp">Retain</label>
                                 <input type="checkbox" id="retain_type_of_hcp" name="retain_type_of_hcp" value="1">
                             </div>
@@ -103,7 +103,7 @@
                             <div class="data-label">Height of Existing</div>
                             <div class="data-value">
                                 <input type="text" value="{{$applicationData->height_of_existing_structure}}" style="width: 50%;">
-                                <a class="edit-link" href="">Edit</a>
+
                                 <label for="retain_owner_name">Retain</label>
                                 <input type="checkbox" id="retain_owner_name" name="retain_owner_name" value="1">
                             </div>
@@ -113,7 +113,7 @@
                                 <input type="text" name="longitude_deg" value="{{$applicationData->long_deg}}" style="width: 15%;">
                                 <input type="text" name="longitude_min" value="{{$applicationData->long_min}}" style="width: 15%;">
                                 <input type="text" name="longitude_sec" value="{{$applicationData->long_sec}}" style="width: 15%;">
-                                <a class="edit-link" href="">Edit</a>
+
                                 <label for="retain_longitude">Retain</label>
                                 <input type="checkbox" id="retain_longitude" name="retain_longitude" value="1">
                             </div>
@@ -121,7 +121,7 @@
                             <div class="data-label">Orthometric Height</div>
                             <div class="data-value">
                                 <input name="orthometric_height" type="text" value="{{$applicationData->orthometric_height}}" style="width: 40%;">
-                                <a class="edit-link" href="">Edit</a>
+
                                 <label for="retain_orthometric_height">Retain</label>
                                 <input type="checkbox" id="retain_orthometric_height" name="retain_orthometric_height" value="1">
                             </div>
@@ -137,7 +137,7 @@
                         <div class="data-label">Site Location/Address</div>
                         <div class="data-value">
                             <input type="text" value="{{$applicationData->site_address}}">
-                            <a class="edit-link" href="">Edit</a>
+
                             <label for="retain_orthometric_height">Retain</label>
                             <input type="checkbox" id="retain_orthometric_height" name="retain_orthometric_height" value="1">
                         </div>
@@ -146,7 +146,7 @@
                         <div class="data-value">
                             <div class="data-value">
                                 <input class="airport" name="reference_aerodrome" type="text" value="{{$aerodrome->reference_aerodrome}}">
-                                <a class="edit-link" href="">Edit</a>
+
                                 <label for="retain_reference_aerodrome">Retain</label>
                                 <input type="checkbox" id="retain_reference_aerodrome" name="retain_reference_aerodrome" value="1">
                             </div>
@@ -155,7 +155,7 @@
                         <div class="data-label">Maximum Allowed Top Elevation</div>
                         <div class="data-value">
                             <input type="text" name="max_allowed_top_elev" value="{{$aerodrome->max_allowed_top_elev}}" placeholder="Enter data">
-                            <a class="edit-link" href="">Edit</a>
+
                             <label for="retain_max_allowed_top_elev">Retain</label>
                             <input type="checkbox" id="retain_max_allowed_top_elev" name="retain_max_allowed_top_elev" value="1">
                         </div>
@@ -163,7 +163,7 @@
                         <div class="data-label">Remarks</div>
                         <div class="data-value">
                             <input type="text" name="height_eval_remarks" value="{{$aerodrome->height_eval_remarks}}" placeholder="Enter data">
-                            <a class="edit-link" href="">Edit</a>
+
                             <label for="retain_height_eval_remarks">Retain</label>
                             <input type="checkbox" id="retain_height_eval_remarks" name="retain_height_eval_remarks" value="1">
                         </div>
@@ -172,18 +172,25 @@
                         <div class="data-label">Proposed Top Elevation</div>
                         <div class="data-value">
                             <input type="text" name="proposed_top_elev" value="{{$aerodrome->proposed_top_elev}}" placeholder="Enter data">
-                            <a class="edit-link" href="">Edit</a>
+
                             <label for="retain_proposed_top_elev">Retain</label>
                             <input type="checkbox" id="retain_proposed_top_elev" name="retain_proposed_top_elev" value="1">
                         </div>
 
                         <div class="data-label">Evaluation Result (Approved or Denied)</div>
                         <div class="data-value">
-                            <input type="text" name="eval_result_choice" value="{{$aerodrome->eval_result_choice}}" placeholder="Enter data">
-                            <a class="edit-link" href="">Edit</a>
+                            <div class="dropdown">
+                                <select name="supervisor_result" id="eval_result" class="form-control form-control-lg">
+                                    <option value="">Select a Type</option>
+                                    <option class="eval bg-success" value="Approved" {{ $aerodrome->supervisor_result== 'Approved' ? 'selected' : '' }}>Approved</option>
+                                    <option class="eval bg-danger" value="Denied" {{ $aerodrome->supervisor_result == 'Denied' ? 'selected' : '' }}>Denied</option>
+                                </select>
+                            </div>
+
                             <label for="retain_reval_result_choice">Retain</label>
                             <input type="checkbox" id="retain_eval_result_choice" name="retain_eval_result_choice" value="1">
                         </div>
+
                     </div>
 
                 </div>

@@ -74,10 +74,10 @@
                     <div class="mb-4 pb-2">
                         <label for="type_of_structure">Type of Structure</label>
                         <div class="dropdown">
-                            <select name="eval_result_choice" id="type_of_structure" class="form-control form-control-lg">
+                            <select name="type_of_structure" id="type_of_structure" class="form-control form-control-lg">
                                 <option value="">Select a Type</option>
-                                <option value="Approved" {{ old('eval_result_choice') == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                <option value="Denied" {{ old('eval_result_choice') == 'Denied' ? 'selected' : '' }}>Denied</option>
+                                <option value="Residential">Residential</option>
+                                <option value="Commercial">Commercial</option>
                             </select>
                         </div>
                     </div>

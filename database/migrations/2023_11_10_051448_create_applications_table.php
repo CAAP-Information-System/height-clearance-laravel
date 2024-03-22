@@ -34,7 +34,7 @@ return new class extends Migration
             $table->integer('long_min')->nullable();
             $table->integer('long_sec')->nullable();
             $table->integer('orthometric_height')->nullable();
-            $table->integer('is_ForEval')->default('1');
+            $table->integer('is_ForEval')->default('0');
 
             $table->timestamps();
         });

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class ADMSMiddleware
+class ANSSupervisorMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,7 +18,7 @@ class ADMSMiddleware
     {
         if(Auth::check()){
 
-            if(Auth::user()->access_role == 'adms') {
+            if(Auth::user()->access_role == 'ans-supervisor') {
                 return $next($request);
             }
             else{

@@ -10,7 +10,7 @@
 
         <div class="requirements">Requirements for application:</div>
         <p class="req-submessage">Preferred to be initially read by the Geodetic Engineer. Data should be complete, legible, correct and with no erasures. Any discrepancy in complying these requirements may delay processing.</p>
-        <hr class="border border-secondary border-2 opacity-50">
+        <hr class="border border-secondary opacity-50">
         <ul class="cards">
             <li class="card">
                 <div>
@@ -82,7 +82,7 @@
 <div class="container">
     <section class="requirements-section">
         <header class="req-main-hdr">What you specifically need...</header>
-        <hr class="border border-secondary border-2 opacity-50">
+        <hr class="border border-secondary opacity-50">
         <div class="req-block">
             <div class="req-grp" id="elevation-plan">
                 <header class="req-header">1. Elevation Plan for Proposed Structure</header>
@@ -91,7 +91,7 @@
                         <div class="req-desc-upper">
                             If in case, the proposed structure is to be installed/constructed atop existing structure, <b class="text-primary">include the height of the existing structure</b>.
                         </div>
-                        <hr class="border border-info border-2 opacity-50">
+                        <hr class="border border-info opacity-50">
                         <div class="req-desc-lower">
                             For HCP application only; in A3 or A4 size bond paper
                         </div>
@@ -106,7 +106,7 @@
                         <div class="req-desc-upper">
                             Minimum of 4 concerns proposed structure or site, provide the <b class="text-primary">Geodetic Coordinates (WGS-84 Datum)</b> and <b class="text-primary">Orthometric Height (EGM2008)</b>
                         </div>
-                        <hr class="border border-info border-2 opacity-50">
+                        <hr class="border border-info opacity-50">
                         <div class="req-desc-lower">
                             Form No. CAAP-ADM-AOD-2; in A4 size bond paper
                         </div>
@@ -121,7 +121,7 @@
                     <div class="req-desc-upper">
                         Copy/copies of Elevation Reference with Orthometric Height and Horizontal Control Reference with <b class="text-primary">WGS-84 Coordinates (Latitude/Longitude)</b> from known control station of National Mapping and Resource Information Authority (NAMRIA) or CAAP
                     </div>
-                    <hr class="border border-info border-2 opacity-50">
+                    <hr class="border border-info opacity-50">
                     <div class="req-desc-lower">
                         NAMRIA/CAAP; in A4 size bond paper
                     </div>
@@ -134,7 +134,7 @@
                     <div class="req-desc-upper">
                         Copy/copies of Elevation Reference with Orthometric Height and Horizontal Control Reference with <b class="text-primary">WGS-84 Coordinates (Latitude/Longitude)</b> from known control station of National Mapping and Resource Information Authority (NAMRIA) or CAAP
                     </div>
-                    <hr class="border border-info border-2 opacity-50">
+                    <hr class="border border-info opacity-50">
                     <div class="req-desc-lower">
                         In A3 or A4 size bond paper
                     </div>
@@ -151,7 +151,7 @@
                         <br>
                         For GNSS equipment, processing report including raw data is signed and sealed by a Geodetic Engineer.
                     </div>
-                    <hr class="border border-info border-2 opacity-50">
+                    <hr class="border border-info opacity-50">
                     <div class="req-desc-lower">
                         In A4 size bond paper
                     </div>

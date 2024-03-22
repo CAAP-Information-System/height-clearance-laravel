@@ -74,82 +74,61 @@
     text-decoration: none;
     background-color: #1c84ff;
 }
-.data-hdr {
+
+.eval-data{
+    margin-top: 5vh;
+}
+
+.section-header{
+    font-size: 3rem;
+    text-transform: capitalize;
+}
+.eval-data label{
+    font-size: 1.2rem;
+    color: #07275A;
+    font-style: italic;
+}
+.eval-data p{
     font-size: 1.5rem;
+}
+.form-group{
+    margin-top: 20px;
+}
+.coordinates-hdr{
+    font-size: 2rem;
+    color: #4ab3e0;
+}
+
+.approved{
+    background-color: #2E9A39;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
     font-weight: bold;
-    font-style: italic;
-    padding-top: 15px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #b6b6b6;
+    color: #ffff;
+    border-radius: 20px;
 }
-.data {
+
+.denied{
+    background-color: #E83E3E;
     padding: 10px;
-}
-.data-field {
-    display: flex;
-    gap: 15vh;
-}
-.data-label {
-    margin-top: 10px;
+    text-align: center;
+    width: 50%;
     font-weight: bold;
-    font-style: italic;
-}
-
-
-.data-value input {
-    padding: 7px;
-    border: 1px solid #b6b6b6;
-    border-radius: 10px;
-}
-.airport{
-    width: 400px;
-}
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    cursor: pointer;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-}
-
-.dropdown-content option {
-    display: block;
-    padding: 10px;
-    font-size: 14px;
-    color: #333;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-.edit-link {
-    background-color: #4ab3e0;
-    padding: 10px;
-    border-radius: 15px;
     color: #ffff;
+    border-radius: 20px;
+}
+.none{
+    background-color: #3B3B3B;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+    font-weight: bold;
+    color: #ffff;
+    border-radius: 20px;
 }
 
-.edit-link:hover {
-    text-decoration: none;
-    background-color: #ff8423;
-    color: #ffff;
-    transition: 0.2s ease-in;
-}
-.checked-btn-container {
+.noted-btn-container {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center horizontally */
@@ -157,7 +136,7 @@
     margin-top: 3vh;
 }
 
-.checked-btn {
+.noted-btn {
     margin-bottom: 10px; /* Adjust the margin between buttons */
 }
 
@@ -179,7 +158,7 @@
     border: 2px solid #4ab3e0;
     color: #006ae8;
 }
-.checked-btn {
+.noted-btn {
     width: 50%;
     background-color: #2E9A39;
     color: #ffff;
@@ -191,10 +170,10 @@
     transition: background-color 0.3s;
 }
 
-.checked-btn:hover {
+.noted-btn:hover {
     background-color: #1f6aa6;
 }
 
-.checked-btn:active {
+.noted-btn:active {
     transform: translateY(2px);
 }

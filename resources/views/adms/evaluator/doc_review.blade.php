@@ -6,7 +6,7 @@
     <form method="post" action="{{ route('generate-pdf') }}" target="_blank">
         @csrf
     </form>
-    <form method="POST" action="{{ route('updateCompliance', ['id' => $applicationData->id]) }}">
+    <form method="POST" action="{{ route('updateCompliance', ['application_id' => $applicationData->id]) }}">
         @csrf
 
         <div class="modal fade" id="applicantModal" tabindex="-1" role="dialog" aria-labelledby="applicantModalLabel" aria-hidden="true">

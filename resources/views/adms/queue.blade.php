@@ -30,7 +30,7 @@
                 @endif
             </div>
 
-            <a href="{{ route('doc-review', ['id' => $application->id]) }}" class="view-btn">
+            <a href="{{ route('doc-review', ['application_id' => $application->id]) }}" class="view-btn">
                 <i class='bx bxs-caret-right-circle'></i>
                 View Application
             </a>

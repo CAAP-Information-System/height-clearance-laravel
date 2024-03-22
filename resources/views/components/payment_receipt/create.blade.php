@@ -14,13 +14,17 @@
     <form action="{{ route('components.payment_receipt.store', ['application_id' => $application->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <div class="applicant-info">
-            <header class="applicant-info-hdr">Application Information</header>
-            <span>Application Number: {{ $application->application_number }}</span>
-            <span>Full Name: {{ $application->user->rep_fname }} {{ $application->user->rep_lname }}</span>
+        <div class="applicant-container">
+            <div class="applicant-info">
+                <header class="applicant-info-hdr">Application Information</header>
+                <div class="application-details">
+                    <p class="name">{{ $application->user->rep_fname }} {{ $application->user->rep_lname }}</p>
+                    <p class="email">{{ $application->owner->owner_email }}</p>
+                </div>
+            </div>
         </div>
 
-        <h2>Payment Receipt Details</h2>
+        <header class="payment-hdr">Payment Receipt Details</header>
         <div class="row m-4 p-3">
             <div class="mb-4 pb-2">
                 <div class="form-group">
@@ -34,7 +38,9 @@
                 <input type="text" name="receipt_num" class="form-control form-control-lg" placeholder="Enter Official Receipt Number" required>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit Payment Receipt and Wait for Results</button>
+        <div class="submit-payment">
+            <button type="submit" class="button-24">Submit Payment Receipt and Wait for Results</button>
+        </div>
     </form>
 </div>
 @endsection

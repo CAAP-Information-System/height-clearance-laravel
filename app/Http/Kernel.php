@@ -65,10 +65,20 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'isAdmin' => \App\Http\Middleware\AdminMiddleware::class,
-        'isADMS' => \App\Http\Middleware\ADMSMiddleware::class,
+        'is_forEval' => \App\Http\Middleware\EvaluationMiddleware::class,
+        // ADMS MIDDLEWARE
+        'isADMSEvaluator' => \App\Http\Middleware\ADMSEvaluatorMiddleware::class,
         'isADMSSupervisor' => \App\Http\Middleware\ADMSSupervisorMiddleware::class,
         'isADMSChief' => \App\Http\Middleware\ADMSChiefMiddleware::class,
-        'is_forEval' => \App\Http\Middleware\EvaluationMiddleware::class,
+
+        // ATS MIDDLEWARE
+        'isATSEvaluator' => \App\Http\Middleware\ATSEvaluatorMiddleware::class,
+        'isATSSupervisor' => \App\Http\Middleware\ATSSupervisorMiddleware::class,
+        'isATSChief' => \App\Http\Middleware\ATSChiefMiddleware::class,
+        // ANS MIDDLEWARE
+        'isANSEvaluator' => \App\Http\Middleware\ANSEvaluatorMiddleware::class,
+        'isANSSupervisor' => \App\Http\Middleware\ANSSupervisorMiddleware::class,
+        'isANSChief' => \App\Http\Middleware\ANSChiefMiddleware::class,
     ];
     protected $routeMiddleware = [
         // ...

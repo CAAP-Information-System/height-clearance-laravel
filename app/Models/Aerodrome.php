@@ -27,7 +27,8 @@ class Aerodrome extends Model
         'max_allowed_top_elev',
         'height_eval_remarks',
         'proposed_top_elev',
-        'eval_result_choice',
+        'eval_result',
+        'supervisor_result'
 
     ];
 
@@ -39,5 +40,9 @@ class Aerodrome extends Model
     public function application()
     {
         return $this->belongsTo(Application::class);
+    }
+    public function airtraffic()
+    {
+        return $this->hasOne(Airtraffic::class);
     }
 }

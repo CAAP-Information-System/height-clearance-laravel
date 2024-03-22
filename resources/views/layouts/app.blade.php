@@ -4,12 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <!-- FOR HIDING INDEX -->
+    <meta name="robots" content="noindex, nofollow">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Online Height Clearance</title>
-    <link rel="icon" href="asset/img/caap-logo.png" type="image/x-icon">
+    <link rel="icon" href="{{ asset('caap-logo.png') }}" type="image/x-icon">
 
     <link rel="stylesheet" type="text/css" href="{{ url('css/app.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -49,7 +50,7 @@
     <div id="app">
         <!-- Sidebar -->
         @if(auth()->check() && Auth::user()->access_role == "admin")
-        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar bg-white">
             <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 mt-4">
                     <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action py-2" data-mdb-ripple-init>
@@ -82,35 +83,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    @auth
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                            @if(auth()->check() &&  Auth::user()->access_role == "user")
-                            <a class="item-link" href="{{ url('home') }}">
-                                <i class="fa-solid fa-house"></i>
-                                Home
-                            </a>
-                            @elseif(auth()->check() &&  Auth::user()->access_role == "adms")
-                            <a class="item-link" href="{{ url('adms/queue') }}">
-                                <i class="fa-solid fa-users-line"></i>
-                                Queued Applications
-                            </a>
-                            @elseif(auth()->check() &&  Auth::user()->access_role == "adms-supervisor")
-                            <a class="item-link" href="{{ route('supervisor-home') }}">
-                                <i class="fa-solid fa-house"></i>
-                                Home
-                            </a>
-                            @endif
-                            <a class="item-link" href="{{ route('view-status') }}">
-                                <i class="fa-solid fa-chart-simple"></i>
-                                View Status
-                            </a>
-                        </div>
-                    </div>
-                    @endauth
+
                     <!-- Righ0t Side Of Navbar -->
                     @auth
-                    @if(auth()->check() &&  Auth::user()->access_role == 'user') <!-- Assuming isAdmin() is a method in your User model -->
+                    @if(auth()->check() && Auth::user()->access_role == 'user') <!-- Assuming isAdmin() is a method in your User model -->
                     <a class="button-28" href="{{ url('owner-form') }}">
                         <i class='bx bxs-log-in-circle'></i>
                         Apply for a Permit
@@ -120,6 +96,32 @@
                     <div style="margin-right: 20px;"></div>
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        @auth
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav">
+                                @if(auth()->check() && Auth::user()->access_role == "user")
+                                <a class="item-link" href="{{ url('home') }}">
+                                    <i class="fa-solid fa-house"></i>
+                                    Home
+                                </a>
+                                @elseif(auth()->check() && Auth::user()->access_role == "adms")
+                                <a class="item-link" href="{{ url('adms/queue') }}">
+                                    <i class="fa-solid fa-users-line"></i>
+                                    Queued Applications
+                                </a>
+                                @elseif(auth()->check() && Auth::user()->access_role == "adms-supervisor")
+                                <a class="item-link" href="{{ route('supervisor-home') }}">
+                                    <i class="fa-solid fa-house"></i>
+                                    Home
+                                </a>
+                                @endif
+                                <a class="item-link" href="{{ route('view-status') }}">
+                                    <i class="fa-solid fa-chart-simple"></i>
+                                    View Status
+                                </a>
+                            </div>
+                        </div>
+                        @endauth
                         @guest
                         @else
                         <li class="nav-item dropdown">

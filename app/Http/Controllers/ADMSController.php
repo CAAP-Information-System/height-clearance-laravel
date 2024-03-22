@@ -8,6 +8,7 @@ use App\Models\Aerodrome;
 use App\Models\AerodromeStaff;
 use App\Models\Application;
 use App\Models\ApplicationQueue;
+use App\Models\EditedAerodrome;
 use App\Models\File;
 use App\Models\Owner;
 use App\Models\Receipt;
@@ -41,20 +42,25 @@ class ADMSController extends Controller
         if (Auth::check() && Auth::user()->access_role === 'adms') {
             $userData = User::all();
             $applicationData = Application::all();
-            return view('adms.queue')->with('applicationData', $applicationData)
-                ->with('userData', $userData);
+            $applicationQueue = ApplicationQueue::all();
+            return view('adms.queue')
+                ->with('applicationData', $applicationData)
+                ->with('userData', $userData)
+                ->with('applicationQueue', $applicationQueue);
         } else {
             return redirect('/login')->with('message', 'Login as an admin to access this page.');
         }
     }
 
     // ADMS HOME VIEWS
-    public function ADMSSupervisorHome(){
+    public function ADMSSupervisorHome()
+    {
         $queue = Application::all();
 
         return view('adms.supervisor.home', compact('queue'));
     }
-    public function ADMSChiefHome(){
+    public function ADMSChiefHome()
+    {
         $queue = Application::all();
         return view('adms.chief.home', compact('queue'));
     }
@@ -199,7 +205,7 @@ class ADMSController extends Controller
             }
 
             return view(
-                'adms/doc_review',
+                'adms.evaluator.doc_review',
                 compact('applicationData', 'user', 'userData', 'files', 'receipt')
             )
                 ->with('fileNameToStore_elevation_plan', $fileNameToStore_elevation_plan)
@@ -279,7 +285,7 @@ class ADMSController extends Controller
 
             // Check if the compliance result is "Not Complied"
             if ($request->input('doc_compliance_result') === 'Not Complied') {
-                return redirect()->route('home'); // Redirect to home if not complied
+                return redirect()->route('non-compliant');
             } else {
                 return redirect()->route('adms.critical_eval', ['application_id' => $applicationData->id]); // Continue to critical eval if complied
             }
@@ -288,7 +294,7 @@ class ADMSController extends Controller
         }
     }
 
-    public function viewcriticalEvaluation($id)
+    public function viewcriticalEvaluation(Request $request, $id)
     {
         $user = Auth::user();
         $applicationData = Application::find($id);
@@ -494,7 +500,7 @@ class ADMSController extends Controller
             $userData = $applicationData->owner;
             $files = File::where('application_id', $applicationData->id)->first();
             $receipt = Receipt::where('application_id', $applicationData->id)->first();
-            return view('adms.critical_eval', compact('applicationData', 'userData', 'user', 'files', 'receipt', 'airports'));
+            return view('adms.evaluator.critical_eval', compact('applicationData', 'userData', 'user', 'files', 'receipt', 'airports'));
         } else {
             return view('components.home');
         }
@@ -504,9 +510,21 @@ class ADMSController extends Controller
     {
         $user = Auth::user();
         $applicationData = Application::find($id);
-        // Find the Staff record for the user
         $critical_eval = Aerodrome::where('user_id', $id)->first();
 
+        $validatedData = $request->validate([
+            'proposed_height' => 'numeric',
+            'lat_deg' => 'numeric',
+            'lat_min' => 'numeric',
+            'lat_sec' => 'numeric',
+            'long_deg' => 'numeric',
+            'long_min' => 'numeric',
+            'long_sec' => 'numeric',
+            'height_of_existing_structure' => 'numeric',
+            'orthometric_height' => 'numeric',
+        ]);
+        $editedAerodrome = new EditedAerodrome($validatedData);
+        $editedAerodrome->save();
 
         $request->validate([
             'crit_area_result' => 'nullable|string|max:255',
@@ -798,7 +816,7 @@ class ADMSController extends Controller
         $receipt = Receipt::where('application_id', $applicationData->id)->first();
 
         return view(
-            'adms.height_eval',
+            'adms.evaluator.height_eval',
             compact('applicationData', 'user', 'userData', 'airports', 'files', 'receipt', 'aerodrome')
         )
             ->with('fileNameToStore_elevation_plan', $fileNameToStore_elevation_plan)
@@ -815,7 +833,7 @@ class ADMSController extends Controller
         $request->validate([
             'evaluation_status' => 'nullable|string|max:255',
             'ref_aerodrome' => 'nullable',
-            'eval_result_choice' => 'nullable|in:Approved,Denied',
+            'eval_result' => 'nullable|in:Approved,Denied',
             'proposed_top_elev' => 'nullable|numeric',
             'max_allowed_top_elev' => 'nullable|numeric',
             'height_eval_remarks' => 'nullable|string',
@@ -833,14 +851,14 @@ class ADMSController extends Controller
         $proposed_top_elev = $request->input('proposed_top_elev');
         $max_allowed_top_elev = $request->input('max_allowed_top_elev');
         $height_eval_remarks = $request->input('height_eval_remarks');
-        $eval_result_choice = $request->input('eval_result_choice');
+        $eval_result = $request->input('eval_result');
 
         // Save the updated application data
         $staff->evaluation_status = $evaluation_status;
         $staff->proposed_top_elev = $proposed_top_elev;
         $staff->max_allowed_top_elev = $max_allowed_top_elev;
         $staff->height_eval_remarks = $height_eval_remarks;
-        $staff->eval_result_choice = $eval_result_choice;
+        $staff->eval_result = $eval_result;
         $staff->save();
 
         return redirect()->route('application-passed', ['id' => $user->id]);
@@ -1135,10 +1153,38 @@ class ADMSController extends Controller
     public function ADMSSupervisorUpdate(Request $request, $id)
     {
         $user = Auth::user();
-
-        // Check if the ApplicationQueue record exists
         $queue_status = ApplicationQueue::where('user_id', $id)->first();
+        $editedAerodrome =  EditedAerodrome::findOrFail($id);
+        $aerodrome = Aerodrome::findOrFail($id);
+        $validatedData = $request->validate([
+            'proposed_height' => 'numeric',
+            'lat_deg' => 'numeric',
+            'lat_min' => 'numeric',
+            'lat_sec' => 'numeric',
+            'long_deg' => 'numeric',
+            'long_min' => 'numeric',
+            'long_sec' => 'numeric',
+            'height_of_existing_structure' => 'numeric',
+            'orthometric_height' => 'numeric',
+            'doc_compliance_result' => 'string',
+            'crit_area_result' => 'string',
+            'reference_aerodrome' => 'string',
+            'max_allowed_top_elev' => 'numeric',
+            'height_eval_remarks' => 'string',
+            'proposed_top_elev' => 'numeric',
+            'evaluation_status' => 'string',
+            'supervisor_result' => 'nullable|in:Approved,Denied',
 
+        ]);
+        $request->validate([
+            'supervisor_result' => 'nullable|in:Approved,Denied',
+
+        ]);
+
+        $editedAerodrome->update($validatedData);
+        $supervisor_result = $request->input('supervisor_result');
+        $aerodrome->supervisor_result = $supervisor_result;
+        $aerodrome->save();
         if (!$queue_status) {
             // If the record doesn't exist, you may choose to handle it accordingly
             return redirect()->route('home')->with('error', 'ApplicationQueue record not found.');
@@ -1149,7 +1195,7 @@ class ADMSController extends Controller
         $queue_status->adms_chief = 'For Review';
         $queue_status->save();
 
-        return redirect()->route('proceed-to-chief', ['id' => $user->id]);
+        return redirect()->route('ADMStoChief', ['id' => $user->id]);
     }
 
     public function proceedToChief()
@@ -1435,7 +1481,27 @@ class ADMSController extends Controller
     public function ADMSChiefUpdate(Request $request, $id)
     {
         $user = Auth::user();
+        $editedAerodrome =  EditedAerodrome::findOrFail($id);
+        $validatedData = $request->validate([
+            'proposed_height' => 'numeric',
+            'lat_deg' => 'numeric',
+            'lat_min' => 'numeric',
+            'lat_sec' => 'numeric',
+            'long_deg' => 'numeric',
+            'long_min' => 'numeric',
+            'long_sec' => 'numeric',
+            'height_of_existing_structure' => 'numeric',
+            'orthometric_height' => 'numeric',
+            'doc_compliance_result' => 'string',
+            'crit_area_result' => 'string',
+            'reference_aerodrome' => 'string',
+            'max_allowed_top_elev' => 'numeric',
+            'height_eval_remarks' => 'string',
+            'proposed_top_elev' => 'numeric',
+            'evaluation_status' => 'string',
+        ]);
 
+        $editedAerodrome->update($validatedData);
         // Check if the ApplicationQueue record exists
         $queue_status = ApplicationQueue::where('user_id', $id)->first();
 

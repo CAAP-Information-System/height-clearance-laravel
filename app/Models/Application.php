@@ -68,4 +68,8 @@ class Application extends Model
     {
         return $this->belongsTo(Owner::class, 'owner_id');
     }
+    public function application_queues()
+    {
+        return $this->hasMany(ApplicationQueue::class);
+    }
 }

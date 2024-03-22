@@ -31,6 +31,9 @@ class HomeController extends Controller
     {
         return view('message_template/application_finished');
     }
-
+    public function noncompliant()
+    {
+        return view('message_template/non-compliance');
+    }
 
 }

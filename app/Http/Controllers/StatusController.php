@@ -75,20 +75,22 @@ class StatusController extends Controller
             return view('message_template/success_application');
         }
         // 2 == file has been rejected or for resubmission
-        else {
-            return view('message_template/failed_application',compact('applicationData'));
+        else if ($applicationData->is_ForEval == "2") {
+            return view('message_template/failed_application');
+        } else {
+            return view('message_template/failed_application', compact('applicationData'));
         }
     }
 
     public function showApplications()
-{
-    // Get the authenticated user
-    $user = auth()->user();
+    {
+        // Get the authenticated user
+        $user = auth()->user();
 
-    // Retrieve applications sent by the user
-    $applications = Application::with('owner')->where('user_id', $user->id)->get();
+        // Retrieve applications sent by the user
+        $applications = Application::with('owner')->where('user_id', $user->id)->get();
 
 
-    return view('components.status.view_status', compact('applications'));
-}
+        return view('components.status.view_status', compact('applications'));
+    }
 }

@@ -193,3 +193,7 @@
 .submit-btn:active {
     transform: translateY(2px);
 }
+
+.eval{
+    padding: 20px;
+}
